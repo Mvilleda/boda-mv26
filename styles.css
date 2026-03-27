@@ -101,7 +101,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* Top Talavera decoration - full width */
@@ -156,9 +156,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 60px 0;
+    padding: 0 0 0 0;
     margin-top: 14px;
-    margin-bottom: 0;
+    margin-bottom: -44px;
 }
 
 .circular-photo-container {
@@ -167,7 +167,7 @@ body {
     width: 100%;
     aspect-ratio: 1756 / 919;
     margin: 0;
-    transform: translateY(0px);
+    transform: translateY(10px);
 }
 
 .couple-photo-circular {
@@ -192,7 +192,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    transform: translateY(0px);
+    transform: translateY(-19px);
     z-index: 2;
     object-fit: fill;
     pointer-events: none;
@@ -1455,6 +1455,23 @@ body {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        overflow: visible;
+    }
+
+    .hero-photo-section {
+        padding: 0 0 60px 0;
+        margin-bottom: 0;
+    }
+
+    .circular-photo-container {
+        transform: translateY(0px);
+    }
+
+    .photo-frame {
+        transform: translateY(0px);
+    }
+
     .hero-text {
         padding: 15px 10px 10px;
     }
