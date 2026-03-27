@@ -1476,8 +1476,16 @@ body {
         padding: 15px 10px 10px;
     }
 
-    .section h2 {
-        font-size: 1.8rem;
+    .section h2,
+    .timeline-section h2,
+    .location-section h2.location-title,
+    .stay-section h2.stay-title,
+    .contribute-section h2.contribute-title,
+    .faq-section h2.faq-title,
+    .celebrate-title,
+    .counter-title {
+        font-size: 2.7rem !important;
+        line-height: 1.02;
     }
 
     .location-map iframe {
@@ -1498,10 +1506,6 @@ body {
 
     .bank-title {
         font-size: 1.95rem;
-    }
-
-    .faq-section h2.faq-title {
-        font-size: 3.35rem;
     }
 
     .faq-list {
@@ -1534,7 +1538,6 @@ body {
     }
 
     .celebrate-title {
-        font-size: 2.7rem !important;
         transform: scale(1);
     }
 
