@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="pageTitle">Marcos & Val Wedding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&family=Italianno&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Gate -->
+    <div id="password-gate" style="display:none; position:fixed; inset:0; background:#fdffff; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Crimson Pro',serif;">
+        <p style="font-family:'Hello Paris',serif; font-size:3.2rem; color:#4d638f; margin-bottom:8px; line-height:1;">Marcos & Val</p>
+        <p style="color:#6c7c9d; font-size:1.15rem; margin-bottom:28px; letter-spacing:0.04em;">24 · 10 · 2026</p>
+        <input id="pw-input" type="password" placeholder="enter password" autocomplete="off"
+            style="border:1.5px solid #6c7c9d; border-radius:8px; padding:10px 18px; font-size:1.1rem; color:#4d638f; outline:none; text-align:center; width:220px; font-family:'Crimson Pro',serif; background:#fdffff;">
+        <p id="pw-error" style="color:#a04040; font-size:0.95rem; margin-top:10px; opacity:0; transition:opacity 0.3s;">Incorrect password — try again</p>
+        <button onclick="checkPassword()"
+            style="margin-top:14px; background:#6c7c9d; color:#fdffff; border:none; border-radius:8px; padding:10px 32px; font-size:1rem; cursor:pointer; font-family:'Cinzel',serif; letter-spacing:0.08em;">Enter</button>
+    </div>
+    <script>
+        (function() {
+            if (sessionStorage.getItem('bodamv_auth') === '1') return;
+            document.getElementById('password-gate').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        })();
+        function checkPassword() {
+            var val = document.getElementById('pw-input').value;
+            if (val === 'BodaMV26') {
+                sessionStorage.setItem('bodamv_auth', '1');
+                document.getElementById('password-gate').style.display = 'none';
+                document.body.style.overflow = '';
+            } else {
+                var err = document.getElementById('pw-error');
+                err.style.opacity = '1';
+                document.getElementById('pw-input').value = '';
+                setTimeout(function(){ err.style.opacity = '0'; }, 2500);
+            }
+        }
+        document.addEventListener('keydown', function(e){ if(e.key==='Enter') checkPassword(); });
+    </script>
+    <!-- Language Toggle Button -->
+    <div class="language-toggle">
+        <button id="langToggle" onclick="toggleLanguage()">
+            <span id="langIcon">🇲🇽</span>
+            <span id="langText">Español</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Top Talavera decoration -->
+        <div class="hero-decoration-top">
+            <img src="images/HeaderSept25.png" alt="Decorative header">
+        </div>
+
+        <!-- Names + subtitle -->
+        <div class="hero-text">
+            <h1 class="couple-names">MaRcoS <span class="ampersand">&amp;</span> VaLerIa</h1>
+            <p class="getting-married" data-translate="gettingMarried">are getting married</p>
+        </div>
+
+        <!-- Circular photo with Talavera frame -->
+        <div class="hero-photo-section">
+            <div class="circular-photo-container">
+                <img src="images/IMG_20241202_215608.jpg" alt="Marcos y Valeria" class="couple-photo-circular">
+                <img src="images/CirclePhotoS25 (2).png" alt="Frame" class="photo-frame">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Details Section -->
+    <section class="section details-section">
+        <div class="container">
+            <h2 class="celebrate-title">
+                <span data-translate="celebrateTitleLine1">we can´t wait to</span>
+                <span data-translate="celebrateTitleLine2">celebRate with You!</span>
+            </h2>
+            <div class="event-grid">
+                <article class="event-column">
+                    <div class="event-icon wine-icon" aria-hidden="true">
+                        <img src="images/icon-wine.png" alt="Wine pouring icon" class="event-illustration">
+                    </div>
+                    <h3 class="event-label" data-translate="whenTitle">wHen</h3>
+                    <p class="event-copy" data-translate="whenLine1">SATURDAY 24 OCTOBER 2026</p>
+                    <p class="event-copy" data-translate="whenLine2">CEREMONY @5 PM</p>
+                    <p class="event-copy" data-translate="whenLine3">RECEPTION TO FOLLOW</p>
+                </article>
+
+                <article class="event-column where-column">
+                    <div class="event-icon volcano-icon" aria-hidden="true">
+                        <img src="images/icon-volcano.png" alt="Volcano and church icon" class="event-illustration">
+                    </div>
+                    <h3 class="event-label" data-translate="whereTitle">wHeRe</h3>
+                    <p class="event-copy" data-translate="whereLine1">Jardín de Cielo</p>
+                    <p class="event-copy" data-translate="whereLine2">Paraiso Palmira</p>
+                    <p class="event-copy event-space" data-translate="whereLine3">Revolución, 74270</p>
+                    <p class="event-copy" data-translate="whereLine4">Atlixco, Puebla, México</p>
+                </article>
+
+                <article class="event-column wear-column">
+                    <div class="event-icon dance-icon" aria-hidden="true">
+                        <img src="images/icon-dance.png" alt="Dancing couple icon" class="event-illustration">
+                    </div>
+                    <h3 class="event-label" data-translate="wearTitle">wHat To weaR</h3>
+                    <p class="event-copy" data-translate="wearLine1">dress to impress! cocktail or formal attire—think elegant but comfortable enough to dance all night!</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="section welcome-section">
+        <div class="container">
+            <h2 data-translate="welcomeTitle">OuR SToRY</h2>
+            <div class="welcome-content">
+                <img src="images/IMG_20241202_221531.jpg" alt="Marcos and Val" class="couple-image">
+                <div class="welcome-text">
+                    <p data-translate="storyText1">
+                        It started with a Tweet. We'd met at university, but one message led to another and somehow the conversations never stopped.
+                    </p>
+                    <p data-translate="storyText2">
+                        From the start, it all felt easy. We laughed a lot, stayed up talking late, and slipped into the kind of comfort you don't have to force. When summer ended and we both went back to uni, we half expected fate to do its thing and bring us together in those first few days. It didn't. So Marcos took matters into his own hands and showed up at Valeria's classroom with an ice lolly. That became our first little tradition, and the start of everything.
+                    </p>
+                    <p data-translate="storyText3">
+                        Long distance tested us. Life got busy, and we kept choosing each other anyway. When we finally closed the distance and shared a home, a whole new chapter began. We danced in the kitchen, acted silly together, and found something special in the most ordinary days. We've grown side by side, dreamed out loud, and made each other better just by being together.
+                    </p>
+                    <p data-translate="storyText4">
+                        And now here we are, ready to say I do in front of the people who matter most to us.
+                    </p>
+                    <p data-translate="storyText5">
+                        We're so glad you're part of this.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="section counter-section">
+        <div class="container">
+            <h2 class="counter-title">
+                <span data-translate="counterTitleLine1">we Have waIted 10 yearS foR thiS day,</span>
+                <span data-translate="counterTitleLine2">theRe'S onLy</span>
+            </h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">0</div>
+                    <div class="countdown-label" data-translate="counterDays">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">0</div>
+                    <div class="countdown-label" data-translate="counterHours">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">0</div>
+                    <div class="countdown-label" data-translate="counterMinutes">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">0</div>
+                    <div class="countdown-label" data-translate="counterSeconds">Seconds</div>
+                </div>
+            </div>
+            <h2 class="counter-subtitle">
+                <span data-translate="counterSubtitleLine1">days To go!</span>
+                <span data-translate="counterSubtitleLine2">paRty accoRdinglY</span>
+            </h2>
+            <p class="rsvp-note" data-translate="rsvpNotice">Recuerda: los boletos están ligados al nombre de cada invitado y no son transferibles.</p>
+            <div class="rsvp-button-container">
+                <a href="https://withjoy.com/valeria-sandovaltorres-and-marcos/rsvp" target="_blank" class="rsvp-btn" data-translate="rsvpButtonText">RSVP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section timeline-section">
+        <div class="container">
+            <h2 data-translate="timelineTitle">Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">4:30 PM</div>
+                    <div class="timeline-content">
+                        <img src="images/Screenshot 2026-03-27 at 09.00.49.png" alt="Celebration fireworks icon" class="timeline-icon">
+                        <h4 data-translate="timeline1Title">Ceremony</h4>
+                        <p data-translate="timeline1Text">Join us for the ceremony at the open-air chapel. Please arrive by 4:00 PM to find a spot and get comfortable.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">5:30 PM</div>
+                    <div class="timeline-content">
+                        <img src="images/Screenshot 2026-03-27 at 09.00.55.png" alt="Dinner plate icon" class="timeline-icon">
+                        <h4 data-translate="timeline2Title">Cocktail Hour</h4>
+                        <p data-translate="timeline2Text">Cocktail hour in the garden, our favorite drinks and your first chance to toast with us!</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6:45 PM</div>
+                    <div class="timeline-content">
+                        <img src="images/Screenshot 2026-03-27 at 09.01.03.png" alt="Champagne glasses icon" class="timeline-icon">
+                        <h4 data-translate="timeline3Title">we eat!</h4>
+                        <p data-translate="timeline3Text">Dinner, speeches, and cake on the MAIN plaza. Check the seating board to find your table.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 PM</div>
+                    <div class="timeline-content">
+                        <img src="images/Screenshot 2026-03-27 at 09.01.10.png" alt="Wedding rings icon" class="timeline-icon">
+                        <h4 data-translate="timeline4Title">Send Off</h4>
+                        <p data-translate="timeline4Text">Bring your best moves. We'll be dancing until our feet say stop!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section location-section">
+        <div class="container">
+            <h2 class="location-title" data-translate="locationTitle">gettIng TheRe</h2>
+            <p class="location-intro" data-translate="locationIntro">Our wedding will take place in <strong>Atlixco, Puebla</strong>, about 2 hours from <strong>Mexico City</strong>.
+Here's how to get there:</p>
+
+            <div class="location-grid">
+                <div class="location-left">
+                    <div class="location-map">
+                        <iframe
+                            title="Map to Jardín de Cielo"
+                            src="https://www.google.com/maps?q=Jard%C3%ADn%20de%20Cielo%20Atlixco&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <h3 class="location-subtitle" data-translate="locationLeftTitle">ALREADY IN <strong>PUEBLA CITY</strong>?</h3>
+                    <p class="location-copy" data-translate="locationLeftText">You can take a local bus from CAPU station. Look for the ORO line. They leave every 30 minutes and tickets are around $45 MXN. Uber is also a great option if you prefer a direct ride.</p>
+                </div>
+
+                <div class="location-right">
+                    <article class="travel-item">
+                        <span class="travel-icon-badge" aria-hidden="true">
+                            <svg class="travel-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <path d="M3 11.5L21 4.5L14 13.5L21 19.5L12.5 16.5L8.5 20L8 15L3 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="travel-title" data-translate="locationTravel1Title">FLYING IN</h3>
+                            <p class="travel-text" data-translate="locationTravel1Text">Most of you will fly into Mexico City (MEX) or Puebla (PBC). If you're coming from Cancún, you can fly directly to Puebla!</p>
+                        </div>
+                    </article>
+
+                    <article class="travel-item">
+                        <span class="travel-icon-badge" aria-hidden="true">
+                            <svg class="travel-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <rect x="3.5" y="4.5" width="17" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                                <path d="M7 16.5V19.5M17 16.5V19.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <circle cx="8" cy="18.5" r="1.2" fill="currentColor"/>
+                                <circle cx="16" cy="18.5" r="1.2" fill="currentColor"/>
+                                <path d="M6.5 9.5H17.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="travel-title" data-translate="locationTravel2Title">FROM <strong>MEXICO CITY</strong> (MEX)</h3>
+                            <p class="travel-text" data-translate="locationTravel2Text">The easiest route is the bus from Terminal 2. You can book with <a href="https://www.ado.com.mx" target="_blank" rel="noopener noreferrer">ADO</a> or <a href="https://www.estrellaroja.com.mx" target="_blank" rel="noopener noreferrer">Estrella Roja</a>. Get off at Paseo Destino, then take an Uber to Atlixco.</p>
+                        </div>
+                    </article>
+
+                    <article class="travel-item">
+                        <span class="travel-icon-badge" aria-hidden="true">
+                            <svg class="travel-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <path d="M4 14.5L6.8 9.8C7.2 9.1 8 8.6 8.8 8.6H15.2C16 8.6 16.8 9.1 17.2 9.8L20 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="3.5" y="13.5" width="17" height="5" rx="1.8" stroke="currentColor" stroke-width="1.8"/>
+                                <circle cx="8" cy="18.7" r="1.2" fill="currentColor"/>
+                                <circle cx="16" cy="18.7" r="1.2" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="travel-title" data-translate="locationTravel3Title">FROM <strong>PUEBLA</strong> AIRPORT (PBC)</h3>
+                            <p class="travel-text" data-translate="locationTravel3Text">From Puebla airport, you can Uber directly to Atlixco. Renting a car is also an option if you bring a valid license.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <p class="location-footer-note" data-translate="locationFooterNote">If you need help planning your route, let us know. We are happy to help!</p>
+        </div>
+    </section>
+
+    <!-- Where to Stay Section -->
+    <section class="section stay-section">
+        <div class="container">
+            <h2 class="stay-title" data-translate="stayTitle">wHeRe To STaY</h2>
+            <p class="stay-intro" data-translate="stayIntro">Our planner will soon share recommended places to stay, including hotel blocks and Airbnb options.</p>
+
+            <div class="stay-grid">
+                <article class="stay-card">
+                    <div class="stay-card-icon-wrap" aria-hidden="true">
+                        <img src="images/Screenshot 2026-03-27 at 11.10.18.png" alt="" class="stay-card-icon-img stay-icon-hotel">
+                    </div>
+                    <h3 class="stay-card-title" data-translate="stayHotelsTitle">hOTelS</h3>
+                    <p class="stay-card-text" data-translate="stayHotelsText">Planner to add hotel names, distance to venue, booking links, and any group code.</p>
+                    <ul class="stay-checklist">
+                        <li data-translate="stayHotelsItem1">Option 1: pending planner details</li>
+                        <li data-translate="stayHotelsItem2">Option 2: pending planner details</li>
+                        <li data-translate="stayHotelsItem3">Option 3: pending planner details</li>
+                    </ul>
+                </article>
+
+                <article class="stay-card">
+                    <div class="stay-card-icon-wrap stay-airbnb-icons" aria-hidden="true">
+                        <img src="images/Screenshot 2026-03-27 at 11.10.25.png" alt="" class="stay-card-icon-img stay-icon-luggage">
+                        <span class="stay-airbnb-mark">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="stay-airbnb-svg">
+                                <path d="M12 4.6C10.7 4.6 9.7 5.5 9.2 6.7L6.1 14.1C5.3 16 6.6 18.2 8.6 18.2C9.8 18.2 10.8 17.6 12 16.3C13.2 17.6 14.2 18.2 15.4 18.2C17.4 18.2 18.7 16 17.9 14.1L14.8 6.7C14.3 5.5 13.3 4.6 12 4.6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12.2" r="2.1" stroke="currentColor" stroke-width="1.8"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3 class="stay-card-title" data-translate="stayAirbnbTitle">AiRbNbS</h3>
+                    <p class="stay-card-text" data-translate="stayAirbnbText">Planner to add Airbnb zones, nearby landmarks, and recommended group sizes.</p>
+                    <ul class="stay-checklist">
+                        <li data-translate="stayAirbnbItem1">Zone 1: pending planner details</li>
+                        <li data-translate="stayAirbnbItem2">Zone 2: pending planner details</li>
+                        <li data-translate="stayAirbnbItem3">Zone 3: pending planner details</li>
+                    </ul>
+                </article>
+            </div>
+
+            <p class="stay-note" data-translate="stayPlannerNote">Planner note: please include nightly rate range, cancellation policy, and booking deadline for each option.</p>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section class="section contribute-section">
+        <div class="container">
+            <h2 class="contribute-title" data-translate="contributeTitle">contRibute wIth Love</h2>
+            <p class="contribute-intro" data-translate="contributeText1">We know that attending a destination wedding is no small effort, and sharing our day with you is truly the greatest gift we could ask for. But if you would like to contribute a little something, we’ve put together a registry at Amazon and The Wedding Shop, and we’ve also included our bank details (Mexico and UK) for a honeymoon fund or any cash gifts.</p>
+            <p class="contribute-body contribute-thanks" data-translate="contributeText2">Thank you so much, it means the world to us!</p>
+
+            <h3 class="contribute-accounts-title" data-translate="contributeAccountsTitle">Bank details</h3>
+
+            <div class="bank-grid">
+                <article class="bank-card">
+                    <h4 class="bank-title" data-translate="contributeMxnTitle">Cuenta mexico (mXn)</h4>
+                    <ul class="bank-list">
+                        <li><span class="bank-label" data-translate="contributeLabelHolder">Account holder:</span> <span data-translate="contributeMxnHolder">Valeria Sandoval Torres</span></li>
+                        <li><span class="bank-label" data-translate="contributeLabelBank">Bank:</span> <span data-translate="contributeMxnBank">NU MEXICO</span></li>
+                        <li><span class="bank-label" data-translate="contributeLabelAccount">Account / CLABE:</span> <span data-translate="contributeMxnAccount">6381 8000 0195 8779 48</span></li>
+                    </ul>
+                </article>
+
+                <article class="bank-card">
+                    <h4 class="bank-title" data-translate="contributeUkTitle">Cuenta uk (Gbp)</h4>
+                    <ul class="bank-list">
+                        <li><span class="bank-label" data-translate="contributeLabelHolder">Account holder:</span> <span data-translate="contributeUkHolder">M Villeda &amp; V Sandoval</span></li>
+                        <li><span class="bank-label" data-translate="contributeLabelBank">Bank:</span> <span data-translate="contributeUkBank">REVOLUT UK</span></li>
+                        <li><span class="bank-label" data-translate="contributeLabelSort">Sort code:</span> <span data-translate="contributeUkSort">23-01-20</span></li>
+                        <li><span class="bank-label" data-translate="contributeLabelAccountNo">Account number:</span> <span data-translate="contributeUkAccountNo">57419689</span></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="faq-title" data-translate="faqTitle">FAQs</h2>
+            <p class="faq-intro" data-translate="faqIntro">Everything you need to know to enjoy the weekend with us.</p>
+
+            <h3 class="faq-subtitle" data-translate="faqPueblaTitle">wHat To Do in Puebla</h3>
+            <p class="faq-puebla" data-translate="faqPueblaText">We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.</p>
+
+            <div class="faq-list">
+                <article class="faq-item">
+                    <h4 data-translate="faqQ1">what should i weaR?</h4>
+                    <p data-translate="faqA1">Cocktail or formal attire is perfect. Think elegant, but comfortable enough to dance the night away! Since the celebration will be outdoors, please keep in mind that while there will be a dance floor, slim heels may sink into the grass, so sturdier shoes or block heels are a great option.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ2">when do I need to Rsvp?</h4>
+                    <p data-translate="faqA2">Please RSVP by [XX/XX/XXXX] via the Google Form or directly with our wedding planner at [planner’s number or email].</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ3">can we take photos during the wedding?</h4>
+                    <p data-translate="faqA3">Yes, but we kindly ask that you refrain from taking pictures during the ceremony, so everyone can stay present. We will have a professional photographer capturing the moment. During other parts of the day, feel free to take photos, but please keep your devices off or on silent to avoid distractions.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ4">How do I get to and from the wedding venue?</h4>
+                    <p data-translate="faqA4">There are multiple hotels and Airbnbs nearby. You can drive or take an Uber to the venue. We have reserved a block of rooms at [Hotel Name] at a special rate. Additionally, we will run a shuttle service between [Hotel Name] and the venue at [Time A] and [Time B].</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ5">Is there parKing in the wedding venue?</h4>
+                    <p data-translate="faqA5">Yes! There is ample parking available, and a valet service will be provided for your comfort. Please note that valet parking has an additional cost of XX, which must be paid in cash on the day of the wedding. Both the ceremony and reception will take place at the same venue, so there is no need to move your car once you arrive.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ6">can i brIng a pLus-one?</h4>
+                    <p data-translate="faqA6">Due to venue capacity, we are unfortunately unable to accommodate additional guests beyond those named in invitations. We appreciate your understanding and look forward to celebrating with you.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ7">what If i have food allergies or dIetary restrictIons?</h4>
+                    <p data-translate="faqA7">We will be happy to accommodate special diets or allergies. Please let us know by [date] so we can work with the caterer to make appropriate arrangements.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ8">what Is weatheR typically lIke at the venue this time of year?</h4>
+                    <p data-translate="faqA8">In Atlixco during October, average daytime highs are around 23-24 °C, with occasional rain or light showers. We recommend dressing in lightweight layers and perhaps bringing an umbrella or light wrap, just in case.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h4 data-translate="faqQ9">aRe cHildRen allowEd?</h4>
+                    <p data-translate="faqA9">We warmly welcome children at our wedding, but please note that our venue includes a lake and outdoor areas. Bringing kids is at the discretion of their parents, and we ask that you let us know by [date] if you plan to bring them, so we can make arrangements accordingly.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-translate="footerText">We can't wait to celebrate with you!</p>
+        <img src="images/M & V-03.png" class="footer-signature" alt="Marcos & Val">
+        <p class="footer-date">24 . 10 . 2026</p>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
