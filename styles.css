@@ -1476,16 +1476,18 @@ body {
         padding: 15px 10px 10px;
     }
 
-    .section h2,
+    .details-section .celebrate-title,
+    .welcome-section h2,
+    .counter-section .counter-title,
+    .counter-section .counter-subtitle,
     .timeline-section h2,
     .location-section h2.location-title,
     .stay-section h2.stay-title,
     .contribute-section h2.contribute-title,
-    .faq-section h2.faq-title,
-    .celebrate-title,
-    .counter-title {
+    .faq-section h2.faq-title {
         font-size: 2.7rem !important;
-        line-height: 1.02;
+        line-height: 1.05 !important;
+        transform: none !important;
     }
 
     .location-map iframe {
