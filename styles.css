@@ -1490,6 +1490,22 @@ body {
         transform: none !important;
     }
 
+    .faq-section {
+        overflow: visible;
+        padding-top: 68px;
+        padding-bottom: 76px;
+    }
+
+    .faq-section h2.faq-title {
+        line-height: 1.18 !important;
+        margin-bottom: 14px;
+    }
+
+    .faq-subtitle {
+        line-height: 1.15;
+        margin-top: 10px;
+    }
+
     .location-map iframe {
         height: 240px;
     }
@@ -1512,6 +1528,11 @@ body {
 
     .faq-list {
         grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .faq-item {
+        overflow: visible;
     }
 
     .location-copy,
