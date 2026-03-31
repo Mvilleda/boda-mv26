@@ -1460,6 +1460,13 @@ body {
 }
 
 @media (max-width: 480px) {
+
+    /* ── Global ─────────────────────────────── */
+    .section {
+        padding: 52px 18px;
+    }
+
+    /* ── Hero ───────────────────────────────── */
     .hero {
         overflow: visible;
     }
@@ -1478,9 +1485,10 @@ body {
     }
 
     .hero-text {
-        padding: 15px 10px 10px;
+        padding: 16px 16px 10px;
     }
 
+    /* ── Section heading consistency ────────── */
     .details-section .celebrate-title,
     .welcome-section h2,
     .counter-section .counter-title,
@@ -1491,58 +1499,113 @@ body {
     .contribute-section h2.contribute-title,
     .faq-section h2.faq-title {
         font-size: 2.7rem !important;
-        line-height: 1.05 !important;
+        line-height: 1.1 !important;
+        transform: none !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* ── Our Story ──────────────────────────── */
+    .welcome-section h2 {
+        margin-left: auto !important;
+        text-align: center !important;
+        width: 100% !important;
         transform: none !important;
     }
 
-    .faq-section {
-        overflow: visible;
-        padding-top: 68px;
-        padding-bottom: 76px;
+    .welcome-content {
+        flex-direction: column;
+        gap: 22px;
     }
 
-    .faq-section h2.faq-title {
-        line-height: 1.18 !important;
+    .couple-image {
+        width: 100%;
+        max-width: 100%;
+        height: 280px;
+    }
+
+    .welcome-text p {
+        font-size: 1.06rem;
+        line-height: 1.75;
         margin-bottom: 14px;
     }
 
-    .faq-subtitle {
-        line-height: 1.15;
-        margin-top: 10px;
+    /* ── Counter ────────────────────────────── */
+    .counter-title span:nth-child(2) {
+        font-size: 1em;
     }
 
-    .location-map iframe {
-        height: 240px;
+    .countdown-container {
+        gap: 10px;
+        padding: 14px 10px;
     }
 
-    .stay-intro {
-        font-size: 1.1rem;
+    .countdown-number {
+        font-size: 2.8rem;
     }
 
-    .contribute-intro {
-        font-size: 1rem;
+    .countdown-label {
+        font-size: 0.82rem;
+        letter-spacing: 1px;
     }
 
-    .contribute-body {
-        font-size: 0.96rem;
+    .rsvp-btn {
+        font-size: 1.15rem;
+        padding: 13px 38px;
+        letter-spacing: 3px;
     }
 
-    .bank-title {
-        font-size: 1.95rem;
+    /* ── Details (When / Where / Wear) ──────── */
+    .celebrate-title {
+        transform: none !important;
+        line-height: 1.05 !important;
+        margin-bottom: 24px !important;
     }
 
-    .faq-list {
+    .celebrate-title span {
+        line-height: 1.1;
+    }
+
+    .event-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 36px;
     }
 
-    .faq-item {
-        overflow: visible;
+    .where-column,
+    .wear-column {
+        max-width: 100%;
+        justify-self: center;
     }
 
-    .location-copy,
-    .travel-text {
-        line-height: 1.2;
+    .event-icon {
+        max-width: 220px;
+        height: 120px;
+    }
+
+    .event-label {
+        font-size: 2.15rem;
+        margin-bottom: 10px;
+    }
+
+    .event-column p,
+    .event-copy {
+        font-size: 1.04rem;
+        line-height: 1.3;
+    }
+
+    /* ── Timeline ───────────────────────────── */
+    .timeline::before {
+        left: 60px;
+    }
+
+    .timeline-time {
+        width: 60px;
+        font-size: 0.82rem;
+        padding: 10px 6px;
+    }
+
+    .timeline-item {
+        gap: 18px;
+        margin-bottom: 30px;
     }
 
     .timeline-content {
@@ -1554,31 +1617,206 @@ body {
     .timeline-icon {
         width: 60px;
         height: 60px;
+        border-radius: 10px;
     }
 
-    .event-icon {
-        max-width: 280px;
-        height: 130px;
+    .timeline-content h4 {
+        font-size: 2rem;
     }
 
-    .event-column p {
-        font-size: .98rem;
+    .timeline-content p {
+        font-size: 0.92rem;
+        letter-spacing: 0.02em;
+        line-height: 1.4;
     }
 
-    .celebrate-title {
-        transform: scale(1);
+    /* ── Getting There ──────────────────────── */
+    .location-section h2.location-title {
+        text-align: center !important;
     }
 
-    .timeline-item {
-        gap: 20px;
+    .location-intro {
+        text-align: center;
+        font-size: 1.05rem;
+        margin-bottom: 18px;
+        white-space: normal;
     }
 
-    .timeline::before {
-        left: 60px;
+    .location-map iframe {
+        height: 240px;
     }
 
-    .timeline-time {
-        width: 60px;
-        font-size: 0.85rem;
+    .location-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .location-copy {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .travel-item {
+        grid-template-columns: 42px 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .travel-icon-badge {
+        width: 40px;
+        height: 40px;
+    }
+
+    .travel-icon-svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .travel-title {
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+    }
+
+    .travel-text {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .location-footer-note {
+        font-size: 0.88rem;
+    }
+
+    /* ── Where to Stay ──────────────────────── */
+    .stay-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .stay-card {
+        padding: 14px 12px;
+    }
+
+    .stay-card-icon-wrap {
+        width: min(100%, 200px);
+        height: 140px;
+    }
+
+    .stay-icon-hotel {
+        transform: scale(1.34);
+    }
+
+    .stay-icon-luggage {
+        transform: scale(1.2);
+    }
+
+    .stay-airbnb-mark {
+        width: 42px;
+        height: 42px;
+    }
+
+    .stay-airbnb-svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .stay-card-title {
+        font-size: 2.1rem;
+    }
+
+    .stay-intro {
+        font-size: 1.02rem;
+    }
+
+    .stay-checklist li {
+        font-size: 1rem;
+    }
+
+    /* ── Contribute ─────────────────────────── */
+    .bank-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .bank-title {
+        font-size: 1.9rem;
+    }
+
+    .contribute-intro {
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .contribute-body {
+        font-size: 0.96rem;
+        line-height: 1.45;
+    }
+
+    .contribute-accounts-title {
+        font-size: 0.98rem;
+    }
+
+    .bank-list li {
+        font-size: 0.95rem;
+    }
+
+    /* ── FAQs ───────────────────────────────── */
+    .faq-section {
+        overflow: visible;
+        padding-top: 56px !important;
+        padding-bottom: 64px !important;
+    }
+
+    .faq-section h2.faq-title {
+        line-height: 1.2 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .faq-intro {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .faq-subtitle {
+        font-size: 2rem;
+        line-height: 1.15;
+        margin-top: 8px;
+        margin-bottom: 6px;
+    }
+
+    .faq-puebla {
+        font-size: 0.98rem;
+        margin-bottom: 20px;
+    }
+
+    .faq-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .faq-item {
+        overflow: visible;
+        padding: 14px 14px 12px;
+    }
+
+    .faq-item h4 {
+        font-size: 0.98rem;
+    }
+
+    .faq-item p {
+        font-size: 0.92rem;
+        line-height: 1.35;
+    }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+        padding: 42px 18px;
+    }
+
+    .footer-signature {
+        height: 88px;
+    }
+
+    .footer-date {
+        font-size: 1rem;
+        letter-spacing: 1.5px;
     }
 }
