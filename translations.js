@@ -150,7 +150,7 @@ const translations = {
     es: {
         pageTitle: "Boda de Marcos y Val",
         weddingDate: "15 de Junio, 2026",
-        gettingMarried: "NoS CaSaMoS!",
+        gettingMarried: "nos casamos",
         heroTagline: "Junto con nuestras familias, te invitamos a celebrar nuestro amor",
         
         welcomeTitle: "NuEsTRa HiStoRia",
