@@ -1585,7 +1585,7 @@ body {
     }
 
     .photo-frame {
-        transform: translateY(-4px);
+        transform: translateY(-5px);
     }
 
     .hero-text {
