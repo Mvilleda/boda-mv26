@@ -119,7 +119,7 @@ function markRevealItems() {
     addReveal('.welcome-section .welcome-text p', 'up', true);
 
     addReveal('.counter-section .counter-title', 'up');
-    addReveal('.counter-section .countdown-container', 'zoom');
+    addReveal('.counter-section .countdown-item', 'up', true);
     addReveal('.counter-section .counter-subtitle, .counter-section .rsvp-note, .counter-section .rsvp-button-container', 'up');
 
     addReveal('.timeline-section h2', 'up');
