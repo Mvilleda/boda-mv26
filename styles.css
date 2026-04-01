@@ -520,6 +520,7 @@ body {
 
 .celebrate-title {
     font-family: 'Hello Paris', serif;
+    font-weight: 400 !important;
     text-transform: none;
     letter-spacing: 0;
     color: #6c7c9d !important;
@@ -531,8 +532,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 5.2rem !important;
-    transform: scale(1.01);
+    transform: none;
     transform-origin: center top;
+    -webkit-font-smoothing: antialiased;
 }
 
 .celebrate-title::after {
