@@ -425,6 +425,10 @@ body {
     display: block;
 }
 
+.counter-subtitle span:empty {
+    display: none;
+}
+
 .rsvp-note {
     font-family: 'Crimson Pro', serif;
     font-size: 1.12rem;
