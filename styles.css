@@ -652,8 +652,27 @@ body {
 }
 
 .dance-icon .event-illustration {
-    transform-origin: center bottom;
-    animation: iconDance 2.7s ease-in-out infinite;
+    transform-origin: 52% 88%;
+    animation: iconDanceBody 2.9s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+
+.dance-icon {
+    animation: iconDanceBob 3.1s ease-in-out infinite;
+}
+
+.dance-icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 56%;
+    height: 12px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 50%, rgba(108,124,157,.28), rgba(108,124,157,0));
+    filter: blur(1px);
+    animation: iconDanceShadow 3.1s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes iconPour {
@@ -672,10 +691,26 @@ body {
     50% { transform: translateY(-6px) scale(1.08); opacity: .55; }
 }
 
-@keyframes iconDance {
-    0%, 100% { transform: rotate(0deg) translateY(0); }
-    25% { transform: rotate(0.7deg) translateY(-1px); }
-    75% { transform: rotate(-0.7deg) translateY(-1px); }
+@keyframes iconDanceBob {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-2px); }
+    50% { transform: translateY(1px); }
+    75% { transform: translateY(-1px); }
+}
+
+@keyframes iconDanceBody {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    18% { transform: rotate(-1.8deg) translateX(-1px) scale(1.006); }
+    36% { transform: rotate(1.9deg) translateX(1px) scale(1.004); }
+    56% { transform: rotate(-1.2deg) translateX(-0.5px) scale(1.008); }
+    76% { transform: rotate(1.4deg) translateX(0.5px) scale(1.003); }
+}
+
+@keyframes iconDanceShadow {
+    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: .26; }
+    25% { transform: translateX(-50%) scaleX(.92); opacity: .2; }
+    50% { transform: translateX(-50%) scaleX(1.06); opacity: .3; }
+    75% { transform: translateX(-50%) scaleX(.95); opacity: .22; }
 }
 
 /* Timeline Section */
