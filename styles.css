@@ -200,6 +200,59 @@ body {
 
 /* No bottom decoration needed - CirclePhotoS25 already has bottom flowers */
 
+/* Section branding mark */
+.hero,
+.section {
+    position: relative;
+}
+
+.hero::after,
+.section::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 84px;
+    height: 84px;
+    background-image: url("images/M%20&%20V-03.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero::after,
+.welcome-section::after,
+.timeline-section::after,
+.stay-section::after,
+.faq-section::after {
+    filter: none;
+}
+
+.details-section::after,
+.counter-section::after,
+.location-section::after,
+.contribute-section::after {
+    filter: brightness(0) saturate(100%) invert(38%) sepia(18%) saturate(744%) hue-rotate(185deg) brightness(86%) contrast(87%);
+}
+
+.welcome-section::after,
+.counter-section::after,
+.location-section::after,
+.stay-section::after,
+.faq-section::after {
+    left: 20px;
+    right: auto;
+}
+
+.hero > *,
+.section > * {
+    position: relative;
+    z-index: 1;
+}
+
 /* Section Styles */
 .section {
     padding: 80px 20px;
@@ -1273,6 +1326,13 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero::after,
+    .section::after {
+        width: 66px;
+        height: 66px;
+        top: 14px;
+    }
+
     .welcome-section h2 {
         margin-left: 20px;
         transform: none;
@@ -1460,6 +1520,31 @@ body {
 }
 
 @media (max-width: 480px) {
+    .hero::after,
+    .section::after {
+        width: 52px;
+        height: 52px;
+        top: 12px;
+        opacity: 0.14;
+    }
+
+    .hero::after,
+    .details-section::after,
+    .timeline-section::after,
+    .contribute-section::after {
+        right: 14px;
+        left: auto;
+    }
+
+    .welcome-section::after,
+    .counter-section::after,
+    .location-section::after,
+    .stay-section::after,
+    .faq-section::after {
+        left: 14px;
+        right: auto;
+    }
+
 
     /* ── Global ─────────────────────────────── */
     .section {
