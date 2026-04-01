@@ -19,7 +19,7 @@ const translations = {
         counterMinutes: "Minutes",
         counterSeconds: "Seconds",
         counterSubtitleLine1: "days To go!",
-        counterSubtitleLine2: "paRty accoRdinglY",
+        counterSubtitleLine2: "¡a FeSTejAR!",
         rsvpNotice: "Reminder: tickets are linked to each guest name and are non-transferable.",
         rsvpButtonText: "RSVP",
         welcomeText1: "We are thrilled to invite you to share in the joy of our wedding day. Your presence means the world to us as we begin this beautiful journey together.",
