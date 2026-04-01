@@ -218,7 +218,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.16;
+    opacity: 0.22;
     pointer-events: none;
     z-index: 0;
 }
@@ -1529,7 +1529,7 @@ body {
         width: 52px;
         height: 52px;
         top: 12px;
-        opacity: 0.14;
+        opacity: 0.2;
     }
 
     .hero::after,
