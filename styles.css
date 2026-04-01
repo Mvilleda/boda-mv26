@@ -214,10 +214,15 @@ body {
     right: 20px;
     width: 84px;
     height: 84px;
-    background-image: url("images/M%20&%20V-03.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background-color: #4d638f;
+    -webkit-mask-image: url("images/M%20&%20V-03.png");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url("images/M%20&%20V-03.png");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
     opacity: 0.28;
     pointer-events: none;
     z-index: 0;
@@ -229,7 +234,7 @@ body {
 .stay-section::after,
 .faq-section::after {
     /* Dark backgrounds -> light watermark */
-    filter: brightness(0) saturate(100%) invert(99%) sepia(14%) saturate(166%) hue-rotate(189deg) brightness(118%) contrast(100%);
+    background-color: #fdffff;
 }
 
 .details-section::after,
@@ -237,7 +242,7 @@ body {
 .location-section::after,
 .contribute-section::after {
     /* Light backgrounds -> blue watermark */
-    filter: brightness(0) saturate(100%) invert(38%) sepia(18%) saturate(744%) hue-rotate(185deg) brightness(86%) contrast(87%);
+    background-color: #4d638f;
 }
 
 .welcome-section::after,
