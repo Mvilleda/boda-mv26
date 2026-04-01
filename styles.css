@@ -260,6 +260,39 @@ body {
     z-index: 1;
 }
 
+.reveal-item {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.reveal-item.reveal-left {
+    transform: translate3d(-24px, 0, 0);
+}
+
+.reveal-item.reveal-right {
+    transform: translate3d(24px, 0, 0);
+}
+
+.reveal-item.reveal-zoom {
+    transform: translate3d(0, 12px, 0) scale(0.98);
+}
+
+.reveal-item.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 /* Section Styles */
 .section {
     padding: 80px 20px;

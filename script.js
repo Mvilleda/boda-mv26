@@ -84,32 +84,88 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add fade-in animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Section reveal animations on scroll
+function markRevealItems() {
+    const staggerStep = 90;
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+    function addReveal(selector, effect = 'up', stagger = false) {
+        const nodes = document.querySelectorAll(selector);
+        nodes.forEach((node, index) => {
+            node.classList.add('reveal-item', `reveal-${effect}`);
+            if (stagger) {
+                node.style.setProperty('--reveal-delay', `${index * staggerStep}ms`);
+            }
+        });
+    }
 
-// Observe all sections for fade-in effect
+    function addAlternatingReveal(selector, stagger = true) {
+        const nodes = document.querySelectorAll(selector);
+        nodes.forEach((node, index) => {
+            node.classList.add('reveal-item', index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+            if (stagger) {
+                node.style.setProperty('--reveal-delay', `${index * staggerStep}ms`);
+            }
+        });
+    }
+
+    addReveal('.hero .hero-decoration-top, .hero .hero-text', 'up');
+    addReveal('.hero .hero-photo-section', 'zoom');
+
+    addReveal('.details-section .celebrate-title', 'up');
+    addAlternatingReveal('.details-section .event-column');
+
+    addReveal('.welcome-section h2', 'up');
+    addReveal('.welcome-section .couple-image', 'zoom');
+    addReveal('.welcome-section .welcome-text p', 'up', true);
+
+    addReveal('.counter-section .counter-title', 'up');
+    addReveal('.counter-section .countdown-container', 'zoom');
+    addReveal('.counter-section .counter-subtitle, .counter-section .rsvp-note, .counter-section .rsvp-button-container', 'up');
+
+    addReveal('.timeline-section h2', 'up');
+    addAlternatingReveal('.timeline-section .timeline-item');
+
+    addReveal('.location-section .location-title, .location-section .location-intro', 'up');
+    addReveal('.location-section .location-map', 'zoom');
+    addReveal('.location-section .location-left .location-subtitle, .location-section .location-left .location-copy', 'up');
+    addAlternatingReveal('.location-section .travel-item');
+    addReveal('.location-section .location-footer-note', 'up');
+
+    addReveal('.stay-section .stay-title, .stay-section .stay-intro', 'up');
+    addAlternatingReveal('.stay-section .stay-card');
+    addReveal('.stay-section .stay-note', 'up');
+
+    addReveal('.contribute-section .contribute-title, .contribute-section .contribute-intro, .contribute-section .contribute-thanks, .contribute-section .contribute-accounts-title', 'up');
+    addAlternatingReveal('.contribute-section .bank-card');
+
+    addReveal('.faq-section .faq-title, .faq-section .faq-intro, .faq-section .faq-subtitle, .faq-section .faq-puebla', 'up');
+    addReveal('.faq-section .faq-item', 'up', true);
+
+    addReveal('.footer p, .footer .footer-signature, .footer .footer-date', 'up', true);
+}
+
+function initializeScrollReveal() {
+    markRevealItems();
+
+    const observerOptions = {
+        threshold: 0.14,
+        rootMargin: '0px 0px -8% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-item').forEach((item) => observer.observe(item));
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
-    
-    // Initialize countdown
+    initializeScrollReveal();
     initializeCountdown();
 });
 
