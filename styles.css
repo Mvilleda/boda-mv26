@@ -411,18 +411,16 @@ body {
 }
 
 .countdown-container {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
     border: 3px solid var(--gold);
     padding: 20px 15px;
     border-radius: 15px;
-    width: auto;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
-    left: 50%;
-    position: relative;
-    transform: translateX(-50%);
 }
 
 .countdown-item {
