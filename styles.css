@@ -520,8 +520,9 @@ body {
 }
 
 .celebrate-title {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', serif !important;
     font-weight: 400 !important;
+    font-style: normal !important;
     text-transform: none;
     letter-spacing: 0;
     color: #6c7c9d !important;
@@ -536,6 +537,9 @@ body {
     transform: none;
     transform-origin: center top;
     -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .celebrate-title::after {
@@ -544,6 +548,9 @@ body {
 
 .celebrate-title span {
     display: block;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
     line-height: .8;
 }
 
