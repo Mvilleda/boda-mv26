@@ -228,7 +228,7 @@ body {
 .timeline-section::after,
 .stay-section::after,
 .faq-section::after {
-    filter: none;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(14%) saturate(166%) hue-rotate(189deg) brightness(118%) contrast(100%);
 }
 
 .details-section::after,
