@@ -152,6 +152,18 @@ body {
 
 .ticket-main {
     min-width: 0;
+    position: relative;
+}
+
+.ticket-watermark {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: auto;
+    opacity: 0.11;
+    pointer-events: none;
 }
 
 .ticket-brand {
@@ -198,14 +210,6 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-}
-
-.ticket-monogram {
-    width: 64px;
-    height: auto;
-    display: block;
-    margin: 0 0 6px;
-    opacity: 0.95;
 }
 
 .qr-box {
@@ -270,5 +274,11 @@ body {
 
     .ticket-qr-wrap {
         align-items: flex-start;
+    }
+
+    .ticket-watermark {
+        width: 108px;
+        top: 50px;
+        opacity: 0.1;
     }
 }
