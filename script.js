@@ -39,7 +39,7 @@ function updateLanguage() {
     // Update each element with the translated text
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
-        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+        if (translations[currentLanguage] && Object.prototype.hasOwnProperty.call(translations[currentLanguage], key)) {
             if (htmlTranslationKeys.has(key)) {
                 element.innerHTML = translations[currentLanguage][key];
             } else {
