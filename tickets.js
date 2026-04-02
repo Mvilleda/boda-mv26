@@ -3,6 +3,16 @@ function getQueryParam(key) {
     return (params.get(key) || '').trim();
 }
 
+function normalizeForMatch(value) {
+    const base = typeof normalizeValue === 'function' ? normalizeValue(value) : String(value || '').trim();
+    return base
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 function escapeHtml(text) {
     return String(text)
         .replace(/&/g, '&amp;')
@@ -62,15 +72,92 @@ function copyLink(text) {
     navigator.clipboard.writeText(text).catch(() => {});
 }
 
+function renderLookupForm(guests, options = {}) {
+    const root = document.getElementById('ticketRoot');
+    const firstValue = options.firstName || '';
+    const lastValue = options.lastName || '';
+    const message = options.message || '';
+    const matches = options.matches || [];
+
+    const matchButtons = matches.map(guest => `
+        <button class="ticket-btn js-match" data-id="${escapeHtml(guest.id)}">
+            ${escapeHtml(guest.fullName)}
+        </button>
+    `).join('');
+
+    root.innerHTML = `
+        <section class="lookup-card">
+            <h2 class="lookup-title">Find your tickets</h2>
+            <p class="lookup-text">Type your first name and surname exactly as on the invite list.</p>
+            <form class="lookup-form" id="lookupForm">
+                <div class="lookup-field">
+                    <label for="firstNameInput">First name</label>
+                    <input id="firstNameInput" name="firstName" value="${escapeHtml(firstValue)}" autocomplete="given-name" required>
+                </div>
+                <div class="lookup-field">
+                    <label for="lastNameInput">Last name</label>
+                    <input id="lastNameInput" name="lastName" value="${escapeHtml(lastValue)}" autocomplete="family-name" required>
+                </div>
+                <div class="lookup-actions">
+                    <button class="ticket-btn" type="submit">Find my tickets</button>
+                </div>
+            </form>
+            ${message ? `<p class="lookup-message">${escapeHtml(message)}</p>` : ''}
+            ${matches.length ? `<div class="lookup-results">${matchButtons}</div>` : ''}
+        </section>
+    `;
+
+    const form = document.getElementById('lookupForm');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const firstName = form.firstName.value;
+        const lastName = form.lastName.value;
+        const normalizedFullName = normalizeForMatch(`${firstName} ${lastName}`);
+        const found = guests.filter(guest => normalizeForMatch(guest.fullName) === normalizedFullName);
+
+        if (!found.length) {
+            renderLookupForm(guests, {
+                firstName,
+                lastName,
+                message: 'Name not found. Check spelling and accents, then try again.'
+            });
+            return;
+        }
+
+        if (found.length === 1) {
+            window.location.href = `tickets.html?id=${encodeURIComponent(found[0].id)}`;
+            return;
+        }
+
+        renderLookupForm(guests, {
+            firstName,
+            lastName,
+            message: 'We found multiple matches. Pick your name below.',
+            matches: found
+        });
+    });
+
+    root.querySelectorAll('.js-match').forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.getAttribute('data-id');
+            window.location.href = `tickets.html?id=${encodeURIComponent(id)}`;
+        });
+    });
+}
+
 function renderTickets(guests) {
     const result = findPartyMembers(guests);
 
     if (result.reason !== 'ok') {
+        if (result.reason === 'missing-param') {
+            renderLookupForm(guests);
+            return;
+        }
+
         const reasonText = {
             'no-data': 'No guest list loaded yet.',
             'id-not-found': 'This ticket ID was not found.',
-            'party-not-found': 'This party was not found.',
-            'missing-param': 'Open this page with ?id=guest-id (or ?party=party-id).'
+            'party-not-found': 'This party was not found.'
         };
         renderError(reasonText[result.reason] || 'Unable to load tickets.');
         return;
@@ -81,6 +168,13 @@ function renderTickets(guests) {
 
     const root = document.getElementById('ticketRoot');
     root.innerHTML = `
+        <section class="lookup-card">
+            <h2 class="lookup-title">Need another ticket?</h2>
+            <p class="lookup-text">Search by name to open another party.</p>
+            <div class="lookup-actions">
+                <a class="ticket-btn" href="tickets.html">Find by name</a>
+            </div>
+        </section>
         <div class="party-title">${escapeHtml(partyLabel)}</div>
         <div class="ticket-list" id="ticketList"></div>
         <p class="notice">Each guest has an individual ticket. Download only who will attend.</p>

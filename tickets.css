@@ -48,6 +48,72 @@ body {
     color: var(--ticket-blue);
 }
 
+.lookup-card {
+    background: var(--ticket-cream);
+    border: 1.5px solid rgba(77, 99, 143, 0.24);
+    border-radius: 16px;
+    padding: 16px;
+    max-width: 640px;
+    margin: 0 auto 16px;
+}
+
+.lookup-title {
+    margin: 0 0 6px;
+    color: var(--ticket-blue);
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+}
+
+.lookup-text {
+    margin: 0 0 12px;
+    color: var(--ticket-mid-blue);
+}
+
+.lookup-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.lookup-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lookup-field label {
+    color: var(--ticket-blue);
+    font-size: 0.92rem;
+}
+
+.lookup-field input {
+    border: 1px solid rgba(77, 99, 143, 0.35);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    color: var(--ticket-ink);
+}
+
+.lookup-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.lookup-message {
+    margin-top: 10px;
+    color: #7f3b3b;
+    font-size: 0.95rem;
+}
+
+.lookup-results {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .ticket-list {
     display: grid;
     gap: 14px;
@@ -160,6 +226,14 @@ body {
 }
 
 @media (max-width: 640px) {
+    .lookup-form {
+        grid-template-columns: 1fr;
+    }
+
+    .lookup-actions {
+        grid-column: auto;
+    }
+
     .ticket-card {
         grid-template-columns: 1fr;
     }

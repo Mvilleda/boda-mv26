@@ -490,6 +490,11 @@ body {
     margin-top: 20px;
 }
 
+.ticket-button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
 .rsvp-btn {
     display: inline-block;
     font-family: 'Cinzel', serif;
@@ -508,6 +513,12 @@ body {
 .rsvp-btn:hover {
     background-color: transparent;
     color: var(--gold);
+}
+
+.ticket-btn-link {
+    font-size: 1.08rem;
+    letter-spacing: 2px;
+    padding: 11px 28px;
 }
 
 /* Details Section */
