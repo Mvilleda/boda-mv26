@@ -16,10 +16,14 @@ const afterLoginUrl = process.env.WITHJOY_RSVP_URL || process.env.WITHJOY_LOGIN_
 const exportButtonSelector = process.env.WITHJOY_EXPORT_BUTTON_SELECTOR;
 const exportSelectorCandidates = [
   ...(exportButtonSelector ? [exportButtonSelector] : []),
+  'text=Export All Guests',
+  '[role="menuitem"]:has-text("Export All Guests")',
   'button:has-text("Export All Guests")',
   'a:has-text("Export All Guests")',
+  'text=Export',
   'button:has-text("Export")',
   'a:has-text("Export")',
+  '[role="menuitem"]:has-text("Export")',
   'button:has-text("Download")',
   'a:has-text("Download")',
   '[aria-label*="Export"]',
@@ -87,6 +91,57 @@ async function collectControlsAcrossFrames(page) {
     }
   }
   return all;
+}
+
+async function clickVisibleInAnyFrame(page, selector, timeoutMs = 1000) {
+  for (const frame of page.frames()) {
+    const locator = frame.locator(selector).first();
+    const visible = await locator.isVisible().catch(() => false);
+    if (!visible) continue;
+    try {
+      await locator.click({ timeout: timeoutMs });
+      return true;
+    } catch {
+      // try next frame
+    }
+  }
+  return false;
+}
+
+async function prepareExportUi(page) {
+  const dismissSelectors = [
+    'button:has-text("Done")',
+    'button:has-text("Close")',
+    'button:has-text("Skip")',
+    'button:has-text("Not now")',
+    'button:has-text("Maybe later")',
+    '[aria-label*="close" i]',
+  ];
+
+  for (const selector of dismissSelectors) {
+    const clicked = await clickVisibleInAnyFrame(page, selector, 1500);
+    if (clicked) {
+      console.log(`[ui] dismissed blocking control with selector: ${selector}`);
+      await page.waitForTimeout(500);
+    }
+  }
+
+  const menuOpenSelectors = [
+    'button:has-text("More")',
+    'button:has-text("Actions")',
+    '[aria-label*="more" i]',
+    '[aria-label*="actions" i]',
+    '[data-testid*="more"]',
+    '[data-testid*="action"]',
+  ];
+
+  for (const selector of menuOpenSelectors) {
+    const clicked = await clickVisibleInAnyFrame(page, selector, 1500);
+    if (clicked) {
+      console.log(`[ui] opened menu with selector: ${selector}`);
+      await page.waitForTimeout(500);
+    }
+  }
 }
 
 async function screenshot(page, name) {
@@ -200,6 +255,7 @@ try {
   console.log(`[guests] final URL: ${page.url()}`);
   await screenshot(page, 'withjoy-04-guests-page.png');
   await waitForGuestUiReady(page);
+  await prepareExportUi(page);
 
   let download;
   for (const selector of exportSelectorCandidates) {
