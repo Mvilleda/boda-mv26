@@ -205,7 +205,6 @@ body {
     height: auto;
     display: block;
     margin: 0 0 6px;
-    filter: brightness(0) saturate(100%) invert(34%) sepia(19%) saturate(846%) hue-rotate(184deg) brightness(92%) contrast(88%);
     opacity: 0.95;
 }
 
