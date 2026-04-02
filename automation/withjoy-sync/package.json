@@ -1,0 +1,13 @@
+{
+  "name": "withjoy-sync",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node fetch-withjoy-rsvp.mjs",
+    "build": "node build-rsvp-status.mjs"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "playwright": "^1.53.0"
+  }
+}

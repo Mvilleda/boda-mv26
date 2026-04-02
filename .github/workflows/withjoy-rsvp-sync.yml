@@ -1,0 +1,58 @@
+name: WithJoy RSVP Sync
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: automation/withjoy-sync
+        run: npm ci
+
+      - name: Install Playwright browser
+        working-directory: automation/withjoy-sync
+        run: npx playwright install chromium --with-deps
+
+      - name: Fetch WithJoy CSV
+        working-directory: automation/withjoy-sync
+        env:
+          WITHJOY_LOGIN_URL: ${{ secrets.WITHJOY_LOGIN_URL }}
+          WITHJOY_EMAIL: ${{ secrets.WITHJOY_EMAIL }}
+          WITHJOY_PASSWORD: ${{ secrets.WITHJOY_PASSWORD }}
+          WITHJOY_RSVP_URL: ${{ secrets.WITHJOY_RSVP_URL }}
+          WITHJOY_EMAIL_SELECTOR: ${{ secrets.WITHJOY_EMAIL_SELECTOR }}
+          WITHJOY_PASSWORD_SELECTOR: ${{ secrets.WITHJOY_PASSWORD_SELECTOR }}
+          WITHJOY_SUBMIT_SELECTOR: ${{ secrets.WITHJOY_SUBMIT_SELECTOR }}
+          WITHJOY_EXPORT_BUTTON_SELECTOR: ${{ secrets.WITHJOY_EXPORT_BUTTON_SELECTOR }}
+        run: npm run fetch
+
+      - name: Build RSVP status JSON
+        working-directory: automation/withjoy-sync
+        run: npm run build
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add rsvp-status.json withjoy-rsvp.csv || true
+          if git diff --staged --quiet; then
+            echo "No RSVP changes"
+            exit 0
+          fi
+          git commit -m "Auto-sync WithJoy RSVP status"
+          git push

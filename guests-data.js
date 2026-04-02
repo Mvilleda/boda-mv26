@@ -67,6 +67,10 @@ function slugify(value) {
         .replace(/(^-|-$)/g, '');
 }
 
+function guestKey(fullName, partyLabel) {
+    return `${slugify(fullName)}|${slugify(partyLabel || '')}`;
+}
+
 function parseGuests(rawText) {
     const rows = rawText
         .split(/\r?\n/)
@@ -109,9 +113,52 @@ async function loadGuests() {
         if (!response.ok) return parseGuests(GUESTS_RAW_FALLBACK);
         const text = await response.text();
         const normalized = text.trim();
-        if (!normalized) return parseGuests(GUESTS_RAW_FALLBACK);
-        return parseGuests(normalized);
+        const guests = parseGuests(normalized || GUESTS_RAW_FALLBACK);
+        const rsvpMap = await loadRsvpStatusMap();
+
+        if (!rsvpMap.active) {
+            return guests.map(guest => ({
+                ...guest,
+                rsvpStatus: 'unsynced',
+                ticketEligible: true
+            }));
+        }
+
+        return guests.map(guest => {
+            const key = guestKey(guest.fullName, guest.partyLabel);
+            const status = rsvpMap.map.get(key) || 'unknown';
+            return {
+                ...guest,
+                rsvpStatus: status,
+                ticketEligible: status === 'yes'
+            };
+        });
     } catch {
         return parseGuests(GUESTS_RAW_FALLBACK);
+    }
+}
+
+async function loadRsvpStatusMap() {
+    try {
+        const response = await fetch('rsvp-status.json?v=20260401a', { cache: 'no-store' });
+        if (!response.ok) {
+            return { active: false, map: new Map() };
+        }
+
+        const payload = await response.json();
+        const rows = Array.isArray(payload.responses) ? payload.responses : [];
+        const map = new Map();
+
+        rows.forEach((row) => {
+            const fullName = normalizeValue(row.fullName || '');
+            const partyLabel = normalizeValue(row.partyLabel || row.party || '');
+            const status = normalizeValue(row.status || '').toLowerCase();
+            if (!fullName) return;
+            map.set(guestKey(fullName, partyLabel), status);
+        });
+
+        return { active: !!payload.active, map };
+    } catch {
+        return { active: false, map: new Map() };
     }
 }

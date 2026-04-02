@@ -55,6 +55,37 @@ Example row:
 mv-001\tMaría\tGarcía\tparty-garcia\tFamilia García
 ```
 
+## 🔄 WithJoy RSVP Auto-Sync (No API)
+
+This project includes a GitHub Actions pipeline that can log into WithJoy (via Playwright), export RSVP CSV, and generate `rsvp-status.json` for ticket filtering.
+
+### What it does
+- Runs every 30 minutes (and on manual run)
+- Downloads RSVP CSV from WithJoy admin
+- Builds `rsvp-status.json`
+- Tickets page only shows RSVP **Yes** guests when sync is active
+
+### Required GitHub Secrets
+Set these in **Repository → Settings → Secrets and variables → Actions**:
+
+- `WITHJOY_LOGIN_URL`
+- `WITHJOY_EMAIL`
+- `WITHJOY_PASSWORD`
+- `WITHJOY_RSVP_URL` (optional)
+- `WITHJOY_EMAIL_SELECTOR` (optional)
+- `WITHJOY_PASSWORD_SELECTOR` (optional)
+- `WITHJOY_SUBMIT_SELECTOR` (optional)
+- `WITHJOY_EXPORT_BUTTON_SELECTOR` (optional)
+
+> Use selectors only if WithJoy UI differs from defaults.
+
+### Workflow file
+- `.github/workflows/withjoy-rsvp-sync.yml`
+
+### Notes
+- Do **not** store credentials in repository files.
+- If sync is not active, tickets fall back to normal guest list behavior.
+
 ### Step 1: Add Your Images
 
 1. Download your photos from Canva

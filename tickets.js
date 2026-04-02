@@ -25,6 +25,7 @@ const ticketTranslations = {
         noData: 'No guest list loaded yet.',
         idNotFound: 'This ticket ID was not found.',
         partyNotFound: 'This party was not found.',
+        notEligible: 'This party has no RSVP-confirmed tickets yet.',
         unknownError: 'Unable to load tickets.'
     },
     es: {
@@ -53,6 +54,7 @@ const ticketTranslations = {
         noData: 'Aún no se cargó la lista de invitados.',
         idNotFound: 'No encontramos ese ID de boleto.',
         partyNotFound: 'No encontramos ese grupo.',
+        notEligible: 'Este grupo aún no tiene boletos confirmados por RSVP.',
         unknownError: 'No fue posible cargar los boletos.'
     }
 };
@@ -115,13 +117,13 @@ function findPartyMembers(guests) {
     if (id) {
         const selected = guests.find(guest => guest.id === id);
         if (!selected) return { partyMembers: [], reason: 'id-not-found' };
-        const partyMembers = guests.filter(guest => guest.partyId === selected.partyId);
-        return { partyMembers, reason: 'ok' };
+        const partyMembers = guests.filter(guest => guest.partyId === selected.partyId && guest.ticketEligible !== false);
+        return { partyMembers, reason: partyMembers.length ? 'ok' : 'not-eligible' };
     }
 
     if (party) {
-        const partyMembers = guests.filter(guest => guest.partyId === party);
-        return { partyMembers, reason: partyMembers.length ? 'ok' : 'party-not-found' };
+        const partyMembers = guests.filter(guest => guest.partyId === party && guest.ticketEligible !== false);
+        return { partyMembers, reason: partyMembers.length ? 'ok' : 'not-eligible' };
     }
 
     return { partyMembers: [], reason: 'missing-param' };
@@ -191,7 +193,9 @@ function renderLookupForm(guests, options = {}) {
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
         const normalizedFullName = normalizeForMatch(`${firstName} ${lastName}`);
-        const found = guests.filter(guest => normalizeForMatch(guest.fullName) === normalizedFullName);
+        const found = guests.filter(
+            guest => normalizeForMatch(guest.fullName) === normalizedFullName && guest.ticketEligible !== false
+        );
 
         if (!found.length) {
             renderLookupForm(guests, {
@@ -235,7 +239,8 @@ function renderTickets(guests) {
         const reasonText = {
             'no-data': tt('noData'),
             'id-not-found': tt('idNotFound'),
-            'party-not-found': tt('partyNotFound')
+            'party-not-found': tt('partyNotFound'),
+            'not-eligible': tt('notEligible')
         };
         renderError(reasonText[result.reason] || tt('unknownError'));
         return;
