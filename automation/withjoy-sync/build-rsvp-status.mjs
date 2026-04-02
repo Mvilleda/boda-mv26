@@ -7,11 +7,38 @@ const guestsPath = path.resolve(repoRoot, 'Guests');
 const csvPath = path.resolve(repoRoot, 'withjoy-rsvp.csv');
 const outputPath = path.resolve(repoRoot, 'rsvp-status.json');
 
+const MOJIBAKE_REPLACEMENTS = {
+  '√°': 'á',
+  '√©': 'é',
+  '√≠': 'í',
+  '√≥': 'ó',
+  '√∫': 'ú',
+  '√Å': 'Á',
+  '√‰': 'É',
+  '√ç': 'Í',
+  '√ì': 'Ó',
+  '√ö': 'Ú',
+  '√±': 'ñ',
+  '√ë': 'Ñ'
+};
+
+function repairCommonMojibake(text) {
+  let value = String(text || '');
+  for (const [broken, fixed] of Object.entries(MOJIBAKE_REPLACEMENTS)) {
+    value = value.split(broken).join(fixed);
+  }
+  return value;
+}
+
 const normalize = (value) => String(value || '')
   .normalize('NFC')
   .trim();
 
-const normKey = (value) => normalize(value)
+const normalizeFixed = (value) => repairCommonMojibake(value)
+  .normalize('NFC')
+  .trim();
+
+const normKey = (value) => normalizeFixed(value)
   .toLowerCase()
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')
@@ -22,7 +49,7 @@ const normKey = (value) => normalize(value)
 function findValue(row, keys) {
   const entries = Object.entries(row);
   const hit = entries.find(([k]) => keys.includes(normKey(k)));
-  return hit ? normalize(hit[1]) : '';
+  return hit ? normalizeFixed(hit[1]) : '';
 }
 
 function mapStatus(raw) {
@@ -36,8 +63,8 @@ const guestsRaw = await fs.readFile(guestsPath, 'utf8');
 const guestLines = guestsRaw.split(/\r?\n/).filter(Boolean);
 const guestRows = guestLines.slice(1).map((line) => {
   const [firstName = '', lastName = '', partyLabel = ''] = line.split('\t');
-  const fullName = `${normalize(firstName)} ${normalize(lastName)}`.trim();
-  return { fullName, partyLabel: normalize(partyLabel) };
+  const fullName = `${normalizeFixed(firstName)} ${normalizeFixed(lastName)}`.trim();
+  return { fullName, partyLabel: normalizeFixed(partyLabel) };
 });
 
 const csvRaw = await fs.readFile(csvPath, 'utf8');

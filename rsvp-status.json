@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-02T07:43:56.431Z",
+  "generatedAt": "2026-04-02T07:57:27.039Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -24,19 +24,19 @@
       "status": "unknown"
     },
     {
-      "fullName": "Marco Torres Col√≠n",
-      "partyLabel": "Torres-S√°nchez",
-      "status": "unknown"
+      "fullName": "Marco Torres Colín",
+      "partyLabel": "Torres-Sánchez",
+      "status": "yes"
     },
     {
-      "fullName": "Rosario S√°nchez Iba√±ez",
-      "partyLabel": "Torres-S√°nchez",
-      "status": "unknown"
+      "fullName": "Rosario Sánchez Ibañez",
+      "partyLabel": "Torres-Sánchez",
+      "status": "yes"
     },
     {
-      "fullName": "Marco Antonio Torres S√°nchez",
-      "partyLabel": "Torres-S√°nchez",
-      "status": "unknown"
+      "fullName": "Marco Antonio Torres Sánchez",
+      "partyLabel": "Torres-Sánchez",
+      "status": "yes"
     },
     {
       "fullName": "Maximillian Kloucek",
@@ -49,24 +49,24 @@
       "status": "no"
     },
     {
-      "fullName": "Paola Torres S√°nchez",
-      "partyLabel": "Torres-Gonz√°lez",
-      "status": "unknown"
+      "fullName": "Paola Torres Sánchez",
+      "partyLabel": "Torres-González",
+      "status": "yes"
     },
     {
-      "fullName": "Uriel Gonz√°lez",
-      "partyLabel": "Torres-Gonz√°lez",
-      "status": "unknown"
+      "fullName": "Uriel González",
+      "partyLabel": "Torres-González",
+      "status": "yes"
     },
     {
       "fullName": "Teodoro Garcia Millan",
-      "partyLabel": "Garc√≠a Buttler House",
-      "status": "unknown"
+      "partyLabel": "García Buttler House",
+      "status": "yes"
     },
     {
       "fullName": "Stephanie Buttler",
-      "partyLabel": "Garc√≠a Buttler House",
-      "status": "unknown"
+      "partyLabel": "García Buttler House",
+      "status": "yes"
     },
     {
       "fullName": "Mayra Rivero Lopez",
@@ -79,9 +79,9 @@
       "status": "unknown"
     },
     {
-      "fullName": "Marcela Torres Col√≠n",
+      "fullName": "Marcela Torres Colín",
       "partyLabel": "Familia Torres-Bautista",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Marcela Bautista Torres",
@@ -105,12 +105,12 @@
     },
     {
       "fullName": "Stephanie Bautista Torres",
-      "partyLabel": "Torres-Su√°rez",
+      "partyLabel": "Torres-Suárez",
       "status": "unknown"
     },
     {
-      "fullName": "Enrique Sierra Su√°rez",
-      "partyLabel": "Torres-Su√°rez",
+      "fullName": "Enrique Sierra Suárez",
+      "partyLabel": "Torres-Suárez",
       "status": "unknown"
     },
     {
@@ -139,9 +139,9 @@
       "status": "yes"
     },
     {
-      "fullName": "Humberto Gonz√°lez",
+      "fullName": "Humberto González",
       "partyLabel": "person-invitee-OfuxfgADilqk6ixXGqj-1768339773436",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Aaron Salazar",
@@ -164,34 +164,34 @@
       "status": "yes"
     },
     {
-      "fullName": "Leticia Torres Col√≠n",
-      "partyLabel": "Torres Col√≠n",
+      "fullName": "Leticia Torres Colín",
+      "partyLabel": "Torres Colín",
       "status": "unknown"
     },
     {
-      "fullName": "Karen Leticia V√°zquez Torres",
-      "partyLabel": "V√°zquez-Medina",
-      "status": "unknown"
+      "fullName": "Karen Leticia Vázquez Torres",
+      "partyLabel": "Vázquez-Medina",
+      "status": "yes"
     },
     {
       "fullName": "Luis Medina villena",
-      "partyLabel": "V√°zquez-Medina",
-      "status": "unknown"
+      "partyLabel": "Vázquez-Medina",
+      "status": "yes"
     },
     {
-      "fullName": "Rebeca Medina V√°zquez",
-      "partyLabel": "V√°zquez-Medina",
-      "status": "unknown"
+      "fullName": "Rebeca Medina Vázquez",
+      "partyLabel": "Vázquez-Medina",
+      "status": "yes"
     },
     {
-      "fullName": "Luis Medina V√°zquez",
-      "partyLabel": "V√°zquez-Medina",
-      "status": "unknown"
+      "fullName": "Luis Medina Vázquez",
+      "partyLabel": "Vázquez-Medina",
+      "status": "yes"
     },
     {
-      "fullName": "Adri√°n Medina V√°zquez",
-      "partyLabel": "V√°zquez-Medina",
-      "status": "unknown"
+      "fullName": "Adrián Medina Vázquez",
+      "partyLabel": "Vázquez-Medina",
+      "status": "yes"
     },
     {
       "fullName": "Gerardo Corby",
@@ -239,28 +239,28 @@
       "status": "unknown"
     },
     {
-      "fullName": "Daniel V√°zquez torres",
-      "partyLabel": "V√°zquez-Cruz",
-      "status": "unknown"
+      "fullName": "Daniel Vázquez torres",
+      "partyLabel": "Vázquez-Cruz",
+      "status": "yes"
     },
     {
       "fullName": "Gabriela Cruz",
-      "partyLabel": "V√°zquez-Cruz",
+      "partyLabel": "Vázquez-Cruz",
       "status": "unknown"
     },
     {
-      "fullName": "Renata V√°zquez Cruz",
-      "partyLabel": "V√°zquez-Cruz",
+      "fullName": "Renata Vázquez Cruz",
+      "partyLabel": "Vázquez-Cruz",
       "status": "unknown"
     },
     {
-      "fullName": "Arath V√°zquez Cruz",
-      "partyLabel": "V√°zquez-Cruz",
+      "fullName": "Arath Vázquez Cruz",
+      "partyLabel": "Vázquez-Cruz",
       "status": "unknown"
     },
     {
-      "fullName": "Edgar V√°zquez Cruz",
-      "partyLabel": "V√°zquez-Cruz",
+      "fullName": "Edgar Vázquez Cruz",
+      "partyLabel": "Vázquez-Cruz",
       "status": "unknown"
     },
     {
@@ -284,9 +284,9 @@
       "status": "yes"
     },
     {
-      "fullName": "Mar√≠a del Refugio Sandoval Mart√≠nez",
-      "partyLabel": "Sandoval Mart√≠nez",
-      "status": "unknown"
+      "fullName": "María del Refugio Sandoval Martínez",
+      "partyLabel": "Sandoval Martínez",
+      "status": "yes"
     },
     {
       "fullName": "Marcos Villeda Sanchez",
@@ -314,7 +314,7 @@
       "status": "yes"
     },
     {
-      "fullName": "Patricia Sandoval Mart√≠nez",
+      "fullName": "Patricia Sandoval Martínez",
       "partyLabel": "Familia Vera-Sandoval",
       "status": "unknown"
     },
@@ -324,7 +324,7 @@
       "status": "unknown"
     },
     {
-      "fullName": "Iv√°n Vera Sandoval",
+      "fullName": "Iván Vera Sandoval",
       "partyLabel": "Familia Vera-Sandoval",
       "status": "unknown"
     },
@@ -359,9 +359,9 @@
       "status": "unknown"
     },
     {
-      "fullName": "Roc√≠o Sandoval Mart√≠nez",
-      "partyLabel": "Roc√≠o Sandoval Mart√≠nez",
-      "status": "unknown"
+      "fullName": "Rocío Sandoval Martínez",
+      "partyLabel": "Rocío Sandoval Martínez",
+      "status": "yes"
     },
     {
       "fullName": "Yushi Yang",
@@ -439,13 +439,13 @@
       "status": "yes"
     },
     {
-      "fullName": "Agust√≠n Sandoval Mart√≠nez",
-      "partyLabel": "Familia Sandoval-D√°vila",
+      "fullName": "Agustín Sandoval Martínez",
+      "partyLabel": "Familia Sandoval-Dávila",
       "status": "unknown"
     },
     {
-      "fullName": "Rosario D√°vila",
-      "partyLabel": "Familia Sandoval-D√°vila",
+      "fullName": "Rosario Dávila",
+      "partyLabel": "Familia Sandoval-Dávila",
       "status": "unknown"
     },
     {
@@ -474,12 +474,12 @@
       "status": "unknown"
     },
     {
-      "fullName": "Alan Garc√≠a Hernandez",
+      "fullName": "Alan García Hernandez",
       "partyLabel": "Tia Cory",
       "status": "unknown"
     },
     {
-      "fullName": "Cory Garc√≠a Hernandez",
+      "fullName": "Cory García Hernandez",
       "partyLabel": "Tia Cory",
       "status": "unknown"
     },
@@ -509,33 +509,33 @@
       "status": "yes"
     },
     {
-      "fullName": "Patricia Torres Col√≠n",
+      "fullName": "Patricia Torres Colín",
       "partyLabel": "Sandoval-Torres",
-      "status": "unknown"
+      "status": "yes"
     },
     {
-      "fullName": "Alberto Sandoval Mart√≠nez",
+      "fullName": "Alberto Sandoval Martínez",
       "partyLabel": "Sandoval-Torres",
-      "status": "unknown"
+      "status": "yes"
     },
     {
-      "fullName": "Saul Acosta Mu√±oz",
-      "partyLabel": "Sa√∫l & Karol",
-      "status": "unknown"
+      "fullName": "Saul Acosta Muñoz",
+      "partyLabel": "Saúl & Karol",
+      "status": "yes"
     },
     {
       "fullName": "Karol Gaitan",
-      "partyLabel": "Sa√∫l & Karol",
+      "partyLabel": "Saúl & Karol",
+      "status": "yes"
+    },
+    {
+      "fullName": "Sonia Torres Colín",
+      "partyLabel": "González-Torres",
       "status": "unknown"
     },
     {
-      "fullName": "Sonia Torres Col√≠n",
-      "partyLabel": "Gonz√°lez-Torres",
-      "status": "unknown"
-    },
-    {
-      "fullName": "Benito Gonz√°lez Gonz√°lez",
-      "partyLabel": "Gonz√°lez-Torres",
+      "fullName": "Benito González González",
+      "partyLabel": "González-Torres",
       "status": "unknown"
     },
     {
@@ -564,13 +564,13 @@
       "status": "yes"
     },
     {
-      "fullName": "Eric Daniel Gonz√°lez Torres",
-      "partyLabel": "Eric & Mar√≠a",
+      "fullName": "Eric Daniel González Torres",
+      "partyLabel": "Eric & María",
       "status": "unknown"
     },
     {
-      "fullName": "Mar√≠a √Ångela Morales Portillo",
-      "partyLabel": "Eric & Mar√≠a",
+      "fullName": "María Ángela Morales Portillo",
+      "partyLabel": "Eric & María",
       "status": "unknown"
     },
     {
@@ -584,9 +584,9 @@
       "status": "yes"
     },
     {
-      "fullName": "Jesus Torres Col√≠n",
+      "fullName": "Jesus Torres Colín",
       "partyLabel": "Torres-Montes de Oca",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Martha Montes de Oca",
@@ -604,9 +604,9 @@
       "status": "unknown"
     },
     {
-      "fullName": "Ramiro Villeda S√°nchez",
+      "fullName": "Ramiro Villeda Sánchez",
       "partyLabel": "Ramiro Villeda",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Leticia Cuevas",
@@ -669,13 +669,13 @@
       "status": "yes"
     },
     {
-      "fullName": "Leonor Torres Col√≠n",
-      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Leonor-Torres Col√≠n",
+      "fullName": "Leonor Torres Colín",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Leonor-Torres Colín",
       "status": "unknown"
     },
     {
-      "fullName": "Jes√∫s Islas",
-      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Leonor-Torres Col√≠n",
+      "fullName": "Jesús Islas",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Leonor-Torres Colín",
       "status": "unknown"
     },
     {
