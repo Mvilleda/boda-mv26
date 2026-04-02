@@ -69,6 +69,12 @@ body {
     color: var(--ticket-mid-blue);
 }
 
+.lookup-help {
+    margin: 10px 0 0;
+    color: var(--ticket-mid-blue);
+    font-size: 0.92rem;
+}
+
 .lookup-form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

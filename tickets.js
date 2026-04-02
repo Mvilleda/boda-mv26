@@ -102,6 +102,7 @@ function renderLookupForm(guests, options = {}) {
                     <button class="ticket-btn" type="submit">Find my tickets</button>
                 </div>
             </form>
+            <p class="lookup-help">If you have trouble accessing your tickets, please contact us directly.</p>
             ${message ? `<p class="lookup-message">${escapeHtml(message)}</p>` : ''}
             ${matches.length ? `<div class="lookup-results">${matchButtons}</div>` : ''}
         </section>
