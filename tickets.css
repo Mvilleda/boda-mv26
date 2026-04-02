@@ -144,6 +144,7 @@ body {
     border: 1.5px solid rgba(77, 99, 143, 0.24);
     border-radius: 18px;
     padding: 14px;
+    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 132px;
     gap: 12px;
@@ -152,7 +153,6 @@ body {
 
 .ticket-main {
     min-width: 0;
-    position: relative;
 }
 
 .ticket-watermark {
