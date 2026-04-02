@@ -17,23 +17,23 @@ function buildTicketUrl(guest) {
     return `${base}?id=${encodeURIComponent(guest.id)}`;
 }
 
-function findPartyMembers() {
+function findPartyMembers(guests) {
     const id = getQueryParam('id');
     const party = getQueryParam('party');
 
-    if (!GUESTS || !GUESTS.length) {
+    if (!guests || !guests.length) {
         return { partyMembers: [], reason: 'no-data' };
     }
 
     if (id) {
-        const selected = GUESTS.find(guest => guest.id === id);
+        const selected = guests.find(guest => guest.id === id);
         if (!selected) return { partyMembers: [], reason: 'id-not-found' };
-        const partyMembers = GUESTS.filter(guest => guest.partyId === selected.partyId);
+        const partyMembers = guests.filter(guest => guest.partyId === selected.partyId);
         return { partyMembers, reason: 'ok' };
     }
 
     if (party) {
-        const partyMembers = GUESTS.filter(guest => guest.partyId === party);
+        const partyMembers = guests.filter(guest => guest.partyId === party);
         return { partyMembers, reason: partyMembers.length ? 'ok' : 'party-not-found' };
     }
 
@@ -62,8 +62,8 @@ function copyLink(text) {
     navigator.clipboard.writeText(text).catch(() => {});
 }
 
-function renderTickets() {
-    const result = findPartyMembers();
+function renderTickets(guests) {
+    const result = findPartyMembers(guests);
 
     if (result.reason !== 'ok') {
         const reasonText = {
@@ -128,4 +128,9 @@ function renderTickets() {
     });
 }
 
-renderTickets();
+async function initTickets() {
+    const guests = await loadGuests();
+    renderTickets(guests);
+}
+
+initTickets();

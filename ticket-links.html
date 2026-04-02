@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="tickets.css?v=20260401a">
+    <link rel="stylesheet" href="tickets.css?v=20260401b">
     <style>
         .links-panel { background:#fdffff; border:1px solid rgba(77,99,143,.22); border-radius:14px; padding:14px; }
         .links-table { width:100%; border-collapse: collapse; font-size:.92rem; }
@@ -25,7 +25,7 @@
         <section class="links-panel" id="linksRoot"></section>
     </main>
 
-    <script src="guests-data.js?v=20260401a"></script>
+    <script src="guests-data.js?v=20260401b"></script>
     <script>
         function partyMap(guests) {
             const map = new Map();
@@ -40,15 +40,17 @@
 
         function copy(text) { navigator.clipboard.writeText(text).catch(() => {}); }
 
-        function render() {
+        async function render() {
             const root = document.getElementById('linksRoot');
-            if (!GUESTS || !GUESTS.length) {
+            const guests = await loadGuests();
+
+            if (!guests || !guests.length) {
                 root.innerHTML = '<div class="error-box">No guests loaded. Paste your list in guests-data.js.</div>';
                 return;
             }
 
             const base = `${window.location.origin}${window.location.pathname.replace('ticket-links.html', 'tickets.html')}`;
-            const map = partyMap(GUESTS);
+            const map = partyMap(guests);
 
             const rows = [...map.entries()].map(([partyId, info]) => {
                 const url = `${base}?party=${encodeURIComponent(partyId)}`;
