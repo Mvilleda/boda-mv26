@@ -105,7 +105,7 @@ function parseGuests(rawText) {
 
 async function loadGuests() {
     try {
-        const response = await fetch('Guests?v=20260401a', { cache: 'no-store' });
+        const response = await fetch('Guests?v=20260401b', { cache: 'no-store' });
         if (!response.ok) return parseGuests(GUESTS_RAW_FALLBACK);
         const text = await response.text();
         const normalized = text.trim();
