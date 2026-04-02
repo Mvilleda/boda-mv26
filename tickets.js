@@ -25,7 +25,7 @@ const ticketTranslations = {
         noData: 'No guest list loaded yet.',
         idNotFound: 'This ticket ID was not found.',
         partyNotFound: 'This party was not found.',
-        notEligible: 'This party has no RSVP-confirmed tickets yet.',
+        notEligible: 'You need to RSVP first before downloading your ticket.',
         unknownError: 'Unable to load tickets.'
     },
     es: {
@@ -54,7 +54,7 @@ const ticketTranslations = {
         noData: 'Aún no se cargó la lista de invitados.',
         idNotFound: 'No encontramos ese ID de boleto.',
         partyNotFound: 'No encontramos ese grupo.',
-        notEligible: 'Este grupo aún no tiene boletos confirmados por RSVP.',
+        notEligible: 'Primero debes confirmar tu asistencia (RSVP) para descargar tu boleto.',
         unknownError: 'No fue posible cargar los boletos.'
     }
 };
@@ -193,15 +193,25 @@ function renderLookupForm(guests, options = {}) {
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
         const normalizedFullName = normalizeForMatch(`${firstName} ${lastName}`);
-        const found = guests.filter(
-            guest => normalizeForMatch(guest.fullName) === normalizedFullName && guest.ticketEligible !== false
+        const foundAll = guests.filter(
+            guest => normalizeForMatch(guest.fullName) === normalizedFullName
         );
+        const found = foundAll.filter(guest => guest.ticketEligible !== false);
+
+        if (!foundAll.length) {
+            renderLookupForm(guests, {
+                firstName,
+                lastName,
+                message: tt('notFoundMessage')
+            });
+            return;
+        }
 
         if (!found.length) {
             renderLookupForm(guests, {
                 firstName,
                 lastName,
-                message: tt('notFoundMessage')
+                message: tt('notEligible')
             });
             return;
         }
