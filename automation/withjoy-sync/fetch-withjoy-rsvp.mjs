@@ -32,6 +32,25 @@ const exportSelectorCandidates = [
 const outputDir = process.env.WITHJOY_OUTPUT_DIR || path.resolve(process.cwd(), '..', '..');
 const outputFile = path.resolve(outputDir, 'withjoy-rsvp.csv');
 
+function normalizeGuestsUrl(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    if (url.pathname.includes('/edit/guests')) {
+      return url.toString();
+    }
+    const segments = url.pathname.split('/').filter(Boolean);
+    if (segments.length > 0) {
+      url.pathname = `/${segments[0]}/edit/guests`;
+      url.search = '';
+      url.hash = '';
+      return url.toString();
+    }
+  } catch {
+    // fall through
+  }
+  return rawUrl;
+}
+
 async function waitForGuestUiReady(page, timeoutMs = 45000) {
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
@@ -151,10 +170,11 @@ try {
   await screenshot(page, 'withjoy-03-after-login.png');
 
   // Step 4: Navigate to guests page
-  if (afterLoginUrl && afterLoginUrl !== process.env.WITHJOY_LOGIN_URL) {
-    console.log(`[guests] navigating to: ${afterLoginUrl}`);
+  const guestsUrl = normalizeGuestsUrl(afterLoginUrl);
+  if (guestsUrl && guestsUrl !== process.env.WITHJOY_LOGIN_URL) {
+    console.log(`[guests] navigating to: ${guestsUrl}`);
     try {
-      await page.goto(afterLoginUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await page.goto(guestsUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
     } catch (error) {
       console.warn(`[guests] navigation timeout, continuing with current page state: ${error.message}`);
     }
@@ -168,6 +188,16 @@ try {
   }
 
   console.log(`[guests] URL: ${page.url()}`);
+  if (!page.url().includes('/edit/guests')) {
+    const forcedGuestsUrl = normalizeGuestsUrl(page.url());
+    if (forcedGuestsUrl !== page.url()) {
+      console.log(`[guests] forcing canonical guests route: ${forcedGuestsUrl}`);
+      await page.goto(forcedGuestsUrl, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {});
+      await page.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {});
+    }
+  }
+
+  console.log(`[guests] final URL: ${page.url()}`);
   await screenshot(page, 'withjoy-04-guests-page.png');
   await waitForGuestUiReady(page);
 
