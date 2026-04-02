@@ -208,10 +208,11 @@ function renderLookupForm(guests, options = {}) {
         }
 
         if (!found.length) {
+            const declinedOnly = foundAll.length > 0 && foundAll.every(guest => guest.rsvpStatus === 'no');
             renderLookupForm(guests, {
                 firstName,
                 lastName,
-                message: tt('notEligible')
+                message: declinedOnly ? tt('notFoundMessage') : tt('notEligible')
             });
             return;
         }
