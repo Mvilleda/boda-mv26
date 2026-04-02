@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Links Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tickets.css?v=20260401a">
+    <style>
+        .links-panel { background:#fdffff; border:1px solid rgba(77,99,143,.22); border-radius:14px; padding:14px; }
+        .links-table { width:100%; border-collapse: collapse; font-size:.92rem; }
+        .links-table th,.links-table td { border-bottom:1px solid rgba(77,99,143,.14); padding:8px 6px; text-align:left; vertical-align:top; }
+        .links-table th { color:#4d638f; font-family:'Cinzel',serif; font-size:.86rem; }
+        .link-cell { word-break: break-all; color:#2f3b54; }
+    </style>
+</head>
+<body>
+    <main class="ticket-page">
+        <header class="ticket-header">
+            <h1>TIckeT LInkS</h1>
+            <p>Copy each party link and send it to invitees.</p>
+        </header>
+        <section class="links-panel" id="linksRoot"></section>
+    </main>
+
+    <script src="guests-data.js?v=20260401a"></script>
+    <script>
+        function partyMap(guests) {
+            const map = new Map();
+            guests.forEach(guest => {
+                if (!map.has(guest.partyId)) {
+                    map.set(guest.partyId, { label: guest.partyLabel, members: [] });
+                }
+                map.get(guest.partyId).members.push(guest);
+            });
+            return map;
+        }
+
+        function copy(text) { navigator.clipboard.writeText(text).catch(() => {}); }
+
+        function render() {
+            const root = document.getElementById('linksRoot');
+            if (!GUESTS || !GUESTS.length) {
+                root.innerHTML = '<div class="error-box">No guests loaded. Paste your list in guests-data.js.</div>';
+                return;
+            }
+
+            const base = `${window.location.origin}${window.location.pathname.replace('ticket-links.html', 'tickets.html')}`;
+            const map = partyMap(GUESTS);
+
+            const rows = [...map.entries()].map(([partyId, info]) => {
+                const url = `${base}?party=${encodeURIComponent(partyId)}`;
+                const members = info.members.map(member => member.fullName).join(', ');
+                return `
+                    <tr>
+                        <td>${info.label}</td>
+                        <td>${members}</td>
+                        <td class="link-cell">${url}</td>
+                        <td><button class="ticket-btn" data-copy="${url}">Copy</button></td>
+                    </tr>
+                `;
+            }).join('');
+
+            root.innerHTML = `
+                <table class="links-table">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Members</th>
+                            <th>Link</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            `;
+
+            root.querySelectorAll('[data-copy]').forEach(button => {
+                button.addEventListener('click', () => copy(button.getAttribute('data-copy')));
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>

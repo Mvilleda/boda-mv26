@@ -12,6 +12,7 @@ A beautiful bilingual (English/Spanish) wedding website with a cream and gold el
 - ⏰ **Timeline** - Day-of schedule for guests
 - 💌 **RSVP Section** - Easy contact for confirmations
 - 🎁 **Registry Links** - Direct links to your registries
+- 🎫 **Digital Tickets** - Party links with individual QR tickets per guest
 
 ## 📁 Project Structure
 
@@ -21,6 +22,11 @@ Boda website/
 ├── styles.css          # Styling (cream & gold theme)
 ├── script.js           # Language switching logic
 ├── translations.js     # English and Spanish translations
+├── tickets.html        # Guest-facing digital tickets page
+├── tickets.css         # Ticket page styling
+├── tickets.js          # Ticket rendering + QR + download logic
+├── guests-data.js      # Invitee list (paste from spreadsheet)
+├── ticket-links.html   # Party link generator page
 ├── images/             # Wedding photos folder
 │   ├── README.md       # Image placement guide
 │   └── .gitkeep        # Keeps folder in git
@@ -29,6 +35,25 @@ Boda website/
 ```
 
 ## 🚀 Quick Start
+
+## 🎟️ Digital Ticket Setup
+
+1. Open `guests-data.js`
+2. Replace sample rows in `GUESTS_RAW` with your list using **tab-separated columns**:
+   - `id`
+   - `firstName`
+   - `lastName`
+   - `partyId`
+   - `partyLabel`
+3. Keep the file encoded as UTF-8 (accents are supported).
+4. Open `ticket-links.html` and copy each party link.
+5. Send party links to invitees. Each person can download their own ticket from `tickets.html`.
+
+Example row:
+
+```text
+mv-001\tMaría\tGarcía\tparty-garcia\tFamilia García
+```
 
 ### Step 1: Add Your Images
 
