@@ -160,7 +160,7 @@ const translations = {
         storyText4: "Y aquí estamos, listos para darnos el sí frente a las personas que más queremos.",
         storyText5: "Qué alegría que sean parte de esto.",
         counterTitleLine1: "HemOS eSpeRadO máS de 10 AñoS paRa eSte díA,",
-        counterTitleLine2: "SóLo FaLtan:",
+        counterTitleLine2: "SóLo Faltan:",
         counterDays: "Días",
         counterHours: "Horas",
         counterMinutes: "Minutos",
