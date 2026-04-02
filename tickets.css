@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Hello Paris';
+    src: url('fonts/HelloParis.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Slight';
+    src: url('fonts/Slight.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --ticket-cream: #fdffff;
     --ticket-blue: #4d638f;

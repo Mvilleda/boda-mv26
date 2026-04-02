@@ -1,3 +1,80 @@
+const ticketTranslations = {
+    en: {
+        pageTitle: 'Digital Tickets | Marcos & Valeria',
+        headerTitle: 'diGitaL TIckeTS',
+        headerSubtitle: 'Type your first name and surname to open your party tickets.',
+        lookupTitle: 'Find your tickets',
+        lookupText: 'Type your first name and surname exactly as on the invite list.',
+        firstNameLabel: 'First name',
+        lastNameLabel: 'Last name',
+        findButton: 'Find my tickets',
+        lookupHelp: 'If you have trouble accessing your tickets, please contact us directly.',
+        notFoundMessage: 'Name not found. Check spelling and accents, then try again.',
+        multipleMessage: 'We found multiple matches. Pick your name below.',
+        needAnotherTitle: 'Need another ticket?',
+        needAnotherText: 'Search by name to open another party.',
+        findByName: 'Find by name',
+        notice: 'Each guest has an individual ticket. Download only who will attend.',
+        venueLabel: 'Venue:',
+        venueValue: 'Hacienda San Juan Pueblilla',
+        accessLabel: 'Access:',
+        accessValue: '1 ticket = 1 guest',
+        ticketId: 'Ticket ID:',
+        downloadButton: 'Download ticket',
+        copyButton: 'Copy ticket link',
+        noData: 'No guest list loaded yet.',
+        idNotFound: 'This ticket ID was not found.',
+        partyNotFound: 'This party was not found.',
+        unknownError: 'Unable to load tickets.'
+    },
+    es: {
+        pageTitle: 'Boletos Digitales | Marcos & Valeria',
+        headerTitle: 'boLeToS dIgItaLeS',
+        headerSubtitle: 'Escribe tu nombre y apellido para abrir los boletos de tu grupo.',
+        lookupTitle: 'Encuentra tus boletos',
+        lookupText: 'Escribe tu nombre y apellido exactamente como aparecen en la lista.',
+        firstNameLabel: 'Nombre',
+        lastNameLabel: 'Apellido',
+        findButton: 'Buscar mis boletos',
+        lookupHelp: 'Si tienes problemas para acceder a tus boletos, contáctanos directamente.',
+        notFoundMessage: 'No encontramos ese nombre. Revisa la ortografía e inténtalo de nuevo.',
+        multipleMessage: 'Encontramos varias coincidencias. Elige tu nombre abajo.',
+        needAnotherTitle: '¿Buscas otro boleto?',
+        needAnotherText: 'Busca por nombre para abrir otro grupo.',
+        findByName: 'Buscar por nombre',
+        notice: 'Cada invitado tiene un boleto individual. Descarga solo quienes asistirán.',
+        venueLabel: 'Lugar:',
+        venueValue: 'Hacienda San Juan Pueblilla',
+        accessLabel: 'Acceso:',
+        accessValue: '1 boleto = 1 invitado',
+        ticketId: 'ID del boleto:',
+        downloadButton: 'Descargar boleto',
+        copyButton: 'Copiar enlace del boleto',
+        noData: 'Aún no se cargó la lista de invitados.',
+        idNotFound: 'No encontramos ese ID de boleto.',
+        partyNotFound: 'No encontramos ese grupo.',
+        unknownError: 'No fue posible cargar los boletos.'
+    }
+};
+
+const ticketLanguage = (() => {
+    const saved = localStorage.getItem('preferredLanguage');
+    return saved === 'es' ? 'es' : 'en';
+})();
+
+function tt(key) {
+    return ticketTranslations[ticketLanguage][key] || ticketTranslations.en[key] || '';
+}
+
+function updateHeaderLanguage() {
+    document.documentElement.lang = ticketLanguage;
+    document.title = tt('pageTitle');
+    const headerTitle = document.getElementById('ticketHeaderTitle');
+    const headerSubtitle = document.getElementById('ticketHeaderSubtitle');
+    if (headerTitle) headerTitle.textContent = tt('headerTitle');
+    if (headerSubtitle) headerSubtitle.textContent = tt('headerSubtitle');
+}
+
 function getQueryParam(key) {
     const params = new URLSearchParams(window.location.search);
     return (params.get(key) || '').trim();
@@ -87,22 +164,22 @@ function renderLookupForm(guests, options = {}) {
 
     root.innerHTML = `
         <section class="lookup-card">
-            <h2 class="lookup-title">Find your tickets</h2>
-            <p class="lookup-text">Type your first name and surname exactly as on the invite list.</p>
+            <h2 class="lookup-title">${tt('lookupTitle')}</h2>
+            <p class="lookup-text">${tt('lookupText')}</p>
             <form class="lookup-form" id="lookupForm">
                 <div class="lookup-field">
-                    <label for="firstNameInput">First name</label>
+                    <label for="firstNameInput">${tt('firstNameLabel')}</label>
                     <input id="firstNameInput" name="firstName" value="${escapeHtml(firstValue)}" autocomplete="given-name" required>
                 </div>
                 <div class="lookup-field">
-                    <label for="lastNameInput">Last name</label>
+                    <label for="lastNameInput">${tt('lastNameLabel')}</label>
                     <input id="lastNameInput" name="lastName" value="${escapeHtml(lastValue)}" autocomplete="family-name" required>
                 </div>
                 <div class="lookup-actions">
-                    <button class="ticket-btn" type="submit">Find my tickets</button>
+                    <button class="ticket-btn" type="submit">${tt('findButton')}</button>
                 </div>
             </form>
-            <p class="lookup-help">If you have trouble accessing your tickets, please contact us directly.</p>
+            <p class="lookup-help">${tt('lookupHelp')}</p>
             ${message ? `<p class="lookup-message">${escapeHtml(message)}</p>` : ''}
             ${matches.length ? `<div class="lookup-results">${matchButtons}</div>` : ''}
         </section>
@@ -120,7 +197,7 @@ function renderLookupForm(guests, options = {}) {
             renderLookupForm(guests, {
                 firstName,
                 lastName,
-                message: 'Name not found. Check spelling and accents, then try again.'
+                message: tt('notFoundMessage')
             });
             return;
         }
@@ -133,7 +210,7 @@ function renderLookupForm(guests, options = {}) {
         renderLookupForm(guests, {
             firstName,
             lastName,
-            message: 'We found multiple matches. Pick your name below.',
+            message: tt('multipleMessage'),
             matches: found
         });
     });
@@ -156,11 +233,11 @@ function renderTickets(guests) {
         }
 
         const reasonText = {
-            'no-data': 'No guest list loaded yet.',
-            'id-not-found': 'This ticket ID was not found.',
-            'party-not-found': 'This party was not found.'
+            'no-data': tt('noData'),
+            'id-not-found': tt('idNotFound'),
+            'party-not-found': tt('partyNotFound')
         };
-        renderError(reasonText[result.reason] || 'Unable to load tickets.');
+        renderError(reasonText[result.reason] || tt('unknownError'));
         return;
     }
 
@@ -170,15 +247,15 @@ function renderTickets(guests) {
     const root = document.getElementById('ticketRoot');
     root.innerHTML = `
         <section class="lookup-card">
-            <h2 class="lookup-title">Need another ticket?</h2>
-            <p class="lookup-text">Search by name to open another party.</p>
+            <h2 class="lookup-title">${tt('needAnotherTitle')}</h2>
+            <p class="lookup-text">${tt('needAnotherText')}</p>
             <div class="lookup-actions">
-                <a class="ticket-btn" href="tickets.html">Find by name</a>
+                <a class="ticket-btn" href="tickets.html">${tt('findByName')}</a>
             </div>
         </section>
         <div class="party-title">${escapeHtml(partyLabel)}</div>
         <div class="ticket-list" id="ticketList"></div>
-        <p class="notice">Each guest has an individual ticket. Download only who will attend.</p>
+        <p class="notice">${tt('notice')}</p>
     `;
 
     const list = document.getElementById('ticketList');
@@ -191,12 +268,12 @@ function renderTickets(guests) {
             <div class="ticket-main">
                 <div class="ticket-brand">Marcos & Valeria · 24·10·2026</div>
                 <h2 class="ticket-name">${escapeHtml(guest.fullName)}</h2>
-                <p class="ticket-meta"><strong>Venue:</strong> Hacienda San Juan Pueblilla</p>
-                <p class="ticket-meta"><strong>Access:</strong> 1 ticket = 1 guest</p>
-                <div class="ticket-id">Ticket ID: ${escapeHtml(guest.id)}</div>
+                <p class="ticket-meta"><strong>${tt('venueLabel')}</strong> ${tt('venueValue')}</p>
+                <p class="ticket-meta"><strong>${tt('accessLabel')}</strong> ${tt('accessValue')}</p>
+                <div class="ticket-id">${tt('ticketId')} ${escapeHtml(guest.id)}</div>
                 <div class="ticket-actions">
-                    <button class="ticket-btn js-download">Download ticket</button>
-                    <button class="ticket-btn js-copy">Copy ticket link</button>
+                    <button class="ticket-btn js-download">${tt('downloadButton')}</button>
+                    <button class="ticket-btn js-copy">${tt('copyButton')}</button>
                 </div>
             </div>
             <div class="ticket-qr-wrap">
@@ -224,6 +301,7 @@ function renderTickets(guests) {
 }
 
 async function initTickets() {
+    updateHeaderLanguage();
     const guests = await loadGuests();
     renderTickets(guests);
 }
