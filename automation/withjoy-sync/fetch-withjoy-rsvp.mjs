@@ -32,6 +32,31 @@ const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ acceptDownloads: true });
 const page = await context.newPage();
 
+page.on('response', (response) => {
+  const url = response.url();
+  const lowerUrl = url.toLowerCase();
+  if (/(analytics|bat\.js|segment|chameleon|chmln)/.test(lowerUrl)) {
+    return;
+  }
+
+  const headers = response.headers();
+  const contentType = (headers['content-type'] || '').toLowerCase();
+  const contentDisposition = (headers['content-disposition'] || '').toLowerCase();
+  const location = headers.location || '';
+  const looksLikeDownload =
+    /csv|octet-stream/.test(contentType) ||
+    /attachment/.test(contentDisposition) ||
+    /download|export|guest/.test(lowerUrl) ||
+    Boolean(location);
+
+  if (looksLikeDownload) {
+    console.log(`[HTTP ${response.status()}] ${url}`);
+    if (contentType) console.log(`  content-type: ${contentType}`);
+    if (contentDisposition) console.log(`  content-disposition: ${contentDisposition}`);
+    if (location) console.log(`  location: ${location}`);
+  }
+});
+
 try {
   await page.goto(process.env.WITHJOY_LOGIN_URL, { waitUntil: 'domcontentloaded' });
   await page.fill(emailSelector, process.env.WITHJOY_EMAIL);
@@ -62,7 +87,10 @@ try {
   }
 
   if (!download) {
-    throw new Error('Could not find a visible export/download control. Set WITHJOY_EXPORT_BUTTON_SELECTOR in secrets.');
+    await fs.mkdir(outputDir, { recursive: true });
+    const debugScreenshot = path.resolve(outputDir, 'withjoy-export-debug.png');
+    await page.screenshot({ path: debugScreenshot, fullPage: true });
+    throw new Error(`Could not find a visible export/download control. Set WITHJOY_EXPORT_BUTTON_SELECTOR in secrets. Debug screenshot: ${debugScreenshot}`);
   }
 
   await fs.mkdir(path.dirname(outputFile), { recursive: true });
