@@ -63,7 +63,7 @@ const translations = {
         timeline2Text: "Cocktail hour in the garden, our favorite drinks and your first chance to toast with us!",
         timeline3Title: "we eat!",
         timeline3Text: "Dinner, speeches, and cake on the MAIN plaza. Check the seating board to find your table.",
-        timeline4Title: "we dance!",
+        timeline4Title: "Let’s Dance!",
         timeline4Text: "Bring your best moves. We'll be dancing until our feet say stop!",
 
         locationTitle: "gettIng TheRe",
