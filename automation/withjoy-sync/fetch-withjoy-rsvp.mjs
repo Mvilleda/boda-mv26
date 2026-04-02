@@ -108,14 +108,20 @@ try {
     throw new Error(`Login did not complete. URL: ${page.url()} - check WITHJOY_EMAIL / WITHJOY_PASSWORD / WITHJOY_LOGIN_URL.`);
   }
 
-  await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+  await page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
   console.log(`[login] success - URL: ${page.url()}`);
   await screenshot(page, 'withjoy-03-after-login.png');
 
   // Step 4: Navigate to guests page
   if (afterLoginUrl && afterLoginUrl !== process.env.WITHJOY_LOGIN_URL) {
     console.log(`[guests] navigating to: ${afterLoginUrl}`);
-    await page.goto(afterLoginUrl, { waitUntil: 'networkidle', timeout: 30000 });
+    try {
+      await page.goto(afterLoginUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    } catch (error) {
+      console.warn(`[guests] navigation timeout, continuing with current page state: ${error.message}`);
+    }
+
+    await page.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {});
 
     if (page.url().includes('login') || page.url().includes('auth0')) {
       await screenshot(page, 'withjoy-04-rsvp-redirect.png');
