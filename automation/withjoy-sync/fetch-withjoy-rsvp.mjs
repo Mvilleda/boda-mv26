@@ -32,6 +32,44 @@ const exportSelectorCandidates = [
 const outputDir = process.env.WITHJOY_OUTPUT_DIR || path.resolve(process.cwd(), '..', '..');
 const outputFile = path.resolve(outputDir, 'withjoy-rsvp.csv');
 
+async function waitForGuestUiReady(page, timeoutMs = 45000) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    const frames = page.frames();
+    for (const frame of frames) {
+      const hasControls = await frame.evaluate(() => {
+        const controls = document.querySelectorAll('button, a, [role="button"]');
+        return controls.length > 0;
+      }).catch(() => false);
+      if (hasControls) {
+        return;
+      }
+    }
+    await page.waitForTimeout(1000);
+  }
+}
+
+async function collectControlsAcrossFrames(page) {
+  const all = [];
+  for (const frame of page.frames()) {
+    const frameControls = await frame.evaluate(() =>
+      [...document.querySelectorAll('button, a, [role="button"]')]
+        .map(el => ({
+          tag: el.tagName,
+          text: el.textContent?.trim().slice(0, 80),
+          ariaLabel: el.getAttribute('aria-label'),
+          title: el.getAttribute('title') || '',
+          testid: el.getAttribute('data-testid'),
+        }))
+        .filter(el => el.text || el.ariaLabel || el.title)
+    ).catch(() => []);
+    if (frameControls.length > 0) {
+      all.push({ frameUrl: frame.url(), controls: frameControls });
+    }
+  }
+  return all;
+}
+
 async function screenshot(page, name) {
   try {
     await fs.mkdir(outputDir, { recursive: true });
@@ -131,38 +169,32 @@ try {
 
   console.log(`[guests] URL: ${page.url()}`);
   await screenshot(page, 'withjoy-04-guests-page.png');
+  await waitForGuestUiReady(page);
 
   let download;
   for (const selector of exportSelectorCandidates) {
-    const locator = page.locator(selector).first();
-    if (await locator.count() > 0 && await locator.isVisible()) {
-      try {
-        [download] = await Promise.all([
-          page.waitForEvent('download', { timeout: 45000 }),
-          locator.click()
-        ]);
-        console.log(`Clicked export control using selector: ${selector}`);
-        break;
-      } catch {
-        // Try next selector candidate
+    for (const frame of page.frames()) {
+      const locator = frame.locator(selector).first();
+      const isVisible = await locator.isVisible().catch(() => false);
+      if (isVisible) {
+        try {
+          [download] = await Promise.all([
+            page.waitForEvent('download', { timeout: 45000 }),
+            locator.click()
+          ]);
+          console.log(`Clicked export control using selector: ${selector} in frame: ${frame.url() || 'main'}`);
+          break;
+        } catch {
+          // Try next frame/selector candidate
+        }
       }
     }
+    if (download) break;
   }
 
   if (!download) {
-    // Dump all buttons and links to help identify the correct selector
-    const controls = await page.evaluate(() =>
-      [...document.querySelectorAll('button, a')]
-        .map(el => ({
-          tag: el.tagName,
-          text: el.textContent?.trim().slice(0, 80),
-          ariaLabel: el.getAttribute('aria-label'),
-          title: el.title,
-          testid: el.getAttribute('data-testid'),
-        }))
-        .filter(el => el.text || el.ariaLabel || el.title)
-    );
-    console.log('[export] visible controls:\n' + JSON.stringify(controls, null, 2));
+    const controls = await collectControlsAcrossFrames(page);
+    console.log('[export] visible controls by frame:\n' + JSON.stringify(controls, null, 2));
     await screenshot(page, 'withjoy-05-export-debug.png');
     throw new Error(
       'Could not find export/download control. Review withjoy-05-export-debug.png and controls log above, then set WITHJOY_EXPORT_BUTTON_SELECTOR.'
