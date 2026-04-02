@@ -293,6 +293,7 @@ function renderTickets(guests) {
                 </div>
             </div>
             <div class="ticket-qr-wrap">
+                <div class="ticket-monogram" aria-hidden="true"></div>
                 <div class="qr-box" id="qr-${escapeHtml(guest.id)}"></div>
             </div>
         `;

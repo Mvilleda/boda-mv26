@@ -200,6 +200,21 @@ body {
     gap: 10px;
 }
 
+.ticket-monogram {
+    width: 54px;
+    height: 36px;
+    background-color: var(--ticket-blue);
+    -webkit-mask-image: url('images/M%20&%20V-03.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url('images/M%20&%20V-03.png');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    opacity: 0.95;
+}
+
 .qr-box {
     width: 112px;
     height: 112px;
