@@ -16,6 +16,8 @@ const afterLoginUrl = process.env.WITHJOY_RSVP_URL || process.env.WITHJOY_LOGIN_
 const exportButtonSelector = process.env.WITHJOY_EXPORT_BUTTON_SELECTOR;
 const exportSelectorCandidates = [
   ...(exportButtonSelector ? [exportButtonSelector] : []),
+  'button:has-text("Export All Guests")',
+  'a:has-text("Export All Guests")',
   'button:has-text("Export")',
   'a:has-text("Export")',
   'button:has-text("Download")',
