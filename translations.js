@@ -236,7 +236,7 @@ const translations = {
         stayAirbnbItem3: "Zona 3: pendiente por compartir",
         stayPlannerNote: "Nota para planner: incluir rango de precio por noche, política de cancelación y fecha límite de reserva por opción.",
 
-        contributeTitle: "coNTRibuYe coN aMoR",
+        contributeTitle: "conTrIbuYe Con AmoR",
         contributeText1: "Sabemos que venir a una boda destino implica tiempo y esfuerzo, y compartir este día con ustedes ya es el regalo más grande para nosotros. Pero si quieren contribuir con algo adicional, preparamos una lista en Amazon y The Wedding Shop, y también incluimos nuestros datos bancarios (México y UK) para luna de miel o regalos en efectivo.",
         contributeText2: "¡Muchísimas gracias! De verdad significa muchísimo para nosotros.",
         contributeAccountsTitle: "Datos bancarios",
