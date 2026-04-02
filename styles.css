@@ -728,8 +728,15 @@ body {
 
 .timeline-section h2 {
     font-family: 'Hello Paris', serif;
+    font-weight: 400 !important;
+    font-style: normal !important;
     font-size: 4.4rem;
     color: #fdffff !important;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .timeline-section h2::after {
