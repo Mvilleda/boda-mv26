@@ -282,6 +282,7 @@ function renderTickets(guests) {
         card.className = 'ticket-card';
         card.innerHTML = `
             <div class="ticket-main">
+                <img class="ticket-monogram" src="images/M%20&%20V-03.png" alt="" aria-hidden="true">
                 <div class="ticket-brand">Marcos & Valeria · 24·10·2026</div>
                 <h2 class="ticket-name">${escapeHtml(guest.fullName)}</h2>
                 <p class="ticket-meta"><strong>${tt('venueLabel')}</strong> ${tt('venueValue')}</p>
@@ -293,7 +294,6 @@ function renderTickets(guests) {
                 </div>
             </div>
             <div class="ticket-qr-wrap">
-                <div class="ticket-monogram" aria-hidden="true"></div>
                 <div class="qr-box" id="qr-${escapeHtml(guest.id)}"></div>
             </div>
         `;
