@@ -74,8 +74,10 @@ body {
 .lookup-title {
     margin: 0 0 6px;
     color: var(--ticket-blue);
-    font-family: 'Cinzel', serif;
-    font-size: 1.05rem;
+    font-family: 'Hello Paris', serif;
+    font-size: clamp(2.1rem, 4.6vw, 3.2rem);
+    font-weight: 400;
+    line-height: .85;
 }
 
 .lookup-text {
