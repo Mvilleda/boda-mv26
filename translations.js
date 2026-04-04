@@ -24,7 +24,7 @@ const translations = {
         rsvpStep1: "Step 1: RSVP.",
         rsvpStep2: "Step 2: Download your tickets.",
         rsvpButtonText: "RSVP",
-        ticketButtonText: "Print your ticket",
+        ticketButtonText: "digital tIckets",
         welcomeText1: "We are thrilled to invite you to share in the joy of our wedding day. Your presence means the world to us as we begin this beautiful journey together.",
         welcomeText2: "Join us for a day filled with love, laughter, and unforgettable memories.",
         
@@ -174,7 +174,7 @@ const translations = {
         rsvpStep1: "Paso 1: Confirma tu asistencia (RSVP).",
         rsvpStep2: "Paso 2: Descarga tus boletos.",
         rsvpButtonText: "Confirmar",
-        ticketButtonText: "Imprimir tu boleto",
+        ticketButtonText: "digital tIckets",
         welcomeText1: "Estamos emocionados de invitarte a compartir la alegría de nuestro día especial. Tu presencia significa el mundo para nosotros mientras comenzamos este hermoso viaje juntos.",
         welcomeText2: "Únete a nosotros para un día lleno de amor, risas y recuerdos inolvidables.",
         

@@ -284,7 +284,7 @@ function renderTickets(guests) {
             <div class="ticket-main">
                 <img class="ticket-watermark" src="images/M%20&%20V-03.png" alt="" aria-hidden="true">
                 <div class="ticket-brand">Marcos & Valeria · 24·10·2026</div>
-                <h2 class="ticket-name">${escapeHtml(guest.fullName)}</h2>
+                <h2 class="ticket-name">${escapeHtml((guest.fullName || '').toLocaleLowerCase())}</h2>
                 <p class="ticket-meta"><strong>${tt('venueLabel')}</strong> ${tt('venueValue')}</p>
                 <p class="ticket-meta"><strong>${tt('accessLabel')}</strong> ${tt('accessValue')}</p>
                 <div class="ticket-id">${tt('ticketId')} ${escapeHtml(guest.id)}</div>
