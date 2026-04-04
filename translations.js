@@ -56,7 +56,7 @@ const translations = {
         receptionLocation: "Grand Ballroom",
         receptionAddress: "456 Oak Avenue, City, State",
         
-        timelineTitle: "Schedule of Events",
+        timelineTitle: "Schedule of evenTs",
         timeline1Title: "we do!",
         timeline1Text: "Join us for the ceremony at the open-air chapel. Please arrive by 4:00 PM to find a spot and get comfortable.",
         timeline2Title: "we dRink!",
