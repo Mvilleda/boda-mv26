@@ -680,11 +680,12 @@ body {
 .event-copy {
     margin: 0;
     font-family: 'Crimson Pro', serif;
+    font-weight: 300;
     color: #6c7c9d;
     font-size: clamp(1.06rem, 1.6vw, 1.24rem);
     line-height: 1.14;
     letter-spacing: 0.01em;
-    text-transform: none;
+    text-transform: uppercase;
 }
 
 .details-section .event-label,
@@ -904,8 +905,8 @@ body {
     color: rgba(253, 255, 255, 0.92) !important;
     line-height: 1.14;
     font-size: clamp(1.06rem, 1.6vw, 1.24rem);
-    font-weight: 400;
-    text-transform: none;
+    font-weight: 300;
+    text-transform: uppercase;
     letter-spacing: 0.01em;
     margin: 0;
 }
