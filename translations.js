@@ -12,7 +12,7 @@ const translations = {
         storyText3: "Long distance tested us. Life got busy, and we kept choosing each other anyway. When we finally closed the distance and shared a home, a whole new chapter began. We danced in the kitchen, acted silly together, and found something special in the most ordinary days. We've grown side by side, dreamed out loud, and made each other better just by being together.",
         storyText4: "And now here we are, ready to say I do in front of the people who matter most to us.",
         storyText5: "We're so glad you're part of this.",
-        counterTitleLine1: "we Have waited Ten years foR thIs day",
+        counterTitleLine1: "we've waited 10 years foR thIs day.",
         counterTitleLine2: "there's only",
         counterDays: "Days",
         counterHours: "Hours",
