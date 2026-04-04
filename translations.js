@@ -7,7 +7,7 @@ const translations = {
         heroTagline: "Together with our families, we invite you to celebrate our love",
         
         welcomeTitle: "OuR SToRY",
-        storyText1: "It started with a Tweet. We'd met at university, but one message led to another and somehow the conversations never stopped.",
+        storyText1: "We went to the same university and had seen each other around before. But it wasn't until summer break that we really started talking—first through messages and social media—and somehow the conversations never stopped.",
         storyText2: "From the start, it all felt easy. We laughed a lot, stayed up talking late, and slipped into the kind of comfort you don't have to force. When summer ended and we both went back to uni, we half expected fate to do its thing and bring us together in those first few days. It didn't. So Marcos took matters into his own hands and showed up at Valeria's classroom with an ice lolly. That became our first little tradition, and the start of everything.",
         storyText3: "Long distance tested us. Life got busy, and we kept choosing each other anyway. When we finally closed the distance and shared a home, a whole new chapter began. We danced in the kitchen, acted silly together, and found something special in the most ordinary days. We've grown side by side, dreamed out loud, and made each other better just by being together.",
         storyText4: "And now here we are, ready to say I do in front of the people who matter most to us.",
@@ -157,7 +157,7 @@ const translations = {
         heroTagline: "Junto con nuestras familias, te invitamos a celebrar nuestro amor",
         
         welcomeTitle: "NuEsTRa HiStoRia",
-        storyText1: "Todo empezó con un tuit. Nos conocimos en la universidad, pero un mensaje llevó a otro y de pronto las conversaciones no pararon.",
+        storyText1: "Fuimos a la misma universidad y ya nos habíamos visto antes, pero no fue hasta las vacaciones de verano que empezamos a hablar de verdad: primero por mensajes y redes sociales. Y de pronto, las conversaciones nunca pararon.",
         storyText2: "Desde el inicio, todo se sintió fácil. Nos reíamos mucho, nos desvelábamos platicando, y apareció esa comodidad que no tienes que forzar. Cuando terminó el verano y los dos regresamos a la uni, medio esperábamos que el destino hiciera lo suyo y nos cruzara en esos primeros días. No pasó. Así que Marcos tomó cartas en el asunto y se apareció en el salón de Valeria con una paleta. Esa fue nuestra primera pequeña tradición, y también el inicio de todo.",
         storyText3: "La distancia nos puso a prueba. La vida se llenó de cosas, y aun así seguimos eligiéndonos. Cuando por fin cerramos esa distancia y compartimos un hogar, empezó una etapa nueva. Bailamos en la cocina, hicimos tonterías juntos y encontramos algo especial hasta en los días más simples. Hemos crecido lado a lado, soñado en voz alta, y nos hemos hecho mejores con solo estar juntos.",
         storyText4: "Y aquí estamos, listos para darnos el sí frente a las personas que más queremos.",
