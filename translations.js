@@ -59,11 +59,11 @@ const translations = {
         timelineTitle: "Schedule of evenTs",
         timeline1Title: "we do!",
         timeline1Text: "Join us for the ceremony at the open-air chapel. Please arrive by 4:00 PM to find a spot and get comfortable.",
-        timeline2Title: "we dRink!",
+        timeline2Title: "we drInk!",
         timeline2Text: "Cocktail hour in the garden, our favorite drinks and your first chance to toast with us!",
         timeline3Title: "we eat!",
         timeline3Text: "Dinner, speeches, and cake on the MAIN plaza. Check the seating board to find your table.",
-        timeline4Title: "Let’s Dance!",
+        timeline4Title: "we dance!",
         timeline4Text: "Bring your best moves. We'll be dancing until our feet say stop!",
 
         locationTitle: "gettIng TheRe",

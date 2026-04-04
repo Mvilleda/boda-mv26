@@ -853,7 +853,7 @@ body {
     grid-template-columns: 88px minmax(0, 1fr);
     column-gap: 18px;
     row-gap: 4px;
-    align-items: start;
+    align-items: center;
     background-color: transparent;
     padding: 10px 0 10px 16px;
     border-radius: 0;
@@ -869,10 +869,10 @@ body {
     height: 88px;
     object-fit: contain;
     border-radius: 14px;
-    border: 1.5px solid rgba(253, 255, 255, 0.5);
+    border: none;
     margin: 2px 0 0;
     display: block;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    box-shadow: none;
 }
 
 .timeline-content::before {
