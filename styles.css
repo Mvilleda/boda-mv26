@@ -384,6 +384,7 @@ body {
 
 .welcome-text p {
     font-family: 'Crimson Pro', serif;
+    font-weight: 300;
     font-size: 1.3rem;
     line-height: 1.9;
     color: #fdffff;
