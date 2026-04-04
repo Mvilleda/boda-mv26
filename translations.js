@@ -6,8 +6,8 @@ const translations = {
         gettingMarried: "are getting married",
         heroTagline: "Together with our families, we invite you to celebrate our love",
         
-        welcomeTitle: "OuR SToRY",
-        storyText1: "We went to the same university and had seen each other around before. But it wasn't until summer break that we really started talking—first through messages and social media—and somehow the conversations never stopped.",
+        welcomeTitle: "ouR sToRy",
+        storyText1: "We went to the same university and had seen each other around before. It wasn't until summer break that we really started talking, through messages and social media at first, and the conversations just never stopped.",
         storyText2: "From the start, it all felt easy. We laughed a lot, stayed up talking late, and slipped into the kind of comfort you don't have to force. When summer ended and we both went back to uni, we half expected fate to do its thing and bring us together in those first few days. It didn't. So Marcos took matters into his own hands and showed up at Valeria's classroom with an ice lolly. That became our first little tradition, and the start of everything.",
         storyText3: "Long distance tested us. Life got busy, and we kept choosing each other anyway. When we finally closed the distance and shared a home, a whole new chapter began. We danced in the kitchen, acted silly together, and found something special in the most ordinary days. We've grown side by side, dreamed out loud, and made each other better just by being together.",
         storyText4: "And now here we are, ready to say I do in front of the people who matter most to us.",
