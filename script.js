@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage) {
         currentLanguage = savedLanguage;
-        updateLanguage();
     }
+
+    // Always apply translations on first load so fallback HTML text stays in sync
+    updateLanguage();
 });
 
 function toggleLanguage() {
