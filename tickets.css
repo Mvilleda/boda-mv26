@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Hello Paris';
-    src: url('fonts/HelloParis.ttf') format('truetype');
+    src: url('fonts/HelloParis.ttf?v=20260404d') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HelloParisWeb';
-    src: url('./fonts/HelloParis.ttf') format('truetype');
+    src: url('./fonts/HelloParis.ttf?v=20260404d') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -49,11 +49,17 @@ body {
 }
 
 .ticket-header h1 {
-    font-family: 'HelloParisWeb', 'Hello Paris', cursive !important;
+    font-family: 'Hello Paris', serif !important;
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     color: var(--ticket-blue);
     font-weight: 400 !important;
     font-style: normal !important;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
     margin: 0 0 6px;
 }
 
@@ -68,9 +74,15 @@ body {
     margin: 18px 0 14px;
     font-size: 1.25rem;
     color: var(--ticket-blue);
-    font-family: 'HelloParisWeb', 'Hello Paris', cursive !important;
+    font-family: 'Hello Paris', serif !important;
     font-weight: 400 !important;
     font-style: normal !important;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .lookup-card {
@@ -85,11 +97,17 @@ body {
 .lookup-title {
     margin: 0 0 6px;
     color: var(--ticket-blue);
-    font-family: 'HelloParisWeb', 'Hello Paris', cursive !important;
+    font-family: 'Hello Paris', serif !important;
     font-size: clamp(2.1rem, 4.6vw, 3.2rem);
     font-weight: 400 !important;
     font-style: normal !important;
     line-height: .85;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .lookup-text {
@@ -192,13 +210,19 @@ body {
 }
 
 .ticket-name {
-    font-family: 'HelloParisWeb', 'Hello Paris', cursive !important;
+    font-family: 'Hello Paris', serif !important;
     font-size: clamp(2rem, 4.4vw, 3rem);
     line-height: 0.95;
     margin: 2px 0 8px;
     color: var(--ticket-blue);
     font-weight: 400 !important;
     font-style: normal !important;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .ticket-meta {
