@@ -1,6 +1,6 @@
 const ticketTranslations = {
     en: {
-        pageTitle: 'Digital Tickets | Marcos & Valeria',
+        pageTitle: 'digital tIckets | Marcos & Valeria',
         headerTitle: 'digital tIckets',
         headerSubtitle: 'Type your first name and surname to open your party tickets.',
         lookupTitle: 'digital tIckets',
@@ -29,7 +29,7 @@ const ticketTranslations = {
         unknownError: 'Unable to load tickets.'
     },
     es: {
-        pageTitle: 'Boletos Digitales | Marcos & Valeria',
+        pageTitle: 'digital tIckets | Marcos & Valeria',
         headerTitle: 'digital tIckets',
         headerSubtitle: 'Escribe tu nombre y apellido para abrir los boletos de tu grupo.',
         lookupTitle: 'digital tIckets',
