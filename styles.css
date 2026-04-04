@@ -1221,7 +1221,12 @@ body {
     background-size: auto 100%, auto 100%;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.85;
+    opacity: 1;
+}
+
+.contribute-section .container {
+    padding-left: clamp(120px, 14vw, 200px);
+    padding-right: clamp(120px, 14vw, 200px);
 }
 
 .contribute-section h2.contribute-title {
