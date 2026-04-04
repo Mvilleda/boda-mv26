@@ -486,12 +486,20 @@ body {
 
 .counter-subtitle {
     font-family: 'Hello Paris', serif;
-    font-size: 3.5rem;
+    font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     color: var(--gold);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0;
-    line-height: 1.3;
+    line-height: .82;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .counter-subtitle.counter-lead {
