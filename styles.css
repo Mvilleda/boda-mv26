@@ -1208,6 +1208,20 @@ body {
 /* Contribute Section */
 .contribute-section {
     background-color: #fdffff !important;
+    overflow: visible;
+}
+
+.contribute-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("images/side-deco-left.png"), url("images/side-deco-right.png");
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto 100%, auto 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
 }
 
 .contribute-section h2.contribute-title {
