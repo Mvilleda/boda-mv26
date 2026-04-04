@@ -679,7 +679,7 @@ body {
 .event-column p,
 .event-copy {
     margin: 0;
-    font-family: 'Cinzel', serif;
+    font-family: 'Crimson Pro', serif;
     color: #6c7c9d;
     font-size: clamp(1.06rem, 1.6vw, 1.24rem);
     line-height: 1.14;
@@ -899,7 +899,7 @@ body {
 }
 
 .timeline-content p {
-    font-family: 'Cinzel', serif;
+    font-family: 'Crimson Pro', serif;
     grid-column: 2;
     color: rgba(253, 255, 255, 0.92) !important;
     line-height: 1.14;
