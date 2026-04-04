@@ -42,10 +42,11 @@ body {
 }
 
 .ticket-header h1 {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', cursive !important;
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     color: var(--ticket-blue);
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-style: normal !important;
     margin: 0 0 6px;
 }
 
@@ -60,6 +61,9 @@ body {
     margin: 18px 0 14px;
     font-size: 1.25rem;
     color: var(--ticket-blue);
+    font-family: 'Hello Paris', cursive !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
 }
 
 .lookup-card {
@@ -74,9 +78,10 @@ body {
 .lookup-title {
     margin: 0 0 6px;
     color: var(--ticket-blue);
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', cursive !important;
     font-size: clamp(2.1rem, 4.6vw, 3.2rem);
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .85;
 }
 
@@ -180,12 +185,13 @@ body {
 }
 
 .ticket-name {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', cursive !important;
     font-size: clamp(2rem, 4.4vw, 3rem);
     line-height: 0.95;
     margin: 2px 0 8px;
     color: var(--ticket-blue);
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-style: normal !important;
 }
 
 .ticket-meta {
