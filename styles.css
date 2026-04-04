@@ -457,7 +457,7 @@ body {
     border-radius: 15px;
     width: fit-content;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0;
     position: static !important;
     left: auto !important;
     transform: none !important;
