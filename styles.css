@@ -347,14 +347,22 @@ body {
 .welcome-section h2 {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .82;
-    text-align: left;
-    width: fit-content;
-    margin-left: 50%;
-    margin-right: 0;
-    transform: translateX(50px);
-    line-height: 0.9;
+    text-align: center;
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    transform: none;
+    letter-spacing: 0;
+    text-transform: none;
     color: #fdffff;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .welcome-section h2::after {
@@ -867,11 +875,17 @@ body {
 .location-section h2.location-title {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .82;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     color: #6c7c9d !important;
-    text-align: left;
+    text-align: center;
     margin-bottom: 18px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .location-title::after {
@@ -993,10 +1007,16 @@ body {
 .stay-section h2.stay-title {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .82;
     color: #fdffff !important;
     text-align: center;
     margin-bottom: 8px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .stay-title::after {
@@ -1141,10 +1161,16 @@ body {
 .contribute-section h2.contribute-title {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .82;
     color: #6c7c9d !important;
     text-align: center;
     margin-bottom: 8px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .contribute-title::after {
@@ -1234,10 +1260,16 @@ body {
 .faq-section h2.faq-title {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
     line-height: .82;
     color: #fdffff !important;
     text-align: center;
     margin-bottom: 8px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .faq-title::after {
@@ -1449,7 +1481,7 @@ body {
     }
 
     .welcome-section h2 {
-        margin-left: 20px;
+        margin-left: auto;
         transform: none;
         font-size: clamp(2.5rem, 6vw, 3.5rem);
     }
