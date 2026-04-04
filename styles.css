@@ -125,7 +125,7 @@ body {
 
 .couple-names {
     font-family: 'Hello Paris', serif;
-    font-size: clamp(3.2rem, 7.4vw, 5.9rem);
+    font-size: clamp(3.28rem, 7.48vw, 5.98rem);
     color: #fdffff;
     margin: 0 0 6px 0;
     font-weight: normal;
@@ -1454,7 +1454,7 @@ body {
     }
 
     .couple-names {
-        font-size: clamp(2.35rem, 8.3vw, 3.75rem);
+        font-size: clamp(2.43rem, 8.38vw, 3.83rem);
     }
 
     .getting-married {
