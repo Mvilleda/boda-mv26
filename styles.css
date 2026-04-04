@@ -330,12 +330,7 @@ body {
 }
 
 .section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--gold);
-    margin: 20px auto 0;
+    display: none;
 }
 
 /* Welcome Section */
