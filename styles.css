@@ -508,7 +508,7 @@ body {
 }
 
 .counter-subtitle.counter-trailing {
-    margin-top: 20px;
+    margin-top: 14px;
     margin-bottom: 0;
 }
 
@@ -1809,7 +1809,7 @@ body {
     }
 
     .counter-subtitle.counter-trailing {
-        margin-top: 14px !important;
+        margin-top: 10px !important;
         margin-bottom: 0 !important;
     }
 
