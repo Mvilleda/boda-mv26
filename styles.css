@@ -1406,9 +1406,10 @@ body {
 }
 
 .faq-item h4 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Crimson Pro', serif;
     color: #fdffff;
-    font-size: 1.12rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     line-height: 1.2;
     margin-bottom: 6px;
 }
@@ -1417,6 +1418,7 @@ body {
     font-family: 'Crimson Pro', serif;
     color: #eef3ff;
     font-size: 1.02rem;
+    font-weight: 400;
     line-height: 1.28;
     margin: 0;
 }
