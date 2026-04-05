@@ -114,7 +114,7 @@ const translations = {
         contributeUkSort: "23-01-20",
         contributeUkAccountNo: "57419689",
 
-        faqTitle: "faq",
+        faqTitle: "good to know",
         faqIntro: "Everything you need to know to enjoy the weekend with us.",
         faqPueblaTitle: "wHat To Do in Puebla",
         faqPueblaText: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
@@ -265,7 +265,7 @@ const translations = {
         contributeUkSort: "23-01-20",
         contributeUkAccountNo: "57419689",
 
-        faqTitle: "faq",
+        faqTitle: "bueno saberlo",
         faqIntro: "Todo lo que necesitas saber para disfrutar el fin de semana con nosotros.",
         faqPueblaTitle: "qUé hAceR en Puebla",
         faqPueblaText: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",

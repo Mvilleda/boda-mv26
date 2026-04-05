@@ -1349,18 +1349,6 @@ body {
     text-rendering: geometricPrecision;
 }
 
-.faq-section h2.faq-title::after {
-    content: 's';
-    display: inline-block;
-    position: static;
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.6em;
-    line-height: 1;
-    vertical-align: sub;
-    margin-left: 0.04em;
-    color: #fdffff;
-}
-
 .faq-intro {
     font-family: 'Crimson Pro', serif;
     color: #eef3ff;
@@ -1379,6 +1367,7 @@ body {
     letter-spacing: 0;
     font-size: clamp(2.2rem, 3.8vw, 3.2rem);
     line-height: 0.95;
+    margin-top: 48px;
     margin-bottom: 8px;
 }
 
