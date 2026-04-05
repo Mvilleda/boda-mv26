@@ -1349,16 +1349,16 @@ body {
     text-rendering: geometricPrecision;
 }
 
-.faq-title::after {
+.faq-section h2.faq-title::after {
     content: 's';
-    display: inline;
+    display: inline-block;
     position: static;
     font-family: 'Crimson Pro', serif;
-    font-size: 0.56em;
+    font-size: 0.6em;
     line-height: 1;
     vertical-align: sub;
     margin-left: 0.04em;
-    color: inherit;
+    color: #fdffff;
 }
 
 .faq-intro {
