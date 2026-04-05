@@ -1274,6 +1274,31 @@ body {
     font-weight: 600;
 }
 
+.contribute-registry-wrap {
+    text-align: center;
+    margin: 2px 0 14px;
+}
+
+.contribute-registry-btn {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fdffff;
+    background-color: #6c7c9d;
+    border: 1.5px solid #6c7c9d;
+    padding: 8px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.contribute-registry-btn:hover {
+    background-color: transparent;
+    color: #6c7c9d;
+}
+
 .contribute-accounts-title {
     font-family: 'Cinzel', serif;
     color: #3f5f94;
