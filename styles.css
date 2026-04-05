@@ -1351,11 +1351,14 @@ body {
 
 .faq-title::after {
     content: 's';
-    display: inline-block;
-    font-size: 0.58em;
+    display: inline;
+    position: static;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.56em;
     line-height: 1;
-    margin-left: 0.02em;
-    transform: translateY(0.34em);
+    vertical-align: sub;
+    margin-left: 0.04em;
+    color: inherit;
 }
 
 .faq-intro {
