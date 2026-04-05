@@ -189,16 +189,16 @@ const translations = {
         celebrateTitle: "¡no podemos esperar para celebrar contigo!",
         celebrateTitleLine1: "¡no pODemoS esPerAr",
         celebrateTitleLine2: "paRa ceLebRaR jUnToS!",
-        whenTitle: "cUánDo",
+        whenTitle: "cUándo",
         whenLine1: "SÁBADO 24 OctubRe 2026",
         whenLine2: "Ceremonia @4 PM",
         whenLine3: "RECEPCIÓN DESPUÉS",
-        whereTitle: "dÓnDe",
+        whereTitle: "dóndE",
         whereLine1: "Jardín de Cielo",
         whereLine2: "Paraiso Palmira",
         whereLine3: "Revolución, 74270",
         whereLine4: "Atlixco, Puebla, México",
-        wearTitle: "qUé vEstir",
+        wearTitle: "Qué vestIr",
         wearLine1: "¡vístete para impresionar! cóctel o formal—piensa en algo elegante pero cómodo para bailar toda la noche!",
         wearLine2: "",
         wearLine3: "",
@@ -304,6 +304,6 @@ const translations = {
         registryStore1: "Amazon",
         registryStore2: "Target",
         
-        footerText: "¡No podemos esperar para celebrar contigo!"
+        footerText: "¡no podemoS esperar para celebrar JunTos!"
     }
 };
