@@ -93,7 +93,7 @@ const translations = {
         stayPlannerNote: "Planner note: please include nightly rate range, cancellation policy, and booking deadline for each option.",
 
         contributeTitle: "contRibute wIth Love",
-        contributeText1: "We know that attending a destination wedding is no small effort, and sharing our day with you is truly the greatest gift we could ask for. But if you would like to contribute a little something, we’ve put together a registry at Amazon and The Wedding Shop, and we’ve also included our bank details (Mexico and UK) for a honeymoon fund or any cash gifts.",
+        contributeText1: "Your presence at our wedding is more than enough of a gift, but should you wish to give something, we’d be so grateful for a contribution toward our dream honeymoon.",
         contributeText2: "Thank you so much, it means the world to us!",
         contributeAccountsTitle: "Bank details",
         contributeMxnTitle: "Cuenta mexico (mXn)",
@@ -243,7 +243,7 @@ const translations = {
         stayPlannerNote: "Nota para planner: incluir rango de precio por noche, política de cancelación y fecha límite de reserva por opción.",
 
         contributeTitle: "conTrIbuYe Con AmoR",
-        contributeText1: "Sabemos que venir a una boda destino implica tiempo y esfuerzo, y compartir este día con ustedes ya es el regalo más grande para nosotros. Pero si quieren contribuir con algo adicional, preparamos una lista en Amazon y The Wedding Shop, y también incluimos nuestros datos bancarios (México y UK) para luna de miel o regalos en efectivo.",
+        contributeText1: "Su presencia en nuestra boda es más que suficiente regalo, pero si desean darnos algo, agradeceríamos muchísimo una contribución para nuestra luna de miel soñada.",
         contributeText2: "¡Muchísimas gracias! De verdad significa muchísimo para nosotros.",
         contributeAccountsTitle: "Datos bancarios",
         contributeMxnTitle: "Cuenta mexico (mXn)",
