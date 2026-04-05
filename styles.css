@@ -1350,7 +1350,12 @@ body {
 }
 
 .faq-title::after {
-    display: none;
+    content: 's';
+    display: inline-block;
+    font-size: 0.58em;
+    line-height: 1;
+    margin-left: 0.02em;
+    transform: translateY(0.34em);
 }
 
 .faq-intro {
