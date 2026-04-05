@@ -1564,13 +1564,13 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #fdffff;
+    background-color: #6c7c9d;
     padding: 60px 20px;
     text-align: center;
 }
 
 .footer p {
-    color: #4d638f;
+    color: #fdffff;
     margin-bottom: 10px;
 }
 
@@ -1579,13 +1579,13 @@ body {
     margin: 20px auto;
     height: 120px;
     width: auto;
-    filter: brightness(0) saturate(100%) invert(38%) sepia(18%) saturate(744%) hue-rotate(185deg) brightness(86%) contrast(87%);
+    filter: brightness(0) saturate(100%) invert(100%);
 }
 
 .footer-date {
     font-size: 1.2rem;
     letter-spacing: 2px;
-    color: #6c7c9d;
+    color: #fdffff;
 }
 
 /* Responsive Design */
