@@ -240,7 +240,8 @@ body {
 .details-section::after,
 .counter-section::after,
 .location-section::after,
-.contribute-section::after {
+.contribute-section::after,
+.puebla-section::after {
     /* Light backgrounds -> blue watermark */
     background-color: #4d638f;
 }
@@ -1349,6 +1350,39 @@ body {
     text-rendering: geometricPrecision;
 }
 
+.puebla-section {
+    background-color: #fdffff !important;
+}
+
+.puebla-section h2.puebla-title {
+    font-family: 'Hello Paris', serif;
+    font-size: 5.2rem;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: .82;
+    color: #6c7c9d !important;
+    text-align: center;
+    margin-bottom: 24px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
+}
+
+.puebla-title::after {
+    display: none;
+}
+
+.puebla-intro {
+    font-family: 'Crimson Pro', serif;
+    color: #4d638f;
+    text-align: center;
+    font-size: clamp(1.1rem, 1.9vw, 1.35rem);
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 .faq-intro {
     font-family: 'Crimson Pro', serif;
     color: #eef3ff;
@@ -1830,7 +1864,8 @@ body {
     .location-section h2.location-title,
     .stay-section h2.stay-title,
     .contribute-section h2.contribute-title,
-    .faq-section h2.faq-title {
+    .faq-section h2.faq-title,
+    .puebla-section h2.puebla-title {
         font-size: 3.1rem !important;
         line-height: 1.0 !important;
         transform: none !important;
