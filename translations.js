@@ -134,8 +134,8 @@ const translations = {
         faqA7: "We will be happy to accommodate any food allergies or dietary restrictions. Please let us know by [date] so we can coordinate with the caterer.",
         faqQ8: "what Is weatheR typically lIke at the venue this time of year?",
         faqA8: "In Atlixco, October days are usually around 23 to 24 °C, with the occasional shower. We suggest light layers and maybe a small umbrella or wrap, just in case.",
-        faqQ9: "aRe cHildRen allowEd?",
-        faqA9: "Children are very welcome at our wedding. Please just keep in mind that the venue has a lake and outdoor areas, so it is up to each parent to decide what feels best. If you plan to bring your children, please let us know by [date] so we can plan accordingly.",
+        faqQ9: "a noTe foR ouR youngest guests",
+        faqA9: "We are so happy to celebrate with the little ones named on the invitation. As the venue has a lake and open outdoor areas, we kindly ask parents to keep a close eye on their children throughout the day. Thank you for helping us keep everyone safe and happy.",
         
         galleryTitle: "Our Story",
         
@@ -285,8 +285,8 @@ const translations = {
         faqA7: "Con gusto podemos acomodar dietas especiales o alergias. Avísanos antes del [date] para coordinarlo con el equipo de catering.",
         faqQ8: "¿cómo es el clima en esa temporada?",
         faqA8: "En Atlixco durante octubre, la temperatura máxima promedio está alrededor de 23-24 °C, con lluvia ocasional o llovizna ligera. Recomendamos vestir en capas ligeras y, por si acaso, llevar paraguas o un chal ligero.",
-        faqQ9: "¿se permiten niÑos?",
-        faqA9: "Nos dará mucho gusto recibir niños en nuestra boda, pero tomen en cuenta que el venue tiene lago y áreas exteriores. Traer niños queda a decisión de cada familia, y les pedimos avisarnos antes del [date] para poder organizarnos.",
+        faqQ9: "una noTa paRa nueStRos inviTados más peQueños",
+        faqA9: "Nos hará muchísima ilusión recibir a los niños incluidos en la invitación. Como el venue tiene lago y áreas abiertas al aire libre, les pedimos a sus papás o acompañantes que los mantengan siempre cerquita y supervisados durante el día. Gracias por ayudarnos a que todos estén felices y seguros.",
         
         galleryTitle: "Nuestra Historia",
         
