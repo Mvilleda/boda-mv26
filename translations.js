@@ -114,7 +114,7 @@ const translations = {
         contributeUkSort: "23-01-20",
         contributeUkAccountNo: "57419689",
 
-        faqTitle: "good to know",
+        faqTitle: "good To know",
         faqIntro: "Everything you need to know to enjoy the weekend with us.",
         faqPueblaTitle: "wHat To Do in Puebla",
         faqPueblaText: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
