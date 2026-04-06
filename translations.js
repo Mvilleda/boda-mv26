@@ -116,9 +116,9 @@ const translations = {
 
         faqTitle: "good To know",
         faqIntro: "Everything you need to know to enjoy the weekend with us.",
-        faqPueblaTitle: "wHat To Do in puEbla",
+        faqPueblaTitle: "wHat To Do in Puebla",
         faqPueblaText: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
-            pueblaTitle: "wHat To Do in puEbla",
+            pueblaTitle: "wHat To Do in Puebla",
             pueblaIntro: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
         faqQ1: "what should i weaR?",
         faqA1: "Cocktail or formal attire is perfect. Think elegant, but comfortable enough to dance all night. As the celebration will be outdoors, slim heels may sink into the grass, so block heels or sturdier shoes are a great idea.",
@@ -269,9 +269,9 @@ const translations = {
 
         faqTitle: "bueno saberlo",
         faqIntro: "Todo lo que necesitas saber para disfrutar el fin de semana con nosotros.",
-        faqPueblaTitle: "qué Hacer en puEbla",
+        faqPueblaTitle: "qué Hacer en puebLa",
         faqPueblaText: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",
-            pueblaTitle: "qué Hacer en puEbla",
+            pueblaTitle: "qué Hacer en puebLa",
             pueblaIntro: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",
         faqQ1: "qUé me pOngo?",
         faqA1: "El código ideal es cóctel o formal. Piensa en algo elegante, pero cómodo para bailar toda la noche. Como la celebración será al aire libre, toma en cuenta que, aunque habrá pista, los tacones delgados pueden hundirse en el pasto, así que zapatos más firmes o tacón ancho son gran opción.",
