@@ -292,7 +292,7 @@ const translations = {
         faqQ9: "una noTa paRa nueStRos inviTados más peQueños",
         faqA9: "Nos hará muchísima ilusión recibir a los niños incluidos en la invitación. Como el venue tiene lago y áreas abiertas al aire libre, les pedimos a sus papás o acompañantes que los mantengan siempre cerquita y supervisados durante el día. Gracias por ayudarnos a que todos estén felices y seguros.",
         
-        galleryTitle: "Nuestra Historia",
+        galleryTitle: "nuesTra HistoRia",
         
         rsvpTitle: "Confirmar Asistencia",
         rsvpText: "Por favor, confirma tu asistencia antes del 1 de Mayo, 2026",
