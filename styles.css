@@ -21,8 +21,7 @@
     font-style: normal;
 }
 
-/* Using Allura as temporary replacement for Hello Paris */
-/* When you add HelloParis font file, we'll switch back */
+/* Hello Paris is loaded locally from fonts/HelloParis.ttf */
 
 :root {
     --cream: #fdffff;
@@ -141,7 +140,7 @@ body {
 }
 
 .getting-married {
-    font-family: 'Slight', cursive;
+    font-family: 'Hello Paris', serif;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     color: #fdffff;
     margin: 0;
