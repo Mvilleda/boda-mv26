@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-06T03:41:16.641Z",
+  "generatedAt": "2026-04-06T04:00:10.752Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -16,12 +16,12 @@
     {
       "fullName": "Fernando Ponce Garcia",
       "partyLabel": "Ponce-Valerino Family",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Selene Valerino Perea",
       "partyLabel": "Ponce-Valerino Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Marco Torres Colín",
