@@ -140,7 +140,7 @@ body {
 }
 
 .getting-married {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Slight', cursive;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     color: #fdffff;
     margin: 0;
@@ -890,12 +890,12 @@ body {
 }
 
 .timeline-content h4 {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', serif !important;
     grid-column: 2;
     color: #fdffff;
     margin-bottom: 2px;
     font-size: 2.6rem;
-    font-weight: 400;
+    font-weight: 400 !important;
     line-height: 1;
 }
 
