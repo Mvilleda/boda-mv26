@@ -231,7 +231,7 @@ const translations = {
         locationTravel3Text: "Desde el aeropuerto de <strong>Puebla</strong> puedes tomar Uber directo a <strong>Atlixco</strong>. También puedes rentar coche si llevas licencia vigente.",
         locationFooterNote: "Si necesitas ayuda para planear tu ruta, avísanos. ¡Con gusto te ayudamos!",
 
-        stayTitle: "dÓNDe HospEdaRSe",
+        stayTitle: "dónde HospedarSe",
         stayIntro: "Nuestra planner pronto compartirá opciones recomendadas de hospedaje, incluyendo hoteles y Airbnbs.",
         stayHotelsTitle: "hOTelES",
         stayHotelsText: "Planner: agregar nombre del hotel, distancia al venue, links de reserva y código de grupo.",
