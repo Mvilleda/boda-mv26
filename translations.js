@@ -165,7 +165,7 @@ const translations = {
         storyText3: "La distancia nos puso a prueba. La vida se llenó de cosas, y aun así seguimos eligiéndonos. Cuando por fin cerramos esa distancia y compartimos un hogar, empezó una etapa nueva. Bailamos en la cocina, hicimos tonterías juntos y encontramos algo especial hasta en los días más simples. Hemos crecido lado a lado, soñado en voz alta, y nos hemos hecho mejores con solo estar juntos.",
         storyText4: "Y aquí estamos, listos para darnos el sí frente a las personas que más queremos.",
         storyText5: "Qué alegría que sean parte de esto.",
-        counterTitleLine1: "HemOS eSpeRadO máS de 10 AñoS paRa eSte díA,",
+        counterTitleLine1: "HemOs eSperadO máS de 10 añoS para eSte dIa,",
         counterTitleLine2: "SóLo Falta:",
         counterDays: "Días",
         counterHours: "Horas",
