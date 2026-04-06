@@ -269,9 +269,9 @@ const translations = {
 
         faqTitle: "bueno saberlo",
         faqIntro: "Todo lo que necesitas saber para disfrutar el fin de semana con nosotros.",
-        faqPueblaTitle: "qUé hAceR en Puebla",
+        faqPueblaTitle: "qué Hacer en puebLa",
         faqPueblaText: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",
-            pueblaTitle: "qUé hAceR en Puebla",
+            pueblaTitle: "qué Hacer en puebLa",
             pueblaIntro: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",
         faqQ1: "qUé me pOngo?",
         faqA1: "El código ideal es cóctel o formal. Piensa en algo elegante, pero cómodo para bailar toda la noche. Como la celebración será al aire libre, toma en cuenta que, aunque habrá pista, los tacones delgados pueden hundirse en el pasto, así que zapatos más firmes o tacón ancho son gran opción.",
