@@ -116,9 +116,9 @@ const translations = {
 
         faqTitle: "good To know",
         faqIntro: "Everything you need to know to enjoy the weekend with us.",
-        faqPueblaTitle: "wHat To Do in Puebla",
+        faqPueblaTitle: "wHat To do In puebLa",
         faqPueblaText: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
-            pueblaTitle: "wHat To Do in Puebla",
+            pueblaTitle: "wHat To do In puebLa",
             pueblaIntro: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
         faqQ1: "what should i weaR?",
         faqA1: "Cocktail or formal attire is perfect. Think elegant, but comfortable enough to dance all night. As the celebration will be outdoors, slim heels may sink into the grass, so block heels or sturdier shoes are a great idea.",
