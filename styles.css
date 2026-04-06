@@ -889,14 +889,21 @@ body {
     border: 3px solid #fdffff;
 }
 
-.timeline-content h4 {
+.timeline-content h4.timeline-heading {
     font-family: 'Hello Paris', serif !important;
+    font-style: normal !important;
     grid-column: 2;
     color: #fdffff;
     margin-bottom: 2px;
     font-size: 2.6rem;
     font-weight: 400 !important;
     line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .timeline-content p {
@@ -2004,7 +2011,7 @@ body {
         border-radius: 10px;
     }
 
-    .timeline-content h4 {
+    .timeline-content h4.timeline-heading {
         font-size: 2rem;
     }
 
