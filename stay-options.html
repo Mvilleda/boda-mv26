@@ -3,35 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospedaje · Detalles</title>
+    <title data-translate="stayDetailsPageTitle">Hospedaje · Detalles</title>
     <link rel="stylesheet" href="styles.css?v=20260401f">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&family=Italianno&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="stay-options-page">
+    <div class="language-toggle">
+        <button id="langToggle" onclick="toggleLanguage()">
+            <span id="langIcon">🇬🇧</span>
+            <span id="langText">English</span>
+        </button>
+    </div>
+
     <section class="section stay-options-hero">
         <div class="container">
-            <a class="stay-options-back" href="index.html#stay">← Regresar a la invitación</a>
-            <h1 class="stay-options-title">detalles de hospedaje</h1>
-            <p class="stay-options-intro">Para aplicar códigos o tarifas de boda, primero llamen o envíen WhatsApp directamente al hospedaje.</p>
+            <a class="stay-options-back" href="index.html#stay" data-translate="stayDetailsBackTop">← Regresar a la invitación</a>
+            <h1 class="stay-options-title" data-translate="stayDetailsTitle">detalles de hospedaje</h1>
+            <p class="stay-options-intro" data-translate="stayDetailsIntro">Para aplicar códigos o tarifas de boda, primero llamen o envíen WhatsApp directamente al hospedaje.</p>
         </div>
     </section>
 
-    <section id="cabanas" class="section stay-options-block">
+    <section id="hotel-bv" class="section stay-options-block alt">
         <div class="container">
-            <h2 class="stay-options-subtitle">opción 2 · cabañas la finca #2</h2>
-            <p class="stay-options-meta">18 cabañas · capacidad total 66 personas · código: <strong>VALERIA&MARCOS</strong></p>
+            <h2 class="stay-options-subtitle" data-translate="stayDetailsOption1Title">opción 1 · hotel bv atlixco</h2>
+            <p class="stay-options-meta" data-translate="stayDetailsOption1Meta">Código abierto: BODA VALERIA & MARCOS · vigencia enviada: 23-25 octubre 2026</p>
 
             <div class="stay-options-table-wrap">
                 <table class="stay-options-table">
                     <thead>
                         <tr>
-                            <th>Cabaña</th>
-                            <th>Capacidad / camas</th>
-                            <th>Sábado</th>
-                            <th>Viernes y domingo</th>
-                            <th>Lunes a jueves</th>
+                            <th data-translate="stayDetailsRoomType">Tipo de habitación</th>
+                            <th data-translate="stayDetailsNightRate">Tarifa por noche</th>
+                            <th data-translate="stayDetailsDescription">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-translate="stayDetailsRoom1Type">Sencilla</td><td>$1,400.00</td><td data-translate="stayDetailsRoom1Desc">1 cama Queen Size para 1 o 2 personas</td></tr>
+                        <tr><td data-translate="stayDetailsRoom2Type">Doble</td><td>$1,550.00</td><td data-translate="stayDetailsRoom2Desc">2 camas matrimoniales para 2 personas</td></tr>
+                        <tr><td data-translate="stayDetailsRoom3Type">Triple</td><td>$1,830.00</td><td data-translate="stayDetailsRoom3Desc">2 camas matrimoniales para 3 personas</td></tr>
+                        <tr><td data-translate="stayDetailsRoom4Type">Cuádruple</td><td>$2,110.00</td><td data-translate="stayDetailsRoom4Desc">2 camas matrimoniales para 4 personas</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul class="stay-options-list">
+                <li data-translate="stayDetailsOption1Note1">Tarifas por habitación por noche, con impuestos incluidos.</li>
+                <li data-translate="stayDetailsOption1Note2">Tarifa y habitaciones sujetas a disponibilidad.</li>
+                <li data-translate="stayDetailsOption1Note3">Cortesías: desayuno para personas registradas, aire acondicionado, internet, agua caliente, cable y estacionamiento (sujeto a disponibilidad).</li>
+                <li data-translate="stayDetailsOption1Note4">Check in: 15:00 hrs · Check out: 13:00 hrs.</li>
+                <li data-translate="stayDetailsOption1Note5">Cancelaciones o cambios hasta 24 horas antes de la llegada.</li>
+                <li data-translate="stayDetailsOption1Note6">Para confirmar reservación solicitan tarjeta de garantía.</li>
+            </ul>
+
+            <p class="stay-options-contact" data-translate="stayDetailsOption1Contact">Para aplicar el código y reservar: llamar al 244 446 9200 o WhatsApp 222 671 1758.</p>
+
+            <div class="stay-options-actions">
+                <a class="rsvp-btn ticket-btn-link" href="https://hotelbvatlixco.com/" target="_blank" rel="noopener noreferrer" data-translate="stayDetailsOption1Button">Abrir sitio de Hotel BV Atlixco</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="cabanas" class="section stay-options-block">
+        <div class="container">
+            <h2 class="stay-options-subtitle" data-translate="stayDetailsOption2Title">opción 2 · cabañas la finca #2</h2>
+            <p class="stay-options-meta" data-translate="stayDetailsOption2Meta">18 cabañas · capacidad total 66 personas · código: VALERIA&MARCOS</p>
+
+            <div class="stay-options-table-wrap">
+                <table class="stay-options-table">
+                    <thead>
+                        <tr>
+                            <th data-translate="stayDetailsCabinCol1">Cabaña</th>
+                            <th data-translate="stayDetailsCabinCol2">Capacidad / camas</th>
+                            <th data-translate="stayDetailsCabinCol3">Sábado</th>
+                            <th data-translate="stayDetailsCabinCol4">Viernes y domingo</th>
+                            <th data-translate="stayDetailsCabinCol5">Lunes a jueves</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,76 +105,48 @@
             </div>
 
             <ul class="stay-options-list">
-                <li>Total sábado: <strong>$51,600</strong></li>
-                <li>Total viernes y domingo: <strong>$36,120</strong></li>
-                <li>Total lunes a jueves: <strong>$25,800</strong></li>
-                <li>Sábados festivos, puentes o vacaciones: no aplican promociones.</li>
+                <li data-translate="stayDetailsOption2Note1">Total sábado: $51,600</li>
+                <li data-translate="stayDetailsOption2Note2">Total viernes y domingo: $36,120</li>
+                <li data-translate="stayDetailsOption2Note3">Total lunes a jueves: $25,800</li>
+                <li data-translate="stayDetailsOption2Note4">Sábados festivos, puentes o vacaciones: no aplican promociones.</li>
             </ul>
 
             <div class="stay-options-actions">
-                <a class="rsvp-btn ticket-btn-link" href="https://www.booking.com/hotel/mx/cabanas-la-finca-2.en-gb.html?aid=356930&label=metagha-link-LUGB-hotel-5941771_dev-desktop_los-1_bw-5_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-public_aud-0_gacid-21410411210_mcid-10_ppa-0_clrid-0_ad-1_gstkid-0_checkin-20260412_ppt-_lp-2826_r-10554806981905779782&sid=c7dc4a6777c84835c9d2cb81828254c7&all_sr_blocks=594177115_335414157_2_0_0&checkin=2026-04-12&checkout=2026-04-13&dest_id=5941771&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=594177115_335414157_2_0_0&hpos=1&keep_landing=1&matching_block_id=594177115_335414157_2_0_0&no_rooms=1&req_adults=2&req_children=0&sb_price_type=total&sr_order=popularity&sr_pri_blocks=594177115_335414157_2_0_0__166600&srepoch=1775592098&srpvid=4bad8ccde3231a5f&type=total&ucfs=1&gclid=CjwKCAjw1tLOBhAMEiwAiPkRHngLG8Vv496YVJHu8Ckkd_EE1Zw6S4LSeP0uyEreBRuVRwMCsrPd2xoCALkQAvD_BwE&utm_campaign=GB&utm_content=dev-desktop_los-1_bw-5_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-public_aud-0_gacid-21410411210_mcid-10_ppa-0_clrid-0_ad-1_gstkid-0_checkin-20260412_ppt-&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-5941771&" target="_blank" rel="noopener noreferrer">Abrir Booking de Cabañas</a>
+                <a class="rsvp-btn ticket-btn-link" href="https://www.booking.com/hotel/mx/cabanas-la-finca-2.en-gb.html?aid=356930&label=metagha-link-LUGB-hotel-5941771_dev-desktop_los-1_bw-5_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-public_aud-0_gacid-21410411210_mcid-10_ppa-0_clrid-0_ad-1_gstkid-0_checkin-20260412_ppt-_lp-2826_r-10554806981905779782&sid=c7dc4a6777c84835c9d2cb81828254c7&all_sr_blocks=594177115_335414157_2_0_0&checkin=2026-04-12&checkout=2026-04-13&dest_id=5941771&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=594177115_335414157_2_0_0&hpos=1&keep_landing=1&matching_block_id=594177115_335414157_2_0_0&no_rooms=1&req_adults=2&req_children=0&sb_price_type=total&sr_order=popularity&sr_pri_blocks=594177115_335414157_2_0_0__166600&srepoch=1775592098&srpvid=4bad8ccde3231a5f&type=total&ucfs=1&gclid=CjwKCAjw1tLOBhAMEiwAiPkRHngLG8Vv496YVJHu8Ckkd_EE1Zw6S4LSeP0uyEreBRuVRwMCsrPd2xoCALkQAvD_BwE&utm_campaign=GB&utm_content=dev-desktop_los-1_bw-5_dow-Sunday_defdate-1_room-0_gstadt-2_rateid-public_aud-0_gacid-21410411210_mcid-10_ppa-0_clrid-0_ad-1_gstkid-0_checkin-20260412_ppt-&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-5941771&" target="_blank" rel="noopener noreferrer" data-translate="stayDetailsOption2Button">Abrir Booking de Cabañas</a>
             </div>
         </div>
     </section>
 
-    <section id="hotel-bv" class="section stay-options-block alt">
+    <section id="hotel-option-3" class="section stay-options-block alt">
         <div class="container">
-            <h2 class="stay-options-subtitle">opción 1 · hotel bv atlixco</h2>
-            <p class="stay-options-meta">Código abierto: <strong>BODA VALERIA & MARCOS</strong> · vigencia enviada: 23-25 octubre 2026</p>
-
-            <div class="stay-options-table-wrap">
-                <table class="stay-options-table">
-                    <thead>
-                        <tr>
-                            <th>Tipo de habitación</th>
-                            <th>Tarifa por noche</th>
-                            <th>Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Sencilla</td><td>$1,400.00</td><td>1 cama Queen Size para 1 o 2 personas</td></tr>
-                        <tr><td>Doble</td><td>$1,550.00</td><td>2 camas matrimoniales para 2 personas</td></tr>
-                        <tr><td>Triple</td><td>$1,830.00</td><td>2 camas matrimoniales para 3 personas</td></tr>
-                        <tr><td>Cuádruple</td><td>$2,110.00</td><td>2 camas matrimoniales para 4 personas</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
+            <h2 class="stay-options-subtitle" data-translate="stayDetailsOption3Title">opción 3 · por confirmar</h2>
+            <p class="stay-options-meta" data-translate="stayDetailsOption3Meta">Estamos terminando de confirmar esta opción de hotel. Compartiremos tarifas y código en cuanto esté lista.</p>
             <ul class="stay-options-list">
-                <li>Tarifas por habitación por noche, con impuestos incluidos.</li>
-                <li>Tarifa y habitaciones sujetas a disponibilidad.</li>
-                <li>Cortesías: desayuno para personas registradas, aire acondicionado, internet, agua caliente, cable y estacionamiento (sujeto a disponibilidad).</li>
-                <li>Check in: 15:00 hrs · Check out: 13:00 hrs.</li>
-                <li>Cancelaciones o cambios hasta 24 horas antes de la llegada.</li>
-                <li>Para confirmar reservación solicitan tarjeta de garantía.</li>
+                <li data-translate="stayDetailsOption3Note1">Incluiremos precio por habitación, política de cancelación y método de reserva.</li>
+                <li data-translate="stayDetailsOption3Note2">Si necesitas reservar ya, usa por ahora las opciones 1 o 2.</li>
             </ul>
-
-            <p class="stay-options-contact">
-                Para aplicar el código y reservar: <strong>llamar al 244 446 9200</strong> o <strong>WhatsApp 222 671 1758</strong>.
-            </p>
-
-            <div class="stay-options-actions">
-                <a class="rsvp-btn ticket-btn-link" href="https://hotelbvatlixco.com/" target="_blank" rel="noopener noreferrer">Abrir sitio de Hotel BV Atlixco</a>
-            </div>
         </div>
     </section>
 
     <section id="airbnb" class="section stay-options-block">
         <div class="container">
-            <h2 class="stay-options-subtitle">airbnb · recomendaciones</h2>
+            <h2 class="stay-options-subtitle" data-translate="stayDetailsAirbnbTitle">airbnb · zonas y recomendaciones</h2>
             <ul class="stay-options-list">
-                <li>Busca hospedajes cerca de Atlixco Centro y la zona del venue.</li>
-                <li>Reserva con anticipación para encontrar mejores opciones el fin de semana de la boda.</li>
-                <li>Verifica horario de check-in/check-out y política de cancelación antes de reservar.</li>
-                <li>Si se hospedan en grupo, confirma número de camas reales y estacionamiento.</li>
+                <li data-translate="stayDetailsAirbnbNote1">Busca hospedajes cerca de Atlixco Centro y la zona del venue.</li>
+                <li data-translate="stayDetailsAirbnbNote2">Reserva con anticipación para encontrar mejores opciones el fin de semana de la boda.</li>
+                <li data-translate="stayDetailsAirbnbNote3">Verifica horario de check-in/check-out y política de cancelación antes de reservar.</li>
+                <li data-translate="stayDetailsAirbnbNote4">Si se hospedan en grupo, confirma número de camas reales y estacionamiento.</li>
             </ul>
         </div>
     </section>
 
     <section class="section stay-options-footer">
         <div class="container">
-            <a class="stay-options-back" href="index.html#stay">← Regresar a la invitación</a>
+            <a class="stay-options-back" href="index.html#stay" data-translate="stayDetailsBackBottom">← Regresar a la invitación</a>
         </div>
     </section>
+
+    <script src="translations.js?v=20260407a"></script>
+    <script src="script.js"></script>
 </body>
 </html>

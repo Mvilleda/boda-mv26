@@ -1238,6 +1238,12 @@ body {
     background: #fdffff;
 }
 
+.stay-options-page .language-toggle button {
+    background: #6c7c9d;
+    color: #fdffff;
+    border-color: #fdffff;
+}
+
 .stay-options-hero {
     background: #6c7c9d;
     padding-bottom: 42px;
@@ -1258,9 +1264,14 @@ body {
     font-size: clamp(3.2rem, 6vw, 5.1rem);
     color: #fdffff;
     line-height: .85;
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-style: normal !important;
     text-transform: none;
     margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .stay-options-intro,
@@ -1289,8 +1300,13 @@ body {
     color: #fdffff;
     font-size: clamp(2.4rem, 4.2vw, 3.5rem);
     line-height: .9;
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-style: normal !important;
     margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .stay-options-table-wrap {
@@ -1311,7 +1327,7 @@ body {
     border: 1px solid rgba(253, 255, 255, 0.22);
     padding: 10px 11px;
     text-align: left;
-    color: #f7f9ff;
+    color: #fdffff;
     font-family: 'Crimson Pro', serif;
     font-size: 1.02rem;
 }
