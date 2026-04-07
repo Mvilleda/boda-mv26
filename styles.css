@@ -1227,6 +1227,118 @@ body {
     color: #eef3ff !important;
 }
 
+/* Stay Details Page */
+.stay-options-page {
+    background: #fdffff;
+}
+
+.stay-options-hero {
+    background: #6c7c9d;
+    padding-bottom: 42px;
+}
+
+.stay-options-back {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #f1f5ff;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+}
+
+.stay-options-title {
+    font-family: 'Hello Paris', serif;
+    font-size: clamp(3.2rem, 6vw, 5.1rem);
+    color: #fdffff;
+    line-height: .85;
+    font-weight: 400;
+    text-transform: none;
+    margin-bottom: 10px;
+}
+
+.stay-options-intro,
+.stay-options-meta,
+.stay-options-list li,
+.stay-options-contact {
+    font-family: 'Crimson Pro', serif;
+    color: #eaf0ff;
+    font-size: 1.16rem;
+    line-height: 1.33;
+}
+
+.stay-options-block {
+    background: #6c7c9d;
+    border-top: 1px solid rgba(253, 255, 255, 0.18);
+    padding-top: 24px;
+    padding-bottom: 34px;
+}
+
+.stay-options-block.alt {
+    background: #5f7091;
+}
+
+.stay-options-subtitle {
+    font-family: 'Hello Paris', serif;
+    color: #fdffff;
+    font-size: clamp(2.4rem, 4.2vw, 3.5rem);
+    line-height: .9;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.stay-options-table-wrap {
+    overflow-x: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.stay-options-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+    background: rgba(253, 255, 255, 0.07);
+}
+
+.stay-options-table th,
+.stay-options-table td {
+    border: 1px solid rgba(253, 255, 255, 0.22);
+    padding: 10px 11px;
+    text-align: left;
+    color: #f7f9ff;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.02rem;
+}
+
+.stay-options-table th {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 0.93rem;
+}
+
+.stay-options-list {
+    margin: 10px 0 0;
+    padding-left: 18px;
+}
+
+.stay-options-list li {
+    margin-bottom: 6px;
+}
+
+.stay-options-contact {
+    margin-top: 14px;
+}
+
+.stay-options-actions {
+    margin-top: 16px;
+}
+
+.stay-options-footer {
+    background: #6c7c9d;
+    border-top: 1px solid rgba(253, 255, 255, 0.18);
+}
+
 /* Contribute Section */
 .contribute-section {
     background-color: #fdffff !important;
