@@ -1211,6 +1211,12 @@ body {
     color: #fdffff;
 }
 
+.stay-checklist li a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .stay-note {
     margin-top: 8px;
     text-align: center;
