@@ -1297,7 +1297,7 @@ body {
 
 .stay-options-subtitle {
     font-family: 'Hello Paris', serif;
-    color: #eaf0ff;
+    color: #eaf0ff !important;
     font-size: clamp(2.4rem, 4.2vw, 3.5rem);
     line-height: .9;
     font-weight: 400 !important;
