@@ -1177,6 +1177,16 @@ body {
     margin-bottom: 12px;
 }
 
+.stay-card-text a {
+    color: #fdffff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.stay-card-text a:hover {
+    color: #f2f6ff;
+}
+
 .stay-checklist {
     list-style: none;
     padding: 0;
