@@ -1252,7 +1252,7 @@ body {
 .stay-options-back {
     display: inline-block;
     margin-bottom: 14px;
-    color: #f1f5ff;
+    color: #eaf0ff;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -1262,7 +1262,7 @@ body {
 .stay-options-title {
     font-family: 'Hello Paris', serif;
     font-size: clamp(3.2rem, 6vw, 5.1rem);
-    color: #fdffff;
+    color: #eaf0ff;
     line-height: .85;
     font-weight: 400 !important;
     font-style: normal !important;
@@ -1297,7 +1297,7 @@ body {
 
 .stay-options-subtitle {
     font-family: 'Hello Paris', serif;
-    color: #fdffff;
+    color: #eaf0ff;
     font-size: clamp(2.4rem, 4.2vw, 3.5rem);
     line-height: .9;
     font-weight: 400 !important;
@@ -1327,7 +1327,7 @@ body {
     border: 1px solid rgba(253, 255, 255, 0.22);
     padding: 10px 11px;
     text-align: left;
-    color: #fdffff;
+    color: #eaf0ff;
     font-family: 'Crimson Pro', serif;
     font-size: 1.02rem;
 }
