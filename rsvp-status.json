@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-09T18:22:31.025Z",
+  "generatedAt": "2026-04-09T18:48:46.388Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -86,7 +86,7 @@
     {
       "fullName": "Marcela Bautista Torres",
       "partyLabel": "Familia Torres-Bautista",
-      "status": "yes"
+      "status": "unknown"
     },
     {
       "fullName": "Gael Bautista",
@@ -166,7 +166,7 @@
     {
       "fullName": "Leticia Torres Colín",
       "partyLabel": "Torres Colín",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Karen Leticia Vázquez Torres",
