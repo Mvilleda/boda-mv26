@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-09T23:45:49.134Z",
+  "generatedAt": "2026-04-10T00:24:46.775Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -671,7 +671,7 @@
     {
       "fullName": "Leonor Torres Colín",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Leonor-Torres Colín",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Jesús Islas",
