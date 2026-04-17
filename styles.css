@@ -1348,6 +1348,16 @@ body {
     margin-bottom: 6px;
 }
 
+.stay-options-list a {
+    color: #eaf0ff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.stay-options-list a:hover {
+    color: #fdffff;
+}
+
 .stay-options-contact {
     margin-top: 14px;
 }
