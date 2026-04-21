@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-21T06:39:58.656Z",
+  "generatedAt": "2026-04-21T07:34:57.426Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -246,7 +246,7 @@
     {
       "fullName": "Gabriela Cruz",
       "partyLabel": "Vázquez-Cruz",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Renata Vázquez Cruz",
@@ -451,12 +451,12 @@
     {
       "fullName": "Socorro Toxqui",
       "partyLabel": "Soco & Juan",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Juan Gregorio Blasco",
       "partyLabel": "Soco & Juan",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Valeria Valencia Flores",
