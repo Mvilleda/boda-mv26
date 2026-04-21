@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-21T23:14:42.212Z",
+  "generatedAt": "2026-04-21T23:45:46.490Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -316,12 +316,12 @@
     {
       "fullName": "Patricia Sandoval Martínez",
       "partyLabel": "Familia Vera-Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Carlos Vera",
       "partyLabel": "Familia Vera-Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Iván Vera Sandoval",
