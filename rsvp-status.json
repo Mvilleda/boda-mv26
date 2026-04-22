@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-04-21T23:45:46.490Z",
+  "generatedAt": "2026-04-22T00:26:27.591Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -326,7 +326,7 @@
     {
       "fullName": "Iván Vera Sandoval",
       "partyLabel": "Familia Vera-Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Basiram Narzari",
