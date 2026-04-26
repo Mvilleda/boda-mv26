@@ -1383,6 +1383,10 @@ body {
     background-size: clamp(70px, 8vw, 120px) auto, clamp(70px, 8vw, 120px) auto;
 }
 
+.contribute-section::after {
+    right: clamp(85px, 10vw, 140px);
+}
+
 .contribute-section .container {
     padding-left:  clamp(85px, 10vw, 140px);
     padding-right: clamp(85px, 10vw, 140px);
