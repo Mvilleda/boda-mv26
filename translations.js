@@ -39,7 +39,7 @@ const translations = {
         whenTitle: "wHen",
         whenLine1: "SATURDAY 24 OctobeR 2026",
         whenLine2: "Arrive 4 PM · Ceremony 4:30 PM",
-        whenLine3: "FOLLOWED BY RECEPTION",
+        whenLine3: "RECEPTION TO FOLLOW",
         whereTitle: "wHeRe",
         whereLine1: "Jardín de Cielo",
         whereLine2: "Paraiso Palmira",
