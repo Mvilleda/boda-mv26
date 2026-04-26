@@ -11,6 +11,7 @@
     src: url('fonts/HelloParis.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 
 /* Custom Font - Slight */
@@ -2449,6 +2450,10 @@ body {
     font-weight: 400;
     text-align: center;
     margin-bottom: 20px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 .inspo-modal-images {
     display: flex;
