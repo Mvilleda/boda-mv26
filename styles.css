@@ -1376,8 +1376,8 @@ body {
 .contribute-section {
     background-color: #fdffff !important;
     background-image:
-        url('images/RegistrySectionBlueLeft_260426.png'),
-        url('images/RegistrySectionBlueRight_260426.png');
+        url('images/RegistrySectionBlueLeft_260426_tile.png'),
+        url('images/RegistrySectionBlueRight_260426_tile.png');
     background-position: left top, right top;
     background-repeat: repeat-y, repeat-y;
     background-size: clamp(70px, 8vw, 120px) auto, clamp(70px, 8vw, 120px) auto;
