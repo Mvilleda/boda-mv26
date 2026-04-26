@@ -1552,6 +1552,17 @@ body {
 
 .puebla-section {
     background-color: #fdffff !important;
+    background-image:
+        url('images/RegistrySectionBlueLeft_260426_tile.png'),
+        url('images/RegistrySectionBlueRight_260426_tile.png');
+    background-position: left top, right top;
+    background-repeat: repeat-y, repeat-y;
+    background-size: clamp(70px, 8vw, 120px) auto, clamp(70px, 8vw, 120px) auto;
+}
+
+.puebla-section .container {
+    padding-left: clamp(85px, 10vw, 140px);
+    padding-right: clamp(85px, 10vw, 140px);
 }
 
 .puebla-section h2.puebla-title {
@@ -1596,6 +1607,16 @@ body {
 
 .puebla-intro a:hover {
     color: #2f4b78;
+}
+
+@media (max-width: 540px) {
+    .puebla-section {
+        background-image: none;
+    }
+    .puebla-section .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .faq-intro {
