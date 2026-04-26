@@ -248,7 +248,7 @@ const translations = {
         registryStore1: "Amazon",
         registryStore2: "Target",
         
-        footerText: "We can't wait to celebrate with you!"
+        footerText: "we can'T waIt To ceLebraTe wIth You!"
     },
     es: {
         pageTitle: "Boda de Marcos y Val",

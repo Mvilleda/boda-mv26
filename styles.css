@@ -1748,6 +1748,15 @@ body {
     margin-bottom: 10px;
 }
 
+.footer p[data-translate="footerText"] {
+    font-family: 'Hello Paris', serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
+}
+
 .footer-signature {
     display: block;
     margin: 20px auto;
