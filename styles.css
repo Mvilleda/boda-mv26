@@ -1375,29 +1375,23 @@ body {
 /* Contribute Section */
 .contribute-section {
     background-color: #fdffff !important;
-    overflow: hidden;
+    background-image:
+        url('images/RegistrySectionBlueLeft_260426.png'),
+        url('images/RegistrySectionBlueRight_260426.png');
+    background-position: left top, right top;
+    background-repeat: repeat-y, repeat-y;
+    background-size: clamp(70px, 8vw, 120px) auto, clamp(70px, 8vw, 120px) auto;
 }
-
-.contribute-deco {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: clamp(55px, 6.5vw, 90px);
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-    z-index: 0;
-}
-.contribute-deco-left  { left: 0; }
-.contribute-deco-right { right: 0; }
 
 .contribute-section .container {
-    padding-left:  clamp(70px, 8.5vw, 115px);
-    padding-right: clamp(70px, 8.5vw, 115px);
+    padding-left:  clamp(85px, 10vw, 140px);
+    padding-right: clamp(85px, 10vw, 140px);
 }
 
 @media (max-width: 540px) {
-    .contribute-deco { display: none; }
+    .contribute-section {
+        background-image: none;
+    }
     .contribute-section .container {
         padding-left: 0;
         padding-right: 0;
