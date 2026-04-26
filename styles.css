@@ -1750,6 +1750,7 @@ body {
 
 .footer p[data-translate="footerText"] {
     font-family: 'Hello Paris', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     font-variant-ligatures: none;
