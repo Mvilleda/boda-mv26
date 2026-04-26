@@ -1565,6 +1565,10 @@ body {
     padding-right: clamp(85px, 10vw, 140px);
 }
 
+.puebla-section::after {
+    right: clamp(85px, 10vw, 140px);
+}
+
 .puebla-section h2.puebla-title {
     font-family: 'Hello Paris', serif;
     font-size: 5.2rem;
@@ -1616,6 +1620,9 @@ body {
     .puebla-section .container {
         padding-left: 0;
         padding-right: 0;
+    }
+    .puebla-section::after {
+        right: 14px;
     }
 }
 
