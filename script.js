@@ -209,3 +209,31 @@ function initializeCountdown() {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
+
+// ── Attire Inspo Modal ──
+(function () {
+    const btn = document.getElementById('inspoBtn');
+    const modal = document.getElementById('inspoModal');
+    const closeBtn = document.getElementById('inspoClose');
+    if (!btn || !modal) return;
+
+    btn.addEventListener('click', function () {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+}());
