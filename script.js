@@ -36,6 +36,7 @@ function updateLanguage() {
         'locationTravel2Text',
         'locationTravel3Title',
         'locationTravel3Text',
+        'pueblaAtlixco',
         'pueblaCholula'
     ]);
     
