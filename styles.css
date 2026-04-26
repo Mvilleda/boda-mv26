@@ -2443,12 +2443,14 @@ body {
     color: #4a4a4a;
 }
 .inspo-modal-title {
-    font-family: 'Hello Paris', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
     color: #6c7c9d;
-    font-weight: 400;
+    font-weight: 300;
     text-align: center;
     margin-bottom: 20px;
+    letter-spacing: 0.02em;
 }
 .inspo-modal-images {
     display: flex;
