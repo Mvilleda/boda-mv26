@@ -35,7 +35,8 @@ function updateLanguage() {
         'locationTravel2Title',
         'locationTravel2Text',
         'locationTravel3Title',
-        'locationTravel3Text'
+        'locationTravel3Text',
+        'pueblaCholula'
     ]);
     
     // Update each element with the translated text
