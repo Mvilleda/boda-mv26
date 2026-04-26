@@ -1583,6 +1583,10 @@ body {
     margin: 0 auto;
 }
 
+.puebla-intro + .puebla-intro {
+    margin-top: 16px;
+}
+
 .puebla-intro a {
     color: #3f5f94;
     font-weight: 700;
