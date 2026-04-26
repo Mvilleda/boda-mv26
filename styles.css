@@ -942,7 +942,7 @@ body {
     letter-spacing: 0;
     color: #6c7c9d !important;
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
     -webkit-font-smoothing: antialiased;
     font-variant-ligatures: none;
     font-feature-settings: 'liga' 0, 'clig' 0;
@@ -1073,7 +1073,7 @@ body {
     line-height: .82;
     color: #fdffff !important;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 22px;
     -webkit-font-smoothing: antialiased;
     font-variant-ligatures: none;
     font-feature-settings: 'liga' 0, 'clig' 0;
@@ -1543,7 +1543,7 @@ body {
     line-height: .82;
     color: #fdffff !important;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 22px;
     -webkit-font-smoothing: antialiased;
     font-variant-ligatures: none;
     font-feature-settings: 'liga' 0, 'clig' 0;
@@ -1581,6 +1581,17 @@ body {
     line-height: 1.4;
     max-width: 700px;
     margin: 0 auto;
+}
+
+.puebla-intro a {
+    color: #3f5f94;
+    font-weight: 700;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+}
+
+.puebla-intro a:hover {
+    color: #2f4b78;
 }
 
 .faq-intro {
