@@ -187,9 +187,24 @@ body {
 .ticket-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: url('images/TalaveraInvitacionblue.png') center/cover no-repeat;
-    opacity: 0.2;
+    top: 14px;
+    bottom: 14px;
+    left: 0;
+    width: 88px;
+    background: url('images/TalaveraInvitacionblue.png') left center / auto 100% no-repeat;
+    opacity: 0.16;
+    pointer-events: none;
+}
+
+.ticket-card::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    right: 0;
+    width: 88px;
+    background: url('images/TalaveraInvitacionblue.png') right center / auto 100% no-repeat;
+    opacity: 0.16;
     pointer-events: none;
 }
 
