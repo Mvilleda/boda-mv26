@@ -136,7 +136,23 @@ function renderError(message) {
     root.innerHTML = `<div class="error-box">${escapeHtml(message)}</div>`;
 }
 
-function downloadCard(cardElement, filename) {
+async function ensureTicketFontsLoaded() {
+    if (!document.fonts || typeof document.fonts.load !== 'function') return;
+
+    await Promise.all([
+        document.fonts.load("400 16px 'Hello Paris'"),
+        document.fonts.load("500 16px 'Cinzel'"),
+        document.fonts.load("400 16px 'Crimson Pro'"),
+        document.fonts.ready
+    ]);
+}
+
+async function downloadCard(cardElement, filename) {
+    await ensureTicketFontsLoaded();
+
+    // One more frame ensures browser applies the loaded faces before capture.
+    await new Promise(resolve => requestAnimationFrame(() => resolve()));
+
     html2canvas(cardElement, {
         backgroundColor: '#fdffff',
         scale: 2,
