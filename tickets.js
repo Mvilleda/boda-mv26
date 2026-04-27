@@ -137,39 +137,16 @@ function renderError(message) {
 }
 
 function downloadCard(cardElement, filename) {
-    const exportCard = cardElement.cloneNode(true);
-    const exportActions = exportCard.querySelector('.ticket-actions');
-    if (exportActions) exportActions.remove();
-
-    const qrTarget = exportCard.querySelector('.qr-box');
-    const qrSourceGraphic = cardElement.querySelector('.qr-box canvas, .qr-box img');
-    if (qrTarget) {
-        qrTarget.innerHTML = '';
-        if (qrSourceGraphic) {
-            qrTarget.appendChild(qrSourceGraphic.cloneNode(true));
-        }
-    }
-
-    const exportWrapper = document.createElement('div');
-    exportWrapper.style.position = 'fixed';
-    exportWrapper.style.left = '-99999px';
-    exportWrapper.style.top = '0';
-    exportWrapper.style.width = `${cardElement.offsetWidth || 760}px`;
-    exportWrapper.style.background = '#fdffff';
-    exportWrapper.appendChild(exportCard);
-    document.body.appendChild(exportWrapper);
-
-    html2canvas(exportCard, {
+    html2canvas(cardElement, {
         backgroundColor: '#fdffff',
         scale: 2,
-        useCORS: true
+        useCORS: true,
+        ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
     }).then(canvas => {
         const link = document.createElement('a');
         link.download = filename;
         link.href = canvas.toDataURL('image/png');
         link.click();
-    }).finally(() => {
-        exportWrapper.remove();
     });
 }
 
