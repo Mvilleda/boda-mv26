@@ -160,28 +160,38 @@ async function ensureTicketFontsLoaded() {
 let ticketWatermarkPromise;
 function getTicketWatermarkDataUrl() {
     if (ticketWatermarkPromise) return ticketWatermarkPromise;
-    ticketWatermarkPromise = (async () => {
-        try {
-            const response = await fetch('images/mv-watermark.png', { cache: 'force-cache' });
-            if (!response.ok) return '';
-            const contentType = response.headers.get('content-type') || '';
-            // If the server returned anything other than an image (e.g. an
-            // HTML 404 page), refuse it — using it would inject HTML into
-            // the snapshot and trigger the same failure we are guarding
-            // against.
-            if (!contentType.startsWith('image/')) return '';
-            const blob = await response.blob();
-            return await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(blob);
-            });
-        } catch (_) {
-            return '';
-        }
-    })();
+    ticketWatermarkPromise = fetchImageAsDataUrl('images/mv-watermark.png');
     return ticketWatermarkPromise;
+}
+
+let ticketTileBackgroundsPromise;
+function getTicketTileBackgrounds() {
+    if (ticketTileBackgroundsPromise) return ticketTileBackgroundsPromise;
+    ticketTileBackgroundsPromise = Promise.all([
+        fetchImageAsDataUrl('images/RegistrySectionBlueLeft_260426_tile.png'),
+        fetchImageAsDataUrl('images/RegistrySectionBlueRight_260426_tile.png')
+    ]).then(([left, right]) => ({ left, right }));
+    return ticketTileBackgroundsPromise;
+}
+
+async function fetchImageAsDataUrl(path) {
+    try {
+        const response = await fetch(path, { cache: 'force-cache' });
+        if (!response.ok) return '';
+        const contentType = response.headers.get('content-type') || '';
+        // Refuse anything that is not actually an image (e.g. an HTML 404
+        // page) — using it would poison the snapshot with `data:text/html`.
+        if (!contentType.startsWith('image/')) return '';
+        const blob = await response.blob();
+        return await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        });
+    } catch (_) {
+        return '';
+    }
 }
 
 /**
@@ -229,7 +239,9 @@ function formatError(error) {
     const tag = Object.prototype.toString.call(error);
     if (tag === '[object Event]' || (error && error.target && (error.type || error.isTrusted !== undefined))) {
         const target = error.target || {};
-        const src = target.src ? ': ' + String(target.src).slice(0, 120) : '';
+        const rawSrc = target.currentSrc || target.src || '';
+        const isHtmlPoison = /^data:text\/html/i.test(rawSrc);
+        const src = rawSrc ? ': ' + (isHtmlPoison ? '[HTML 404 page captured as image]' : String(rawSrc).slice(0, 200)) : '';
         const kind = (target.tagName || '').toLowerCase() || 'resource';
         return `image/resource load failed (${kind}${src})`;
     }
@@ -312,12 +324,33 @@ async function downloadCard(cardElement, filename) {
     }
 
     await ensureTicketFontsLoaded();
-    // Make sure the watermark has been resolved (or removed) before we
-    // snapshot — otherwise the cloned img can still reference the network
-    // URL and a slow / failing fetch produces the HTML-404 fallback bug.
+    // Resolve the watermark <img> data URL and the CSS tile background
+    // images BEFORE snapshot. If we do not do this, html-to-image clones
+    // the card and walks every `url(...)` reference itself — and any one
+    // of them returning an HTML 404 page poisons the snapshot with a
+    // `data:text/html` URL that then fails to decode as a PNG.
     await getTicketWatermarkDataUrl();
+    const tiles = await getTicketTileBackgrounds();
     await ensureCardImagesLoaded(cardElement);
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
+
+    // Override the CSS background-image with inline data-URLs while we
+    // snapshot. We restore the original inline value after — the
+    // stylesheet rule still applies for normal viewing.
+    const previousBg = cardElement.style.backgroundImage;
+    const tileLeft = tiles.left;
+    const tileRight = tiles.right;
+    if (tileLeft && tileRight) {
+        cardElement.style.backgroundImage = `url("${tileLeft}"), url("${tileRight}")`;
+    } else if (tileLeft) {
+        cardElement.style.backgroundImage = `url("${tileLeft}")`;
+    } else if (tileRight) {
+        cardElement.style.backgroundImage = `url("${tileRight}")`;
+    } else {
+        // Both fetches failed — strip backgrounds so html-to-image cannot
+        // attempt the network on its own.
+        cardElement.style.backgroundImage = 'none';
+    }
 
     const fontEmbedCSS = await getTicketFontEmbedCSS();
     // Transparent 1×1 PNG. Used as a fallback whenever html-to-image cannot
@@ -351,15 +384,19 @@ async function downloadCard(cardElement, filename) {
     ];
 
     let lastError;
-    for (const options of attempts) {
-        try {
-            const dataUrl = await htmlToImage.toPng(cardElement, options);
-            triggerDownload(dataUrl, filename);
-            return;
-        } catch (error) {
-            lastError = error;
-            console.warn('Ticket export attempt failed, retrying:', error);
+    try {
+        for (const options of attempts) {
+            try {
+                const dataUrl = await htmlToImage.toPng(cardElement, options);
+                triggerDownload(dataUrl, filename);
+                return;
+            } catch (error) {
+                lastError = error;
+                console.warn('Ticket export attempt failed, retrying:', error);
+            }
         }
+    } finally {
+        cardElement.style.backgroundImage = previousBg;
     }
     throw lastError || new Error('Unable to render the ticket image.');
 }
