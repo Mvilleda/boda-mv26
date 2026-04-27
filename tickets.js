@@ -140,11 +140,24 @@ async function ensureTicketFontsLoaded() {
     if (!document.fonts || typeof document.fonts.load !== 'function') return;
 
     await Promise.all([
+        document.fonts.load("400 16px 'HelloParisWeb'"),
         document.fonts.load("400 16px 'Hello Paris'"),
         document.fonts.load("500 16px 'Cinzel'"),
         document.fonts.load("400 16px 'Crimson Pro'"),
         document.fonts.ready
     ]);
+
+    // Retry once if the attendee name face is still unresolved in some browsers.
+    if (typeof document.fonts.check === 'function') {
+        const hasNameFace = document.fonts.check("400 16px 'HelloParisWeb'") || document.fonts.check("400 16px 'Hello Paris'");
+        if (!hasNameFace) {
+            await new Promise(resolve => setTimeout(resolve, 120));
+            await Promise.all([
+                document.fonts.load("400 16px 'HelloParisWeb'"),
+                document.fonts.load("400 16px 'Hello Paris'")
+            ]);
+        }
+    }
 }
 
 async function downloadCard(cardElement, filename) {
@@ -157,6 +170,7 @@ async function downloadCard(cardElement, filename) {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true,
+        foreignObjectRendering: true,
         ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
     }).then(canvas => {
         const link = document.createElement('a');
