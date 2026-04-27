@@ -138,10 +138,6 @@ function renderError(message) {
 
 async function ensureTicketFontsLoaded() {
     if (!document.fonts || typeof document.fonts.load !== 'function') return;
-
-    // Hello Paris is embedded as a base64 data URI in
-    // fonts/hello-paris-inline.css. We force-load every weight/face we use
-    // so document.fonts.ready actually waits for them.
     await Promise.all([
         document.fonts.load("400 16px 'HelloParisWeb'"),
         document.fonts.load("400 48px 'HelloParisWeb'"),
@@ -152,161 +148,53 @@ async function ensureTicketFontsLoaded() {
     await document.fonts.ready;
 }
 
-// Loaded once per page: the base64 string for Hello Paris, extracted from the
-// inline CSS file. We need the raw base64 so we can embed the @font-face
-// inside an SVG (which is rasterised reliably across all browsers) without
-// any external font fetch.
-let helloParisBase64Promise;
-function getHelloParisBase64() {
-    if (helloParisBase64Promise) return helloParisBase64Promise;
-    helloParisBase64Promise = (async () => {
+/**
+ * Returns the embedded `@font-face` CSS for Hello Paris (read straight from
+ * fonts/hello-paris-inline.css, where the TTF is already encoded as base64).
+ * We feed this to html-to-image so the cloned DOM it captures contains the
+ * font inline — no separate fetches, no @font-face quirks, no stylesheet
+ * resolution race conditions.
+ */
+let ticketFontEmbedCssPromise;
+function getTicketFontEmbedCSS() {
+    if (ticketFontEmbedCssPromise) return ticketFontEmbedCssPromise;
+    ticketFontEmbedCssPromise = (async () => {
         try {
             const response = await fetch('fonts/hello-paris-inline.css');
-            const css = await response.text();
-            const match = css.match(/base64,([A-Za-z0-9+/=]+)\)/);
-            return match ? match[1] : null;
+            return await response.text();
         } catch (error) {
-            return null;
+            return '';
         }
     })();
-    return helloParisBase64Promise;
-}
-
-/**
- * Build an SVG that contains the attendee name typed in Hello Paris (font
- * embedded inline as base64). Rasterise it through an <img> element to a
- * PNG data URL. Because the SVG is fully self-contained, the browser is
- * guaranteed to render it with the correct font before producing pixels —
- * regardless of html2canvas, Safari, or any @font-face quirks.
- */
-async function rasteriseAttendeeName(nameEl, scale) {
-    const text = (nameEl.textContent || '').trim();
-    if (!text) return null;
-
-    const styles = getComputedStyle(nameEl);
-    const fontSizePx = parseFloat(styles.fontSize) || 42;
-    const color = styles.color || '#4d638f';
-    const transform = (styles.textTransform || 'none').toLowerCase();
-    const rendered = transform === 'lowercase' ? text.toLowerCase()
-        : transform === 'uppercase' ? text.toUpperCase()
-        : text;
-
-    const base64 = await getHelloParisBase64();
-
-    // Measure roughly so the SVG canvas is large enough.
-    const measure = document.createElement('canvas').getContext('2d');
-    measure.font = `400 ${fontSizePx}px "HelloParisWeb", "Hello Paris", serif`;
-    const metrics = measure.measureText(rendered);
-    const ascent = metrics.actualBoundingBoxAscent || fontSizePx * 0.85;
-    const descent = metrics.actualBoundingBoxDescent || fontSizePx * 0.25;
-    const padding = Math.ceil(fontSizePx * 0.15);
-    const cssWidth = Math.max(1, Math.ceil(metrics.width) + padding * 2);
-    const cssHeight = Math.max(1, Math.ceil(ascent + descent) + padding * 2);
-
-    const escaped = rendered
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-
-    const fontFaceRule = base64
-        ? `@font-face{font-family:'TicketHelloParis';src:url(data:font/ttf;base64,${base64}) format('truetype');font-weight:400;font-style:normal;}`
-        : '';
-    const fontFamily = base64
-        ? "'TicketHelloParis', 'HelloParisWeb', 'Hello Paris', serif"
-        : "'HelloParisWeb', 'Hello Paris', serif";
-
-    const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${cssWidth}" height="${cssHeight}" viewBox="0 0 ${cssWidth} ${cssHeight}">
-  <defs><style type="text/css"><![CDATA[${fontFaceRule}]]></style></defs>
-  <text x="${cssWidth / 2}" y="${padding + ascent}" font-family="${fontFamily}" font-size="${fontSizePx}" fill="${color}" text-anchor="middle" font-weight="400" style="font-kerning:normal;">${escaped}</text>
-</svg>`;
-
-    const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-    const svgUrl = URL.createObjectURL(svgBlob);
-
-    try {
-        const img = await new Promise((resolve, reject) => {
-            const image = new Image();
-            image.onload = () => resolve(image);
-            image.onerror = (err) => reject(err);
-            image.src = svgUrl;
-        });
-
-        const outCanvas = document.createElement('canvas');
-        outCanvas.width = Math.ceil(cssWidth * scale);
-        outCanvas.height = Math.ceil(cssHeight * scale);
-        const outCtx = outCanvas.getContext('2d');
-        outCtx.imageSmoothingEnabled = true;
-        outCtx.imageSmoothingQuality = 'high';
-        outCtx.drawImage(img, 0, 0, outCanvas.width, outCanvas.height);
-
-        return {
-            dataUrl: outCanvas.toDataURL('image/png'),
-            cssWidth,
-            cssHeight
-        };
-    } finally {
-        URL.revokeObjectURL(svgUrl);
-    }
+    return ticketFontEmbedCssPromise;
 }
 
 async function downloadCard(cardElement, filename) {
     await ensureTicketFontsLoaded();
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
-    const nameEl = cardElement.querySelector('.ticket-name');
-    let restoreName = null;
+    const fontEmbedCSS = await getTicketFontEmbedCSS();
 
-    if (nameEl) {
-        let baked = null;
-        try {
-            baked = await rasteriseAttendeeName(nameEl, 3);
-        } catch (error) {
-            baked = null;
+    // html-to-image clones the node, walks the stylesheets, embeds every
+    // referenced font as base64, and then rasterises. Unlike html2canvas,
+    // it actually renders @font-face faithfully — which is why the
+    // attendee name comes out in the correct Hello Paris glyphs.
+    const dataUrl = await htmlToImage.toPng(cardElement, {
+        backgroundColor: '#fdffff',
+        pixelRatio: 2,
+        cacheBust: true,
+        fontEmbedCSS,
+        // Skip the action buttons in the export.
+        filter: (node) => {
+            if (!node || !node.classList) return true;
+            return !node.classList.contains('ticket-actions');
         }
-        if (baked) {
-            const styles = getComputedStyle(nameEl);
-            const placeholder = document.createElement('div');
-            placeholder.className = 'ticket-name ticket-name-baked';
-            placeholder.style.margin = styles.margin;
-            placeholder.style.padding = styles.padding;
-            placeholder.style.textAlign = styles.textAlign || 'center';
-            placeholder.style.lineHeight = '0';
-            const img = document.createElement('img');
-            img.src = baked.dataUrl;
-            img.alt = nameEl.textContent || '';
-            img.style.display = 'inline-block';
-            img.style.width = baked.cssWidth + 'px';
-            img.style.height = baked.cssHeight + 'px';
-            img.style.maxWidth = '100%';
-            img.style.verticalAlign = 'middle';
-            placeholder.appendChild(img);
+    });
 
-            const parent = nameEl.parentNode;
-            parent.insertBefore(placeholder, nameEl);
-            nameEl.style.display = 'none';
-            restoreName = () => {
-                placeholder.remove();
-                nameEl.style.display = '';
-            };
-        }
-    }
-
-    try {
-        const canvas = await html2canvas(cardElement, {
-            backgroundColor: '#fdffff',
-            scale: 2,
-            useCORS: true,
-            ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
-        });
-
-        const link = document.createElement('a');
-        link.download = filename;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    } finally {
-        if (restoreName) restoreName();
-    }
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = dataUrl;
+    link.click();
 }
 
 function copyLink(text) {
