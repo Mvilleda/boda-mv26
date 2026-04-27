@@ -160,8 +160,67 @@ async function ensureTicketFontsLoaded() {
     }
 }
 
+let ticketNameExportFontPromise;
+function ensureTicketNameExportFont() {
+    if (ticketNameExportFontPromise) return ticketNameExportFontPromise;
+
+    ticketNameExportFontPromise = (async () => {
+        if (typeof FontFace !== 'function' || !document.fonts) return;
+
+        const fontUrl = new URL('fonts/HelloParis.ttf', window.location.href).href;
+        const nameFont = new FontFace('TicketNameExport', `url(${fontUrl}) format('truetype')`, {
+            weight: '400',
+            style: 'normal'
+        });
+        const loaded = await nameFont.load();
+        document.fonts.add(loaded);
+        await document.fonts.load("400 16px 'TicketNameExport'");
+    })().catch(() => {
+        // Fallbacks already exist in CSS font stacks.
+    });
+
+    return ticketNameExportFontPromise;
+}
+
+function paintAttendeeName(canvas, cardElement) {
+    const nameEl = cardElement.querySelector('.ticket-name');
+    if (!nameEl) return;
+
+    const cardRect = cardElement.getBoundingClientRect();
+    const nameRect = nameEl.getBoundingClientRect();
+    if (!cardRect.width || !cardRect.height || !nameRect.width) return;
+
+    const styles = getComputedStyle(nameEl);
+    const scaleX = canvas.width / cardRect.width;
+    const scaleY = canvas.height / cardRect.height;
+
+    const x = (nameRect.left - cardRect.left + (nameRect.width / 2)) * scaleX;
+    const yTop = (nameRect.top - cardRect.top) * scaleY;
+    const fontSize = parseFloat(styles.fontSize || '42') * scaleY;
+    const lineHeightRaw = parseFloat(styles.lineHeight || '0');
+    const lineHeight = (lineHeightRaw > 0 ? lineHeightRaw : parseFloat(styles.fontSize || '42') * 0.95) * scaleY;
+    const lines = (nameEl.innerText || nameEl.textContent || '').split('\n').map(line => line.trim()).filter(Boolean);
+    if (!lines.length) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = styles.color || '#4d638f';
+    ctx.font = `${styles.fontStyle || 'normal'} ${styles.fontWeight || '400'} ${fontSize}px "TicketNameExport", "HelloParisWeb", "Hello Paris", serif`;
+
+    lines.forEach((line, index) => {
+        const baseline = yTop + (fontSize * 0.84) + (index * lineHeight);
+        ctx.fillText(line, x, baseline);
+    });
+    ctx.restore();
+}
+
 async function downloadCard(cardElement, filename) {
     await ensureTicketFontsLoaded();
+    await ensureTicketNameExportFont();
 
     // One more frame ensures browser applies the loaded faces before capture.
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
@@ -170,8 +229,9 @@ async function downloadCard(cardElement, filename) {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true,
-        ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
+        ignoreElements: (element) => element.classList && (element.classList.contains('ticket-actions') || element.classList.contains('ticket-name'))
     }).then(canvas => {
+        paintAttendeeName(canvas, cardElement);
         const link = document.createElement('a');
         link.download = filename;
         link.href = canvas.toDataURL('image/png');
