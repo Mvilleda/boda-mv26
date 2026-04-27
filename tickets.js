@@ -170,7 +170,6 @@ async function downloadCard(cardElement, filename) {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true,
-        foreignObjectRendering: true,
         ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
     }).then(canvas => {
         const link = document.createElement('a');
