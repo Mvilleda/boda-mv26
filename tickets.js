@@ -152,22 +152,115 @@ async function ensureTicketFontsLoaded() {
     await document.fonts.ready;
 }
 
+/**
+ * Render the attendee name to an offscreen <canvas> using the FontFace API
+ * (which honours the base64-embedded Hello Paris faces reliably) and return
+ * a data-URL <img>. We swap the live `.ticket-name` heading for this image
+ * during html2canvas capture, so the exported PNG always shows the same
+ * font as the on-screen rendering — regardless of html2canvas's own
+ * custom-font quirks.
+ */
+function rasteriseAttendeeName(nameEl, scale) {
+    const text = (nameEl.textContent || '').trim();
+    if (!text) return null;
+
+    const styles = getComputedStyle(nameEl);
+    const fontSizePx = parseFloat(styles.fontSize) || 42;
+    const lineHeightPx = parseFloat(styles.lineHeight) || (fontSizePx * 0.95);
+    const color = styles.color || '#4d638f';
+    const transform = (styles.textTransform || 'none').toLowerCase();
+    const rendered = transform === 'lowercase' ? text.toLowerCase()
+        : transform === 'uppercase' ? text.toUpperCase()
+        : text;
+
+    // We use the same font stack the page does. Quoting matters because
+    // 'Hello Paris' contains a space.
+    const fontStack = `"HelloParisWeb", "Hello Paris", serif`;
+    const fontShorthand = `400 ${fontSizePx}px ${fontStack}`;
+
+    const measureCanvas = document.createElement('canvas');
+    const measureCtx = measureCanvas.getContext('2d');
+    measureCtx.font = fontShorthand;
+    const metrics = measureCtx.measureText(rendered);
+    const ascent = metrics.actualBoundingBoxAscent || fontSizePx * 0.85;
+    const descent = metrics.actualBoundingBoxDescent || fontSizePx * 0.25;
+    const textWidth = Math.ceil(metrics.width) + 4;
+    const textHeight = Math.ceil(ascent + descent) + 4;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.ceil(textWidth * scale));
+    canvas.height = Math.max(1, Math.ceil(textHeight * scale));
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.font = fontShorthand;
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = color;
+    ctx.fillText(rendered, 2, 2 + ascent);
+
+    return {
+        dataUrl: canvas.toDataURL('image/png'),
+        cssWidth: textWidth,
+        cssHeight: textHeight,
+        lineHeightPx
+    };
+}
+
 async function downloadCard(cardElement, filename) {
     await ensureTicketFontsLoaded();
-    // One more frame so the browser applies the loaded faces before capture.
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
-    const canvas = await html2canvas(cardElement, {
-        backgroundColor: '#fdffff',
-        scale: 2,
-        useCORS: true,
-        ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
-    });
+    const nameEl = cardElement.querySelector('.ticket-name');
+    let restoreName = null;
 
-    const link = document.createElement('a');
-    link.download = filename;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    if (nameEl) {
+        const baked = rasteriseAttendeeName(nameEl, 3);
+        if (baked) {
+            const styles = getComputedStyle(nameEl);
+            const placeholder = document.createElement('div');
+            placeholder.className = 'ticket-name ticket-name-baked';
+            placeholder.style.margin = styles.margin;
+            placeholder.style.padding = styles.padding;
+            placeholder.style.textAlign = styles.textAlign || 'center';
+            placeholder.style.lineHeight = '0';
+            const img = document.createElement('img');
+            img.src = baked.dataUrl;
+            img.alt = nameEl.textContent || '';
+            img.style.display = 'inline-block';
+            img.style.width = baked.cssWidth + 'px';
+            img.style.height = baked.cssHeight + 'px';
+            img.style.maxWidth = '100%';
+            img.style.verticalAlign = 'middle';
+            placeholder.appendChild(img);
+
+            const parent = nameEl.parentNode;
+            const next = nameEl.nextSibling;
+            parent.insertBefore(placeholder, nameEl);
+            nameEl.style.display = 'none';
+            restoreName = () => {
+                placeholder.remove();
+                nameEl.style.display = '';
+                // next is just to keep reference; nothing to do if removed.
+                void next;
+            };
+        }
+    }
+
+    try {
+        const canvas = await html2canvas(cardElement, {
+            backgroundColor: '#fdffff',
+            scale: 2,
+            useCORS: true,
+            ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
+        });
+
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    } finally {
+        if (restoreName) restoreName();
+    }
 }
 
 function copyLink(text) {
