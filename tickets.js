@@ -149,6 +149,42 @@ async function ensureTicketFontsLoaded() {
 }
 
 /**
+ * Pre-fetch the watermark image and convert to a data URL.
+ * Some mobile browsers / cached environments have failed when html-to-image
+ * tries to inline the image during snapshot — they end up fetching an HTML
+ * 404 page and base64-encoding it as `data:text/html;...`, which then fails
+ * to decode as a PNG. Resolving the image up-front guarantees the snapshot
+ * works with what we already have in memory and never depends on the
+ * network state at click time.
+ */
+let ticketWatermarkPromise;
+function getTicketWatermarkDataUrl() {
+    if (ticketWatermarkPromise) return ticketWatermarkPromise;
+    ticketWatermarkPromise = (async () => {
+        try {
+            const response = await fetch('images/mv-watermark.png', { cache: 'force-cache' });
+            if (!response.ok) return '';
+            const contentType = response.headers.get('content-type') || '';
+            // If the server returned anything other than an image (e.g. an
+            // HTML 404 page), refuse it — using it would inject HTML into
+            // the snapshot and trigger the same failure we are guarding
+            // against.
+            if (!contentType.startsWith('image/')) return '';
+            const blob = await response.blob();
+            return await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        } catch (_) {
+            return '';
+        }
+    })();
+    return ticketWatermarkPromise;
+}
+
+/**
  * Returns the embedded `@font-face` CSS for Hello Paris. We try the
  * stylesheets that are already in the DOM first (so this works on
  * `file://` and offline, where `fetch()` is blocked), and only fall back
@@ -276,12 +312,22 @@ async function downloadCard(cardElement, filename) {
     }
 
     await ensureTicketFontsLoaded();
+    // Make sure the watermark has been resolved (or removed) before we
+    // snapshot — otherwise the cloned img can still reference the network
+    // URL and a slow / failing fetch produces the HTML-404 fallback bug.
+    await getTicketWatermarkDataUrl();
     await ensureCardImagesLoaded(cardElement);
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
     const fontEmbedCSS = await getTicketFontEmbedCSS();
+    // Transparent 1×1 PNG. Used as a fallback whenever html-to-image cannot
+    // fetch an image during snapshot — without this it would substitute an
+    // empty data URL or, worse, the HTML body of a 404 response, which
+    // then fails to decode as a PNG and aborts the whole export.
+    const TRANSPARENT_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
     const baseOptions = {
         backgroundColor: '#fdffff',
+        imagePlaceholder: TRANSPARENT_PIXEL,
         // NOTE: cacheBust: true appends a `?<timestamp>` query to every image
         // URL the snapshot encounters. On GitHub Pages with filenames that
         // already contain `&` or other reserved characters, that turned the
@@ -447,13 +493,19 @@ function renderTickets(guests) {
 
     const list = document.getElementById('ticketList');
 
+    // Kick off the watermark fetch once for the whole page; each card waits
+    // on the same Promise. If it succeeds the inline data URL is swapped in;
+    // if it fails the <img> is removed so the snapshot does not encounter
+    // a dangling fetch.
+    const watermarkPromise = getTicketWatermarkDataUrl();
+
     partyMembers.forEach(guest => {
         const ticketUrl = buildTicketUrl(guest);
         const card = document.createElement('article');
         card.className = 'ticket-card';
         card.innerHTML = `
             <div class="ticket-main">
-                <img class="ticket-watermark" src="images/mv-watermark.png" alt="" aria-hidden="true">
+                <img class="ticket-watermark" alt="" aria-hidden="true">
                 <div class="ticket-brand">Marcos & Valeria · 24·10·2026</div>
                 <h2 class="ticket-name">${escapeHtml(guest.fullName || '')}</h2>
                 <p class="ticket-meta"><strong>${tt('venueLabel')}</strong> ${tt('venueValue')}</p>
@@ -470,6 +522,18 @@ function renderTickets(guests) {
             </div>
         `;
         list.appendChild(card);
+
+        // Swap the watermark <img> src to the pre-fetched data URL once it
+        // is ready. If the fetch failed, drop the <img> entirely so the
+        // snapshot has no broken-image placeholder.
+        const watermarkImg = card.querySelector('.ticket-watermark');
+        watermarkPromise.then(dataUrl => {
+            if (dataUrl) {
+                watermarkImg.src = dataUrl;
+            } else if (watermarkImg.parentNode) {
+                watermarkImg.parentNode.removeChild(watermarkImg);
+            }
+        });
 
         const qrNode = card.querySelector(`#qr-${CSS.escape(guest.id)}`);
         new QRCode(qrNode, {
