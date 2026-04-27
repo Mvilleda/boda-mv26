@@ -139,104 +139,35 @@ function renderError(message) {
 async function ensureTicketFontsLoaded() {
     if (!document.fonts || typeof document.fonts.load !== 'function') return;
 
+    // Hello Paris is now embedded as a base64 data URI in
+    // fonts/hello-paris-inline.css, so html2canvas can rasterise it
+    // directly. We just need to make sure the browser has finished
+    // parsing/loading every face used on the ticket before capture.
     await Promise.all([
         document.fonts.load("400 16px 'HelloParisWeb'"),
         document.fonts.load("400 16px 'Hello Paris'"),
         document.fonts.load("500 16px 'Cinzel'"),
-        document.fonts.load("400 16px 'Crimson Pro'"),
-        document.fonts.ready
+        document.fonts.load("400 16px 'Crimson Pro'")
     ]);
-
-    // Retry once if the attendee name face is still unresolved in some browsers.
-    if (typeof document.fonts.check === 'function') {
-        const hasNameFace = document.fonts.check("400 16px 'HelloParisWeb'") || document.fonts.check("400 16px 'Hello Paris'");
-        if (!hasNameFace) {
-            await new Promise(resolve => setTimeout(resolve, 120));
-            await Promise.all([
-                document.fonts.load("400 16px 'HelloParisWeb'"),
-                document.fonts.load("400 16px 'Hello Paris'")
-            ]);
-        }
-    }
-}
-
-let ticketNameExportFontPromise;
-function ensureTicketNameExportFont() {
-    if (ticketNameExportFontPromise) return ticketNameExportFontPromise;
-
-    ticketNameExportFontPromise = (async () => {
-        if (typeof FontFace !== 'function' || !document.fonts) return;
-
-        const fontUrl = new URL('fonts/HelloParis.ttf', window.location.href).href;
-        const nameFont = new FontFace('TicketNameExport', `url(${fontUrl}) format('truetype')`, {
-            weight: '400',
-            style: 'normal'
-        });
-        const loaded = await nameFont.load();
-        document.fonts.add(loaded);
-        await document.fonts.load("400 16px 'TicketNameExport'");
-    })().catch(() => {
-        // Fallbacks already exist in CSS font stacks.
-    });
-
-    return ticketNameExportFontPromise;
-}
-
-function paintAttendeeName(canvas, cardElement) {
-    const nameEl = cardElement.querySelector('.ticket-name');
-    if (!nameEl) return;
-
-    const cardRect = cardElement.getBoundingClientRect();
-    const nameRect = nameEl.getBoundingClientRect();
-    if (!cardRect.width || !cardRect.height || !nameRect.width) return;
-
-    const styles = getComputedStyle(nameEl);
-    const scaleX = canvas.width / cardRect.width;
-    const scaleY = canvas.height / cardRect.height;
-
-    const x = (nameRect.left - cardRect.left + (nameRect.width / 2)) * scaleX;
-    const yTop = (nameRect.top - cardRect.top) * scaleY;
-    const fontSize = parseFloat(styles.fontSize || '42') * scaleY;
-    const lineHeightRaw = parseFloat(styles.lineHeight || '0');
-    const lineHeight = (lineHeightRaw > 0 ? lineHeightRaw : parseFloat(styles.fontSize || '42') * 0.95) * scaleY;
-    const lines = (nameEl.innerText || nameEl.textContent || '').split('\n').map(line => line.trim()).filter(Boolean);
-    if (!lines.length) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    ctx.save();
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = styles.color || '#4d638f';
-    ctx.font = `${styles.fontStyle || 'normal'} ${styles.fontWeight || '400'} ${fontSize}px "TicketNameExport", "HelloParisWeb", "Hello Paris", serif`;
-
-    lines.forEach((line, index) => {
-        const baseline = yTop + (fontSize * 0.84) + (index * lineHeight);
-        ctx.fillText(line, x, baseline);
-    });
-    ctx.restore();
+    await document.fonts.ready;
 }
 
 async function downloadCard(cardElement, filename) {
     await ensureTicketFontsLoaded();
-    await ensureTicketNameExportFont();
-
-    // One more frame ensures browser applies the loaded faces before capture.
+    // One more frame so the browser applies the loaded faces before capture.
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
-    html2canvas(cardElement, {
+    const canvas = await html2canvas(cardElement, {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true,
         ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
-    }).then(canvas => {
-        paintAttendeeName(canvas, cardElement);
-        const link = document.createElement('a');
-        link.download = filename;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
     });
+
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
 }
 
 function copyLink(text) {
