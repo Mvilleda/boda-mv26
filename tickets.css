@@ -175,37 +175,19 @@ body {
     background: var(--ticket-cream);
     border: 1.5px solid rgba(77, 99, 143, 0.3);
     border-radius: 18px;
-    padding: 16px;
+    padding: 16px clamp(84px, 10vw, 118px);
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
     box-shadow: 0 10px 20px rgba(45, 62, 95, 0.1);
     overflow: hidden;
-}
-
-.ticket-card::before {
-    content: '';
-    position: absolute;
-    top: 42px;
-    bottom: 0;
-    left: 0;
-    width: 106px;
-    background: url('images/TalaveraInvitacionblue.png') left center / auto 132% no-repeat;
-    opacity: 0.17;
-    pointer-events: none;
-}
-
-.ticket-card::after {
-    content: '';
-    position: absolute;
-    top: 42px;
-    bottom: 0;
-    right: 0;
-    width: 106px;
-    background: url('images/TalaveraInvitacionblue.png') right center / auto 132% no-repeat;
-    opacity: 0.17;
-    pointer-events: none;
+    background-image:
+        url('images/RegistrySectionBlueLeft_260426_tile.png'),
+        url('images/RegistrySectionBlueRight_260426_tile.png');
+    background-position: left top, right top;
+    background-repeat: repeat-y, repeat-y;
+    background-size: clamp(64px, 8vw, 104px) auto, clamp(64px, 8vw, 104px) auto;
 }
 
 .ticket-main {
@@ -213,7 +195,7 @@ body {
     max-width: 680px;
     width: 100%;
     margin: 0 auto;
-    padding: 12px 86px 4px;
+    padding: 10px 10px 4px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -354,6 +336,7 @@ body {
 
     .ticket-card {
         padding: 12px;
+        background-image: none;
     }
 
     .ticket-main {
