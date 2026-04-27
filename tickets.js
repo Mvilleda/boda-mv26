@@ -139,12 +139,12 @@ function renderError(message) {
 async function ensureTicketFontsLoaded() {
     if (!document.fonts || typeof document.fonts.load !== 'function') return;
 
-    // Hello Paris is now embedded as a base64 data URI in
-    // fonts/hello-paris-inline.css, so html2canvas can rasterise it
-    // directly. We just need to make sure the browser has finished
-    // parsing/loading every face used on the ticket before capture.
+    // Hello Paris is embedded as a base64 data URI in
+    // fonts/hello-paris-inline.css. We force-load every weight/face we use
+    // so document.fonts.ready actually waits for them.
     await Promise.all([
         document.fonts.load("400 16px 'HelloParisWeb'"),
+        document.fonts.load("400 48px 'HelloParisWeb'"),
         document.fonts.load("400 16px 'Hello Paris'"),
         document.fonts.load("500 16px 'Cinzel'"),
         document.fonts.load("400 16px 'Crimson Pro'")
@@ -152,58 +152,102 @@ async function ensureTicketFontsLoaded() {
     await document.fonts.ready;
 }
 
+// Loaded once per page: the base64 string for Hello Paris, extracted from the
+// inline CSS file. We need the raw base64 so we can embed the @font-face
+// inside an SVG (which is rasterised reliably across all browsers) without
+// any external font fetch.
+let helloParisBase64Promise;
+function getHelloParisBase64() {
+    if (helloParisBase64Promise) return helloParisBase64Promise;
+    helloParisBase64Promise = (async () => {
+        try {
+            const response = await fetch('fonts/hello-paris-inline.css');
+            const css = await response.text();
+            const match = css.match(/base64,([A-Za-z0-9+/=]+)\)/);
+            return match ? match[1] : null;
+        } catch (error) {
+            return null;
+        }
+    })();
+    return helloParisBase64Promise;
+}
+
 /**
- * Render the attendee name to an offscreen <canvas> using the FontFace API
- * (which honours the base64-embedded Hello Paris faces reliably) and return
- * a data-URL <img>. We swap the live `.ticket-name` heading for this image
- * during html2canvas capture, so the exported PNG always shows the same
- * font as the on-screen rendering — regardless of html2canvas's own
- * custom-font quirks.
+ * Build an SVG that contains the attendee name typed in Hello Paris (font
+ * embedded inline as base64). Rasterise it through an <img> element to a
+ * PNG data URL. Because the SVG is fully self-contained, the browser is
+ * guaranteed to render it with the correct font before producing pixels —
+ * regardless of html2canvas, Safari, or any @font-face quirks.
  */
-function rasteriseAttendeeName(nameEl, scale) {
+async function rasteriseAttendeeName(nameEl, scale) {
     const text = (nameEl.textContent || '').trim();
     if (!text) return null;
 
     const styles = getComputedStyle(nameEl);
     const fontSizePx = parseFloat(styles.fontSize) || 42;
-    const lineHeightPx = parseFloat(styles.lineHeight) || (fontSizePx * 0.95);
     const color = styles.color || '#4d638f';
     const transform = (styles.textTransform || 'none').toLowerCase();
     const rendered = transform === 'lowercase' ? text.toLowerCase()
         : transform === 'uppercase' ? text.toUpperCase()
         : text;
 
-    // We use the same font stack the page does. Quoting matters because
-    // 'Hello Paris' contains a space.
-    const fontStack = `"HelloParisWeb", "Hello Paris", serif`;
-    const fontShorthand = `400 ${fontSizePx}px ${fontStack}`;
+    const base64 = await getHelloParisBase64();
 
-    const measureCanvas = document.createElement('canvas');
-    const measureCtx = measureCanvas.getContext('2d');
-    measureCtx.font = fontShorthand;
-    const metrics = measureCtx.measureText(rendered);
+    // Measure roughly so the SVG canvas is large enough.
+    const measure = document.createElement('canvas').getContext('2d');
+    measure.font = `400 ${fontSizePx}px "HelloParisWeb", "Hello Paris", serif`;
+    const metrics = measure.measureText(rendered);
     const ascent = metrics.actualBoundingBoxAscent || fontSizePx * 0.85;
     const descent = metrics.actualBoundingBoxDescent || fontSizePx * 0.25;
-    const textWidth = Math.ceil(metrics.width) + 4;
-    const textHeight = Math.ceil(ascent + descent) + 4;
+    const padding = Math.ceil(fontSizePx * 0.15);
+    const cssWidth = Math.max(1, Math.ceil(metrics.width) + padding * 2);
+    const cssHeight = Math.max(1, Math.ceil(ascent + descent) + padding * 2);
 
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.ceil(textWidth * scale));
-    canvas.height = Math.max(1, Math.ceil(textHeight * scale));
-    const ctx = canvas.getContext('2d');
-    ctx.scale(scale, scale);
-    ctx.font = fontShorthand;
-    ctx.textBaseline = 'alphabetic';
-    ctx.textAlign = 'left';
-    ctx.fillStyle = color;
-    ctx.fillText(rendered, 2, 2 + ascent);
+    const escaped = rendered
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 
-    return {
-        dataUrl: canvas.toDataURL('image/png'),
-        cssWidth: textWidth,
-        cssHeight: textHeight,
-        lineHeightPx
-    };
+    const fontFaceRule = base64
+        ? `@font-face{font-family:'TicketHelloParis';src:url(data:font/ttf;base64,${base64}) format('truetype');font-weight:400;font-style:normal;}`
+        : '';
+    const fontFamily = base64
+        ? "'TicketHelloParis', 'HelloParisWeb', 'Hello Paris', serif"
+        : "'HelloParisWeb', 'Hello Paris', serif";
+
+    const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${cssWidth}" height="${cssHeight}" viewBox="0 0 ${cssWidth} ${cssHeight}">
+  <defs><style type="text/css"><![CDATA[${fontFaceRule}]]></style></defs>
+  <text x="${cssWidth / 2}" y="${padding + ascent}" font-family="${fontFamily}" font-size="${fontSizePx}" fill="${color}" text-anchor="middle" font-weight="400" style="font-kerning:normal;">${escaped}</text>
+</svg>`;
+
+    const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+    const svgUrl = URL.createObjectURL(svgBlob);
+
+    try {
+        const img = await new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = (err) => reject(err);
+            image.src = svgUrl;
+        });
+
+        const outCanvas = document.createElement('canvas');
+        outCanvas.width = Math.ceil(cssWidth * scale);
+        outCanvas.height = Math.ceil(cssHeight * scale);
+        const outCtx = outCanvas.getContext('2d');
+        outCtx.imageSmoothingEnabled = true;
+        outCtx.imageSmoothingQuality = 'high';
+        outCtx.drawImage(img, 0, 0, outCanvas.width, outCanvas.height);
+
+        return {
+            dataUrl: outCanvas.toDataURL('image/png'),
+            cssWidth,
+            cssHeight
+        };
+    } finally {
+        URL.revokeObjectURL(svgUrl);
+    }
 }
 
 async function downloadCard(cardElement, filename) {
@@ -214,7 +258,12 @@ async function downloadCard(cardElement, filename) {
     let restoreName = null;
 
     if (nameEl) {
-        const baked = rasteriseAttendeeName(nameEl, 3);
+        let baked = null;
+        try {
+            baked = await rasteriseAttendeeName(nameEl, 3);
+        } catch (error) {
+            baked = null;
+        }
         if (baked) {
             const styles = getComputedStyle(nameEl);
             const placeholder = document.createElement('div');
@@ -234,14 +283,11 @@ async function downloadCard(cardElement, filename) {
             placeholder.appendChild(img);
 
             const parent = nameEl.parentNode;
-            const next = nameEl.nextSibling;
             parent.insertBefore(placeholder, nameEl);
             nameEl.style.display = 'none';
             restoreName = () => {
                 placeholder.remove();
                 nameEl.style.display = '';
-                // next is just to keep reference; nothing to do if removed.
-                void next;
             };
         }
     }
