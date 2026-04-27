@@ -173,18 +173,35 @@ body {
 
 .ticket-card {
     background: var(--ticket-cream);
-    border: 1.5px solid rgba(77, 99, 143, 0.24);
+    border: 1.5px solid rgba(77, 99, 143, 0.3);
     border-radius: 18px;
-    padding: 14px;
+    padding: 16px;
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 132px;
-    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     box-shadow: 0 10px 20px rgba(45, 62, 95, 0.1);
+    overflow: hidden;
+}
+
+.ticket-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('images/TalaveraInvitacionblue.png') center/cover no-repeat;
+    opacity: 0.2;
+    pointer-events: none;
 }
 
 .ticket-main {
     min-width: 0;
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px 86px 4px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .ticket-watermark {
@@ -207,6 +224,7 @@ body {
     font-weight: 500;
     line-height: 1.3;
     margin-bottom: 4px;
+    text-align: center;
 }
 
 .ticket-name {
@@ -229,6 +247,7 @@ body {
     margin: 0;
     font-size: 1rem;
     color: var(--ticket-ink);
+    text-align: center;
 }
 
 .ticket-meta strong {
@@ -241,12 +260,14 @@ body {
     font-size: 0.82rem;
     color: var(--ticket-mid-blue);
     word-break: break-word;
+    text-align: center;
 }
 
 .ticket-use-note {
     margin: 8px 0 0;
     font-size: 0.88rem;
     color: var(--ticket-mid-blue);
+    text-align: center;
 }
 
 .ticket-qr-wrap {
@@ -255,6 +276,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .qr-box {
@@ -271,6 +294,7 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 10px;
+    justify-content: center;
 }
 
 .ticket-btn {
@@ -314,11 +338,11 @@ body {
     }
 
     .ticket-card {
-        grid-template-columns: 1fr;
+        padding: 12px;
     }
 
-    .ticket-qr-wrap {
-        align-items: flex-start;
+    .ticket-main {
+        padding: 10px 20px 2px;
     }
 
     .ticket-watermark {
