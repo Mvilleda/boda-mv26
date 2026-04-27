@@ -358,13 +358,53 @@ async function downloadCard(cardElement, filename) {
     // empty data URL or, worse, the HTML body of a 404 response, which
     // then fails to decode as a PNG and aborts the whole export.
     const TRANSPARENT_PIXEL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
+    // Decode the transparent pixel to a Blob once, so the fetch-shim below
+    // can hand it back as a real Response without re-decoding for every
+    // request that html-to-image issues.
+    const transparentBlob = (() => {
+        const binary = atob(TRANSPARENT_PIXEL.split(',')[1]);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        return new Blob([bytes], { type: 'image/png' });
+    })();
+
+    // ROOT-CAUSE FIX:
+    // html-to-image's internal pipeline calls `fetch()` for every external
+    // resource it finds in the cloned DOM. When the response status is OK
+    // but the body is not actually an image (e.g. a carrier proxy / captive
+    // portal returning an HTML interstitial, a CDN returning a cached HTML
+    // 404 page with a 200 status, or a service worker fallback), it
+    // base64-encodes that HTML body into the `<img>` src — which then fails
+    // to decode and aborts the whole export with the cryptic
+    // `image/resource load failed (img:data:text/html;...)` event.
+    //
+    // We patch `window.fetch` for the duration of the snapshot so any
+    // non-image response is rewritten to a transparent 1×1 PNG. This is
+    // bulletproof regardless of network state.
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = async (input, init) => {
+        try {
+            const response = await originalFetch(input, init);
+            const contentType = (response.headers && response.headers.get('content-type')) || '';
+            if (!response.ok || (contentType && !contentType.startsWith('image/') && !contentType.startsWith('font/') && !contentType.includes('octet-stream'))) {
+                return new Response(transparentBlob, {
+                    status: 200,
+                    headers: { 'Content-Type': 'image/png' }
+                });
+            }
+            return response;
+        } catch (_) {
+            return new Response(transparentBlob, {
+                status: 200,
+                headers: { 'Content-Type': 'image/png' }
+            });
+        }
+    };
+
     const baseOptions = {
         backgroundColor: '#fdffff',
         imagePlaceholder: TRANSPARENT_PIXEL,
-        // NOTE: cacheBust: true appends a `?<timestamp>` query to every image
-        // URL the snapshot encounters. On GitHub Pages with filenames that
-        // already contain `&` or other reserved characters, that turned the
-        // request into a 404 page. Leaving it off keeps the URLs clean.
         // Skip the action buttons in the export.
         filter: (node) => {
             if (!node || !node.classList) return true;
@@ -397,6 +437,7 @@ async function downloadCard(cardElement, filename) {
         }
     } finally {
         cardElement.style.backgroundImage = previousBg;
+        window.fetch = originalFetch;
     }
     throw lastError || new Error('Unable to render the ticket image.');
 }
