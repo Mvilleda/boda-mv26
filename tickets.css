@@ -325,17 +325,26 @@ body {
     }
 
     .ticket-card {
-        padding: 12px;
-        background-image: none;
+        /* Keep the Talavera side columns on mobile, just scale them down
+           so the centred content has enough room. */
+        padding: 14px 56px;
+        background-size: 44px auto, 44px auto;
     }
 
     .ticket-main {
-        padding: 10px 20px 2px;
+        padding: 8px 4px 2px;
     }
 
     .ticket-watermark {
         width: 108px;
         top: 50px;
         opacity: 0.1;
+    }
+}
+
+@media (max-width: 380px) {
+    .ticket-card {
+        padding: 12px 44px;
+        background-size: 34px auto, 34px auto;
     }
 }

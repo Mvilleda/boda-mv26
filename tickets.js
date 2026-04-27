@@ -169,6 +169,56 @@ function getTicketFontEmbedCSS() {
     return ticketFontEmbedCssPromise;
 }
 
+function dataUrlToBlob(dataUrl) {
+    const [header, base64] = dataUrl.split(',');
+    const mimeMatch = header.match(/data:([^;]+)/);
+    const mime = mimeMatch ? mimeMatch[1] : 'image/png';
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new Blob([bytes], { type: mime });
+}
+
+function triggerDownload(dataUrl, filename) {
+    const isIOS = /iPad|iPhone|iPod/i.test(navigator.userAgent) && !window.MSStream;
+
+    // iOS Safari blocks programmatic downloads of large data URLs. Open the
+    // image in a new tab so the user can long-press → "Save image".
+    if (isIOS) {
+        const blob = dataUrlToBlob(dataUrl);
+        const blobUrl = URL.createObjectURL(blob);
+        const win = window.open(blobUrl, '_blank');
+        if (!win) {
+            // Pop-up blocked — fall back to navigating the same tab.
+            window.location.href = blobUrl;
+        }
+        // Revoke later so the new tab has time to load.
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+        return;
+    }
+
+    // Other mobile browsers (Android Chrome) and desktop: blob URL + anchor
+    // is the most compatible path.
+    try {
+        const blob = dataUrlToBlob(dataUrl);
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 4000);
+    } catch (error) {
+        // Last-resort fallback to the original data URL.
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = dataUrl;
+        link.click();
+    }
+}
+
 async function downloadCard(cardElement, filename) {
     await ensureTicketFontsLoaded();
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
@@ -191,10 +241,7 @@ async function downloadCard(cardElement, filename) {
         }
     });
 
-    const link = document.createElement('a');
-    link.download = filename;
-    link.href = dataUrl;
-    link.click();
+    triggerDownload(dataUrl, filename);
 }
 
 function copyLink(text) {
