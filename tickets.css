@@ -187,7 +187,7 @@ body {
 .ticket-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 42px;
     bottom: 0;
     left: 0;
     width: 106px;
@@ -199,7 +199,7 @@ body {
 .ticket-card::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: 42px;
     bottom: 0;
     right: 0;
     width: 106px;
