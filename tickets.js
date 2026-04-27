@@ -188,13 +188,36 @@ function getTicketFontEmbedCSS() {
 function formatError(error) {
     if (!error) return 'Unknown error';
     if (typeof error === 'string') return error;
-    if (error instanceof Event) {
+    // Cross-realm safe Event detection (instanceof can fail when the Event
+    // originates inside an iframe / different context).
+    const tag = Object.prototype.toString.call(error);
+    if (tag === '[object Event]' || (error && error.target && (error.type || error.isTrusted !== undefined))) {
         const target = error.target || {};
-        const src = target.src ? ': ' + String(target.src).slice(0, 80) : '';
-        return `image load failed (${target.tagName || 'resource'}${src})`;
+        const src = target.src ? ': ' + String(target.src).slice(0, 120) : '';
+        const kind = (target.tagName || '').toLowerCase() || 'resource';
+        return `image/resource load failed (${kind}${src})`;
     }
     if (error.message) return error.message;
-    try { return JSON.stringify(error); } catch (_) { return String(error); }
+    if (error.toString && error.toString !== Object.prototype.toString) {
+        const s = error.toString();
+        if (s && s !== '[object Object]') return s;
+    }
+    try { return JSON.stringify(error); } catch (_) { return tag; }
+}
+
+// Wait until every <img> inside the card has finished loading (or failed),
+// so html-to-image never hits a half-loaded image and rejects with an Event.
+function ensureCardImagesLoaded(root) {
+    const imgs = Array.from(root.querySelectorAll('img'));
+    return Promise.all(imgs.map(img => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise(resolve => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+            // Safety timeout in case the image is wedged.
+            setTimeout(resolve, 4000);
+        });
+    }));
 }
 
 function dataUrlToBlob(dataUrl) {
@@ -253,12 +276,16 @@ async function downloadCard(cardElement, filename) {
     }
 
     await ensureTicketFontsLoaded();
+    await ensureCardImagesLoaded(cardElement);
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
     const fontEmbedCSS = await getTicketFontEmbedCSS();
     const baseOptions = {
         backgroundColor: '#fdffff',
-        cacheBust: true,
+        // NOTE: cacheBust: true appends a `?<timestamp>` query to every image
+        // URL the snapshot encounters. On GitHub Pages with filenames that
+        // already contain `&` or other reserved characters, that turned the
+        // request into a 404 page. Leaving it off keeps the URLs clean.
         // Skip the action buttons in the export.
         filter: (node) => {
             if (!node || !node.classList) return true;
