@@ -185,6 +185,18 @@ function getTicketFontEmbedCSS() {
     return ticketFontEmbedCssPromise;
 }
 
+function formatError(error) {
+    if (!error) return 'Unknown error';
+    if (typeof error === 'string') return error;
+    if (error instanceof Event) {
+        const target = error.target || {};
+        const src = target.src ? ': ' + String(target.src).slice(0, 80) : '';
+        return `image load failed (${target.tagName || 'resource'}${src})`;
+    }
+    if (error.message) return error.message;
+    try { return JSON.stringify(error); } catch (_) { return String(error); }
+}
+
 function dataUrlToBlob(dataUrl) {
     const [header, base64] = dataUrl.split(',');
     const mimeMatch = header.match(/data:([^;]+)/);
@@ -244,13 +256,8 @@ async function downloadCard(cardElement, filename) {
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
     const fontEmbedCSS = await getTicketFontEmbedCSS();
-
-    // html-to-image clones the node, walks the stylesheets, embeds every
-    // referenced font as base64, and then rasterises. Unlike html2canvas,
-    // it actually renders @font-face faithfully.
-    const options = {
+    const baseOptions = {
         backgroundColor: '#fdffff',
-        pixelRatio: 2,
         cacheBust: true,
         // Skip the action buttons in the export.
         filter: (node) => {
@@ -258,17 +265,30 @@ async function downloadCard(cardElement, filename) {
             return !node.classList.contains('ticket-actions');
         }
     };
-    if (fontEmbedCSS) {
-        options.fontEmbedCSS = fontEmbedCSS;
-    } else {
-        // Without our embedded CSS we'd rather skip the (cross-origin)
-        // font fetches than fail entirely; the live page already has the
-        // correct font loaded so html-to-image's snapshot will be okay.
-        options.skipFonts = true;
-    }
 
-    const dataUrl = await htmlToImage.toPng(cardElement, options);
-    triggerDownload(dataUrl, filename);
+    // Strategy 1 (best quality): pixelRatio 2 with the embedded font CSS.
+    // Strategy 2 (mobile-safe fallback): skip the embedded fonts and drop
+    //   pixelRatio to 1.5. iOS Safari has a hard limit on the size of an
+    //   inline SVG inside a `<foreignObject>`; when the base64 font CSS is
+    //   present the snapshot can blow past that limit and the internal
+    //   image load rejects with an Event (which surfaces as "object Event").
+    const attempts = [
+        { ...baseOptions, pixelRatio: 2, ...(fontEmbedCSS ? { fontEmbedCSS } : { skipFonts: true }) },
+        { ...baseOptions, pixelRatio: 1.5, skipFonts: true }
+    ];
+
+    let lastError;
+    for (const options of attempts) {
+        try {
+            const dataUrl = await htmlToImage.toPng(cardElement, options);
+            triggerDownload(dataUrl, filename);
+            return;
+        } catch (error) {
+            lastError = error;
+            console.warn('Ticket export attempt failed, retrying:', error);
+        }
+    }
+    throw lastError || new Error('Unable to render the ticket image.');
 }
 
 function copyLink(text) {
@@ -441,7 +461,7 @@ function renderTickets(guests) {
                 await downloadCard(card, `${guest.id}-ticket.png`);
             } catch (error) {
                 console.error('Ticket download failed:', error);
-                alert('Download failed: ' + (error && error.message ? error.message : error));
+                alert('Download failed: ' + formatError(error));
             } finally {
                 btn.disabled = false;
                 btn.textContent = originalLabel;
