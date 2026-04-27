@@ -149,16 +149,32 @@ async function ensureTicketFontsLoaded() {
 }
 
 /**
- * Returns the embedded `@font-face` CSS for Hello Paris (read straight from
- * fonts/hello-paris-inline.css, where the TTF is already encoded as base64).
- * We feed this to html-to-image so the cloned DOM it captures contains the
- * font inline — no separate fetches, no @font-face quirks, no stylesheet
- * resolution race conditions.
+ * Returns the embedded `@font-face` CSS for Hello Paris. We try the
+ * stylesheets that are already in the DOM first (so this works on
+ * `file://` and offline, where `fetch()` is blocked), and only fall back
+ * to `fetch()` if that's not possible.
  */
 let ticketFontEmbedCssPromise;
 function getTicketFontEmbedCSS() {
     if (ticketFontEmbedCssPromise) return ticketFontEmbedCssPromise;
     ticketFontEmbedCssPromise = (async () => {
+        // 1. Walk the live stylesheets and collect every @font-face rule
+        //    that mentions Hello Paris. This works without any network.
+        const collected = [];
+        for (const sheet of Array.from(document.styleSheets)) {
+            let rules;
+            try { rules = sheet.cssRules; } catch (e) { continue; }
+            if (!rules) continue;
+            for (const rule of Array.from(rules)) {
+                if (rule.type === CSSRule.FONT_FACE_RULE) {
+                    const text = rule.cssText || '';
+                    if (/Hello\s*Paris/i.test(text)) collected.push(text);
+                }
+            }
+        }
+        if (collected.length) return collected.join('\n');
+
+        // 2. Fallback: try fetching the inline-base64 file directly.
         try {
             const response = await fetch('fonts/hello-paris-inline.css');
             return await response.text();
@@ -220,6 +236,10 @@ function triggerDownload(dataUrl, filename) {
 }
 
 async function downloadCard(cardElement, filename) {
+    if (typeof htmlToImage === 'undefined' || !htmlToImage.toPng) {
+        throw new Error('Image library not loaded. Check your internet connection and try again.');
+    }
+
     await ensureTicketFontsLoaded();
     await new Promise(resolve => requestAnimationFrame(() => resolve()));
 
@@ -227,20 +247,27 @@ async function downloadCard(cardElement, filename) {
 
     // html-to-image clones the node, walks the stylesheets, embeds every
     // referenced font as base64, and then rasterises. Unlike html2canvas,
-    // it actually renders @font-face faithfully — which is why the
-    // attendee name comes out in the correct Hello Paris glyphs.
-    const dataUrl = await htmlToImage.toPng(cardElement, {
+    // it actually renders @font-face faithfully.
+    const options = {
         backgroundColor: '#fdffff',
         pixelRatio: 2,
         cacheBust: true,
-        fontEmbedCSS,
         // Skip the action buttons in the export.
         filter: (node) => {
             if (!node || !node.classList) return true;
             return !node.classList.contains('ticket-actions');
         }
-    });
+    };
+    if (fontEmbedCSS) {
+        options.fontEmbedCSS = fontEmbedCSS;
+    } else {
+        // Without our embedded CSS we'd rather skip the (cross-origin)
+        // font fetches than fail entirely; the live page already has the
+        // correct font loaded so html-to-image's snapshot will be okay.
+        options.skipFonts = true;
+    }
 
+    const dataUrl = await htmlToImage.toPng(cardElement, options);
     triggerDownload(dataUrl, filename);
 }
 
@@ -405,8 +432,20 @@ function renderTickets(guests) {
             correctLevel: QRCode.CorrectLevel.M
         });
 
-        card.querySelector('.js-download').addEventListener('click', () => {
-            downloadCard(card, `${guest.id}-ticket.png`);
+        card.querySelector('.js-download').addEventListener('click', async (event) => {
+            const btn = event.currentTarget;
+            const originalLabel = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '…';
+            try {
+                await downloadCard(card, `${guest.id}-ticket.png`);
+            } catch (error) {
+                console.error('Ticket download failed:', error);
+                alert('Download failed: ' + (error && error.message ? error.message : error));
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalLabel;
+            }
         });
 
         card.querySelector('.js-copy').addEventListener('click', () => {
