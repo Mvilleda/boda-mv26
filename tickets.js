@@ -30,10 +30,10 @@ const ticketTranslations = {
         unknownError: 'Unable to load tickets.'
     },
     es: {
-        pageTitle: 'digital tIckets | Marcos & Valeria',
-        headerTitle: 'digital tIckets',
+        pageTitle: 'boletos digitales | Marcos & Valeria',
+        headerTitle: 'boletos digitales',
         headerSubtitle: 'Escribe tu nombre y apellido para abrir los boletos de tu grupo.',
-        lookupTitle: 'digital tIckets',
+        lookupTitle: 'boletos digitales',
         lookupText: 'Escribe tu nombre y apellido exactamente como aparecen en la lista.',
         firstNameLabel: 'Nombre',
         lastNameLabel: 'Apellido',
@@ -41,7 +41,7 @@ const ticketTranslations = {
         lookupHelp: 'Si tienes problemas para acceder a tus boletos, contáctanos directamente.',
         notFoundMessage: 'No encontramos ese nombre. Revisa la ortografía e inténtalo de nuevo.',
         multipleMessage: 'Encontramos varias coincidencias. Elige tu nombre abajo.',
-        needAnotherTitle: 'digital tIckets',
+        needAnotherTitle: 'boletos digitales',
         needAnotherText: 'Busca por nombre para abrir otro grupo.',
         findByName: 'Buscar por nombre',
         notice: 'Cada invitado tiene un boleto individual. Descarga solo quienes asistirán.',
@@ -387,7 +387,14 @@ async function downloadCard(cardElement, filename) {
         try {
             const response = await originalFetch(input, init);
             const contentType = (response.headers && response.headers.get('content-type')) || '';
-            if (!response.ok || (contentType && !contentType.startsWith('image/') && !contentType.startsWith('font/') && !contentType.includes('octet-stream'))) {
+            // Only coerce when the response is clearly broken or is an HTML
+            // body where an image was expected. Allow CSS / font / JS /
+            // octet-stream / empty content-type through untouched so that
+            // Google Fonts (Cinzel, Crimson Pro) can still be inlined and
+            // any other legitimate non-image asset reaches html-to-image
+            // intact.
+            const isHtmlPoison = /^text\/html/i.test(contentType);
+            if (!response.ok || isHtmlPoison) {
                 return new Response(transparentBlob, {
                     status: 200,
                     headers: { 'Content-Type': 'image/png' }
