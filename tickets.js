@@ -20,6 +20,7 @@ const ticketTranslations = {
         accessLabel: 'Access:',
         accessValue: '1 ticket = 1 guest',
         ticketId: 'Ticket ID:',
+        ticketUseNote: 'Present this QR code at the entrance. This ticket is personal and non-transferable.',
         downloadButton: 'Download ticket',
         copyButton: 'Copy ticket link',
         noData: 'No guest list loaded yet.',
@@ -49,6 +50,7 @@ const ticketTranslations = {
         accessLabel: 'Acceso:',
         accessValue: '1 boleto = 1 invitado',
         ticketId: 'ID del boleto:',
+        ticketUseNote: 'Presenta este codigo QR en el acceso. Este boleto es personal e intransferible.',
         downloadButton: 'Descargar boleto',
         copyButton: 'Copiar enlace del boleto',
         noData: 'Aún no se cargó la lista de invitados.',
@@ -135,7 +137,29 @@ function renderError(message) {
 }
 
 function downloadCard(cardElement, filename) {
-    html2canvas(cardElement, {
+    const exportCard = cardElement.cloneNode(true);
+    const exportActions = exportCard.querySelector('.ticket-actions');
+    if (exportActions) exportActions.remove();
+
+    const qrTarget = exportCard.querySelector('.qr-box');
+    const qrSourceGraphic = cardElement.querySelector('.qr-box canvas, .qr-box img');
+    if (qrTarget) {
+        qrTarget.innerHTML = '';
+        if (qrSourceGraphic) {
+            qrTarget.appendChild(qrSourceGraphic.cloneNode(true));
+        }
+    }
+
+    const exportWrapper = document.createElement('div');
+    exportWrapper.style.position = 'fixed';
+    exportWrapper.style.left = '-99999px';
+    exportWrapper.style.top = '0';
+    exportWrapper.style.width = `${cardElement.offsetWidth || 760}px`;
+    exportWrapper.style.background = '#fdffff';
+    exportWrapper.appendChild(exportCard);
+    document.body.appendChild(exportWrapper);
+
+    html2canvas(exportCard, {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true
@@ -144,6 +168,8 @@ function downloadCard(cardElement, filename) {
         link.download = filename;
         link.href = canvas.toDataURL('image/png');
         link.click();
+    }).finally(() => {
+        exportWrapper.remove();
     });
 }
 
@@ -288,6 +314,7 @@ function renderTickets(guests) {
                 <p class="ticket-meta"><strong>${tt('venueLabel')}</strong> ${tt('venueValue')}</p>
                 <p class="ticket-meta"><strong>${tt('accessLabel')}</strong> ${tt('accessValue')}</p>
                 <div class="ticket-id">${tt('ticketId')} ${escapeHtml(guest.id)}</div>
+                <p class="ticket-use-note">${tt('ticketUseNote')}</p>
                 <div class="ticket-actions">
                     <button class="ticket-btn js-download">${tt('downloadButton')}</button>
                     <button class="ticket-btn js-copy">${tt('copyButton')}</button>

@@ -243,6 +243,12 @@ body {
     word-break: break-word;
 }
 
+.ticket-use-note {
+    margin: 8px 0 0;
+    font-size: 0.88rem;
+    color: var(--ticket-mid-blue);
+}
+
 .ticket-qr-wrap {
     display: flex;
     flex-direction: column;
