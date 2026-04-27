@@ -229,7 +229,7 @@ async function downloadCard(cardElement, filename) {
         backgroundColor: '#fdffff',
         scale: 2,
         useCORS: true,
-        ignoreElements: (element) => element.classList && (element.classList.contains('ticket-actions') || element.classList.contains('ticket-name'))
+        ignoreElements: (element) => element.classList && element.classList.contains('ticket-actions')
     }).then(canvas => {
         paintAttendeeName(canvas, cardElement);
         const link = document.createElement('a');
