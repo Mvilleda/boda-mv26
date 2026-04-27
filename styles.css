@@ -2602,6 +2602,9 @@ body {
     border-radius: 8px;
     display: block;
 }
+.modal-image + .modal-image {
+    margin-top: 14px;
+}
 @media (max-width: 768px) {
     .modal-content {
         padding: 20px 16px;
