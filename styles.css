@@ -1394,11 +1394,11 @@ body {
 
 @media (max-width: 540px) {
     .contribute-section {
-        background-image: none;
+        background-size: 38px auto, 38px auto;
     }
     .contribute-section .container {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 46px;
+        padding-right: 46px;
     }
 }
 
@@ -1615,14 +1615,14 @@ body {
 
 @media (max-width: 540px) {
     .puebla-section {
-        background-image: none;
+        background-size: 38px auto, 38px auto;
     }
     .puebla-section .container {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 46px;
+        padding-right: 46px;
     }
     .puebla-section::after {
-        right: 14px;
+        right: 52px;
     }
 }
 
