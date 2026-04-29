@@ -1316,6 +1316,17 @@ body {
     padding-bottom: 34px;
 }
 
+.stay-options-page .stay-options-block,
+.stay-options-page .stay-options-block.alt {
+    background: #fdffff;
+}
+
+.stay-options-page .section:nth-child(even) h2,
+.stay-options-page .stay-options-block h2,
+.stay-options-page .stay-options-block p {
+    color: #6c7c9d;
+}
+
 .stay-options-block.alt {
     background: #fdffff;
 }
