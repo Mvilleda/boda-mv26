@@ -829,6 +829,19 @@ body {
     background-color: #fdffff;
 }
 
+.timeline-venue-note {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    color: #fdffff;
+    text-align: center;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    line-height: 1.4;
+    max-width: 640px;
+    margin: 48px auto 0;
+    opacity: 0.92;
+    letter-spacing: 0.02em;
+}
+
 .timeline-item {
     display: grid;
     grid-template-columns: 100px minmax(0, 1fr);
