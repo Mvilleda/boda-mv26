@@ -2494,6 +2494,7 @@ body {
     background: #6c7c9d;
     color: #fdffff;
 }
+a.inspo-btn { text-decoration: none; display: inline-block; }
 
 /* ── Attire Inspo Modal ── */
 .inspo-modal {
