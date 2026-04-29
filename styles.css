@@ -1293,9 +1293,20 @@ body {
 .stay-options-list li,
 .stay-options-contact {
     font-family: 'Crimson Pro', serif;
-    color: #eaf0ff;
-    font-size: 1.16rem;
-    line-height: 1.33;
+    color: #fdffff;
+    font-size: 1.22rem;
+    line-height: 1.45;
+}
+
+.stay-options-list li {
+    color: #fdffff;
+}
+
+.stay-options-list a {
+    color: #fdffff !important;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
 }
 
 .stay-options-block {
@@ -1359,17 +1370,12 @@ body {
 }
 
 .stay-options-list li {
-    margin-bottom: 6px;
-}
-
-.stay-options-list a {
-    color: #eaf0ff;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    margin-bottom: 8px;
 }
 
 .stay-options-list a:hover {
     color: #fdffff;
+    opacity: 0.85;
 }
 
 .stay-options-contact {
