@@ -74,13 +74,13 @@ const translations = {
 
         locationTitle: "gettIng TheRe",
         locationIntro: "Our wedding will take place in <strong>Atlixco, Puebla</strong>, about 2 hours from <strong>Mexico City</strong>.\nHere's how to get there:",
-        locationLeftTitle: "ALREADY IN <strong>PUEBLA CITY</strong>?",
+        locationLeftTitle: "ALREADY IN PUEBLA CITY?",
         locationLeftText: "You can take a local bus from CAPU station. Look for the ORO line. They leave every 30 minutes and tickets are around $45 MXN. Uber is also a great option if you prefer a direct ride.",
         locationTravel1Title: "FLYING IN",
         locationTravel1Text: "Most of you will fly into <strong>Mexico City</strong> (MEX) or <strong>Puebla</strong> (PBC). If you're coming from Cancún, you can fly directly to <strong>Puebla</strong>!",
-        locationTravel2Title: "FROM <strong>MEXICO CITY</strong> (MEX)",
+        locationTravel2Title: "FROM MEXICO CITY (MEX)",
         locationTravel2Text: "The easiest route is to take the bus from the airport’s Terminal 2. You can book with <a href=\"https://www.ado.com.mx\" target=\"_blank\" rel=\"noopener noreferrer\">ADO</a> or <a href=\"https://www.estrellaroja.com.mx\" target=\"_blank\" rel=\"noopener noreferrer\">Estrella Roja</a>. Get off at Paseo Destino, then take an Uber to <strong>Atlixco</strong>.",
-        locationTravel3Title: "FROM <strong>PUEBLA</strong> AIRPORT (PBC)",
+        locationTravel3Title: "FROM PUEBLA AIRPORT (PBC)",
         locationTravel3Text: "From <strong>Puebla</strong> airport, you can Uber directly to <strong>Atlixco</strong>. Renting a car is also an option if you bring a valid license.",
         locationFooterNote: "If you need help planning your route, let us know. We are happy to help!",
 
@@ -334,13 +334,13 @@ const translations = {
 
         locationTitle: "cómo llegaR",
         locationIntro: "Nuestra boda será en <strong>Atlixco, Puebla</strong>, a unas 2 horas de <strong>Ciudad de México</strong>. Aquí te dejamos cómo llegar:",
-        locationLeftTitle: "¿YA ESTÁS EN <strong>PUEBLA</strong> CAPITAL?",
+        locationLeftTitle: "¿YA ESTÁS EN PUEBLA CAPITAL?",
         locationLeftText: "Puedes tomar un autobús local desde la estación CAPU. Busca la línea ORO. Salen cada 30 minutos y el boleto ronda los $45 MXN. Uber también es una gran opción si prefieres un traslado directo.",
         locationTravel1Title: "SI LLEGAS EN AVIÓN",
         locationTravel1Text: "La mayoría volará a <strong>Ciudad de México</strong> (MEX) o <strong>Puebla</strong> (PBC). Si vienes desde Cancún, también hay vuelos directos a <strong>Puebla</strong>.",
-        locationTravel2Title: "DESDE <strong>CIUDAD DE MÉXICO</strong> (MEX)",
+        locationTravel2Title: "DESDE CIUDAD DE MÉXICO (MEX)",
         locationTravel2Text: "La forma más fácil es tomar autobús desde la Terminal 2 del aeropuerto. Puedes reservar en <a href=\"https://www.ado.com.mx\" target=\"_blank\" rel=\"noopener noreferrer\">ADO</a> o <a href=\"https://www.estrellaroja.com.mx\" target=\"_blank\" rel=\"noopener noreferrer\">Estrella Roja</a>. Baja en Paseo Destino y de ahí toma un Uber a <strong>Atlixco</strong>.",
-        locationTravel3Title: "DESDE AEROPUERTO DE <strong>PUEBLA</strong> (PBC)",
+        locationTravel3Title: "DESDE AEROPUERTO DE PUEBLA (PBC)",
         locationTravel3Text: "Desde el aeropuerto de <strong>Puebla</strong> puedes tomar Uber directo a <strong>Atlixco</strong>. También puedes rentar coche si llevas licencia vigente.",
         locationFooterNote: "Si necesitas ayuda para planear tu ruta, avísanos. ¡Con gusto te ayudamos!",
 
