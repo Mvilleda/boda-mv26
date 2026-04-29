@@ -41,6 +41,9 @@ function updateLanguage() {
         'stayPlannerNote',
         'timelineVenueNote',
         'stayTitle',
+        'locationTitle',
+        'pueblaTitle',
+        'faqPueblaTitle',
         'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8'
     ]);
     

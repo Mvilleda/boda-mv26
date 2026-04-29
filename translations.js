@@ -72,7 +72,7 @@ const translations = {
         timeline4Text: "Bring your best moves — let's dance all night!",
         timelineVenueNote: "All moments of our celebration will take place at<br>Jardín de Cielo.",
 
-        locationTitle: "gettIng TheRe",
+        locationTitle: "gettIng TheRe?",
         locationIntro: "Our wedding will take place in <strong>Atlixco, Puebla</strong>, about 2 hours from <strong>Mexico City</strong>.\nHere's how to get there:",
         locationLeftTitle: "ALREADY IN PUEBLA CITY?",
         locationLeftText: "You can take a local bus from CAPU station. Look for the ORO line. They leave every 30 minutes and tickets are around $45 MXN. Uber is also a great option if you prefer a direct ride.",
@@ -220,9 +220,9 @@ const translations = {
 
         faqTitle: "good To know",
         faqIntro: "Everything you need to know to enjoy the weekend with us.",
-        faqPueblaTitle: "wHat To do In puebLa",
+        faqPueblaTitle: "wHat To do In puebLa?",
         faqPueblaText: "We will share our favorite spots in Puebla very soon, including cafés, markets, and places for a quick day trip.",
-            pueblaTitle: "wHat To do In puebLa",
+            pueblaTitle: "wHat To do In puebLa?",
             pueblaIntro: "You'll be spending time in one of Mexico's most beautiful corners, so make the most of it.",
             pueblaAtlixco: "In Atlixco, take a stroll through the town centre, charming, unhurried, and full of colour. Don't miss <a href='https://youtube.com/shorts/5q7KjsiARj0?si=7zqUfCldLMk8yucJ' target='_blank' rel='noopener noreferrer'>Valle de las Catrinas</a>, a spectacular sculptural celebration of Día de Muertos that takes over the town in late October. Also try <a href='https://maps.app.goo.gl/jTRnVRan14zbtbm57' target='_blank' rel='noopener noreferrer'>Restaurante Enchiladas Lolita</a> in Atlixco Centro.",
             pueblaCity: "A short drive away, Puebla city is a UNESCO World Heritage Site well worth a visit. Wander the historic centre, visit the Cathedral, explore the Callejón de los Sapos and El Parián, and stop at La Pasita for a shot of their famous liqueur. If you have more time, Los Fuertes de Loreto, the Museo Internacional del Barroco, and La Estrella de Puebla are all worth it. October is also a wonderful time to eat well. Don't leave without trying mole poblano, and ask around for mole de caderas, a regional dish served only in season.",
@@ -332,7 +332,7 @@ const translations = {
         timeline4Text: "Trae tu mejor ritmo; ¡bailemos toda la noche!",
         timelineVenueNote: "Todos los momentos de nuestra celebración tendrán lugar en<br>Jardín de Cielo.",
 
-        locationTitle: "cómo llegaR",
+        locationTitle: "<span class='q-flip'>?</span>cómo llegaR?",
         locationIntro: "Nuestra boda será en <strong>Atlixco, Puebla</strong>, a unas 2 horas de <strong>Ciudad de México</strong>. Aquí te dejamos cómo llegar:",
         locationLeftTitle: "¿YA ESTÁS EN PUEBLA CAPITAL?",
         locationLeftText: "Puedes tomar un autobús local desde la estación CAPU. Busca la línea ORO. Salen cada 30 minutos y el boleto ronda los $45 MXN. Uber también es una gran opción si prefieres un traslado directo.",
@@ -480,9 +480,9 @@ const translations = {
 
         faqTitle: "bueno saberlo",
         faqIntro: "Todo lo que necesitas saber para disfrutar el fin de semana con nosotros.",
-        faqPueblaTitle: "qué Hacer en puebLa",
+        faqPueblaTitle: "<span class='q-flip'>?</span>qué Hacer en puebLa?",
         faqPueblaText: "Muy pronto compartiremos nuestros lugares favoritos en Puebla, incluyendo cafés, mercados y opciones para un paseo rápido.",
-            pueblaTitle: "qué Hacer en puebLa",
+            pueblaTitle: "<span class='q-flip'>?</span>qué Hacer en puebLa?",
             pueblaIntro: "Estarás en uno de los rincones más bonitos de México, así que aprovéchalo.",
             pueblaAtlixco: "En Atlixco, date una vuelta por el centro, tranquilo, colorido y lleno de encanto. No te pierdas el <a href='https://youtube.com/shorts/5q7KjsiARj0?si=7zqUfCldLMk8yucJ' target='_blank' rel='noopener noreferrer'>Valle de las Catrinas</a>, una espectacular celebración escultórica del Día de Muertos que llena el pueblo a finales de octubre. Tambien prueba <a href='https://maps.app.goo.gl/jTRnVRan14zbtbm57' target='_blank' rel='noopener noreferrer'>Restaurante Enchiladas Lolita</a> en el centro de Atlixco.",
             pueblaCity: "A unos minutos en coche, Puebla es Patrimonio de la Humanidad y merece al menos medio día. Recorre el centro histórico, visita la Catedral, baja por el Callejón de los Sapos y El Parián, y párate en La Pasita a probar su famoso licor. Si tienes más tiempo, Los Fuertes de Loreto, el Museo Internacional del Barroco y La Estrella de Puebla valen mucho la pena. Octubre es también una época estupenda para comer bien. No te vayas sin probar el mole poblano, y pregunta por el mole de caderas, un platillo regional que sólo se sirve en temporada.",
