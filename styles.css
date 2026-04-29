@@ -1176,7 +1176,7 @@ body {
 }
 
 .stay-card-title {
-    font-family: 'Hello Paris', serif;
+    font-family: 'Hello Paris', serif !important;
     color: #fdffff;
     font-size: 2.5rem;
     font-weight: 400 !important;
@@ -1185,6 +1185,10 @@ body {
     letter-spacing: 0;
     text-transform: none;
     margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+    font-feature-settings: 'liga' 0, 'clig' 0;
+    text-rendering: geometricPrecision;
 }
 
 .stay-card-text {
