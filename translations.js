@@ -267,7 +267,7 @@ const translations = {
         storyText2: "Desde el inicio, todo se sintió fácil. Nos reíamos mucho, nos desvelábamos platicando, y apareció esa comodidad que no tienes que forzar. Cuando terminó el verano y los dos regresamos a la uni, medio esperábamos que el destino hiciera lo suyo y nos cruzara en esos primeros días. No pasó. Así que Marcos tomó cartas en el asunto y se apareció en el salón de Valeria con una paleta. Esa fue nuestra primera pequeña tradición, y también el inicio de todo.",
         storyText3: "La distancia nos puso a prueba. La vida se llenó de cosas, y aun así seguimos eligiéndonos. Cuando por fin cerramos esa distancia y compartimos un hogar, empezó una etapa nueva. Bailamos en la cocina, hicimos tonterías juntos y encontramos algo especial hasta en los días más simples. Hemos crecido lado a lado, soñado en voz alta, y nos hemos hecho mejores con solo estar juntos.",
         storyText4: "Y aquí estamos, listos para darnos el sí frente a las personas que más queremos.",
-        storyText5: "Qué alegría que sean parte de esto.",
+        storyText5: "¡Qué alegría que sean parte de esto!",
         counterTitleLine1: "HemOs eSperadO máS de 10 añoS para eSte dIa,",
         counterTitleLine2: "Solo falTan:",
         counterDays: "Días",
