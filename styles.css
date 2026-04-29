@@ -1725,7 +1725,8 @@ body {
     margin-bottom: 6px;
 }
 
-.faq-item h4 .q-flip {
+.faq-item h4 .q-flip,
+.q-flip {
     display: inline-block;
     transform: rotate(180deg) translateY(-0.18em);
     margin-right: 0.04em;
