@@ -38,7 +38,8 @@ function updateLanguage() {
         'locationTravel3Text',
         'pueblaAtlixco',
         'pueblaCholula',
-        'stayPlannerNote'
+        'stayPlannerNote',
+        'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8'
     ]);
     
     // Update each element with the translated text

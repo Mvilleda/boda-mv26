@@ -1717,6 +1717,12 @@ body {
     margin-bottom: 6px;
 }
 
+.faq-item h4 .q-flip {
+    display: inline-block;
+    transform: scaleX(-1);
+    margin-right: 0.04em;
+}
+
 .faq-item p {
     font-family: 'Crimson Pro', serif;
     color: #eef3ff;
