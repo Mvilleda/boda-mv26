@@ -1719,7 +1719,7 @@ body {
 
 .faq-item h4 .q-flip {
     display: inline-block;
-    transform: scaleX(-1);
+    transform: rotate(180deg);
     margin-right: 0.04em;
 }
 
