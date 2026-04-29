@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 740" preserveAspectRatio="xMidYMid meet">
+  <rect width="870" height="740" fill="#6c7c9d"/>
+  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Open doorway / welcome arch -->
+    <path d="M255 590 V335 a180 180 0 0 1 360 0 V590" />
+    <path d="M285 590 V340 a150 150 0 0 1 300 0 V590" stroke-width="4" opacity="0.85"/>
+    <!-- Floor / threshold -->
+    <path d="M210 590 H660" stroke-width="7"/>
+    <path d="M225 605 H645" stroke-width="3" opacity="0.7"/>
+
+    <!-- LEFT vine climbing the arch -->
+    <g fill="none">
+      <path d="M250 588
+               C 215 555, 285 520, 240 480
+               C 200 445, 282 410, 235 370
+               C 200 335, 285 305, 252 268
+               C 235 240, 282 215, 278 188
+               C 274 165, 320 150, 350 144"
+            stroke-width="5"/>
+      <!-- leaves -->
+      <path d="M250 560 q-30 -6 -42 14 q22 14 44 -2 z" stroke-width="3"/>
+      <path d="M262 510 q28 -10 44 8 q-22 16 -46 0 z" stroke-width="3"/>
+      <path d="M236 460 q-32 4 -38 26 q26 6 44 -10 z" stroke-width="3"/>
+      <path d="M260 410 q30 -6 42 14 q-24 14 -46 -2 z" stroke-width="3"/>
+      <path d="M232 360 q-30 0 -38 22 q26 8 44 -8 z" stroke-width="3"/>
+      <path d="M256 312 q28 -8 42 10 q-22 16 -44 2 z" stroke-width="3"/>
+      <path d="M252 262 q-26 -2 -34 18 q22 8 38 -6 z" stroke-width="3"/>
+      <path d="M278 218 q26 -10 40 6 q-20 16 -42 4 z" stroke-width="3"/>
+      <!-- tendril curls -->
+      <path d="M222 540 q-12 8 -6 22" stroke-width="2.5"/>
+      <path d="M298 480 q14 6 12 22" stroke-width="2.5"/>
+      <path d="M218 410 q-14 6 -10 22" stroke-width="2.5"/>
+      <path d="M300 330 q12 8 8 22" stroke-width="2.5"/>
+    </g>
+
+    <!-- RIGHT vine climbing the arch (mirror) -->
+    <g fill="none">
+      <path d="M620 588
+               C 655 555, 585 520, 630 480
+               C 670 445, 588 410, 635 370
+               C 670 335, 585 305, 618 268
+               C 635 240, 588 215, 592 188
+               C 596 165, 550 150, 520 144"
+            stroke-width="5"/>
+      <path d="M620 560 q30 -6 42 14 q-22 14 -44 -2 z" stroke-width="3"/>
+      <path d="M608 510 q-28 -10 -44 8 q22 16 46 0 z" stroke-width="3"/>
+      <path d="M634 460 q32 4 38 26 q-26 6 -44 -10 z" stroke-width="3"/>
+      <path d="M610 410 q-30 -6 -42 14 q24 14 46 -2 z" stroke-width="3"/>
+      <path d="M638 360 q30 0 38 22 q-26 8 -44 -8 z" stroke-width="3"/>
+      <path d="M614 312 q-28 -8 -42 10 q22 16 44 2 z" stroke-width="3"/>
+      <path d="M618 262 q26 -2 34 18 q-22 8 -38 -6 z" stroke-width="3"/>
+      <path d="M592 218 q-26 -10 -40 6 q20 16 42 4 z" stroke-width="3"/>
+      <path d="M648 540 q12 8 6 22" stroke-width="2.5"/>
+      <path d="M572 480 q-14 6 -12 22" stroke-width="2.5"/>
+      <path d="M652 410 q14 6 10 22" stroke-width="2.5"/>
+      <path d="M570 330 q-12 8 -8 22" stroke-width="2.5"/>
+    </g>
+
+    <!-- Top centerpiece: small leafy crown where vines meet -->
+    <g fill="none">
+      <path d="M390 150 q20 -22 45 -22 q25 0 45 22" stroke-width="4"/>
+      <path d="M380 168 q-18 -2 -28 -18 q24 -14 38 -2 z" stroke-width="3"/>
+      <path d="M490 168 q18 -2 28 -18 q-24 -14 -38 -2 z" stroke-width="3"/>
+      <path d="M420 132 q-6 -22 12 -34 q18 12 12 34 z" stroke-width="3"/>
+      <path d="M450 130 q14 -16 30 -10" stroke-width="3"/>
+      <path d="M420 130 q-14 -16 -30 -10" stroke-width="3"/>
+    </g>
+
+    <!-- Hanging string lights inside the arch -->
+    <g stroke-width="3" opacity="0.85">
+      <path d="M315 280 q120 60 240 0"/>
+      <circle cx="345" cy="298" r="5" fill="#ffffff"/>
+      <circle cx="395" cy="312" r="5" fill="#ffffff"/>
+      <circle cx="445" cy="316" r="5" fill="#ffffff"/>
+      <circle cx="495" cy="312" r="5" fill="#ffffff"/>
+      <circle cx="545" cy="298" r="5" fill="#ffffff"/>
+    </g>
+
+    <!-- Subtle path leading in -->
+    <path d="M380 645 q55 -20 110 0" stroke-width="3" opacity="0.6"/>
+  </g>
+</svg>
