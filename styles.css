@@ -1293,36 +1293,36 @@ body {
 .stay-options-list li,
 .stay-options-contact {
     font-family: 'Crimson Pro', serif;
-    color: #fdffff;
+    color: #6c7c9d;
     font-size: 1.22rem;
     line-height: 1.45;
 }
 
 .stay-options-list li {
-    color: #fdffff;
+    color: #6c7c9d;
 }
 
 .stay-options-list a {
-    color: #fdffff !important;
+    color: #6c7c9d !important;
     text-decoration: underline;
     text-underline-offset: 2px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .stay-options-block {
-    background: #6c7c9d;
-    border-top: 1px solid rgba(253, 255, 255, 0.18);
+    background: #fdffff;
+    border-top: 1px solid rgba(108, 124, 157, 0.22);
     padding-top: 24px;
     padding-bottom: 34px;
 }
 
 .stay-options-block.alt {
-    background: #5f7091;
+    background: #f6f1e7;
 }
 
 .stay-options-subtitle {
     font-family: 'Hello Paris', serif;
-    color: #eaf0ff !important;
+    color: #6c7c9d !important;
     font-size: clamp(2.4rem, 4.2vw, 3.5rem);
     line-height: .9;
     font-weight: 400 !important;
@@ -1344,15 +1344,15 @@ body {
     width: 100%;
     border-collapse: collapse;
     min-width: 760px;
-    background: rgba(253, 255, 255, 0.07);
+    background: rgba(108, 124, 157, 0.06);
 }
 
 .stay-options-table th,
 .stay-options-table td {
-    border: 1px solid rgba(253, 255, 255, 0.22);
+    border: 1px solid rgba(108, 124, 157, 0.28);
     padding: 10px 11px;
     text-align: left;
-    color: #eaf0ff;
+    color: #6c7c9d;
     font-family: 'Crimson Pro', serif;
     font-size: 1.02rem;
 }
@@ -1374,8 +1374,8 @@ body {
 }
 
 .stay-options-list a:hover {
-    color: #fdffff;
-    opacity: 0.85;
+    color: #6c7c9d;
+    opacity: 0.75;
 }
 
 .stay-options-contact {
