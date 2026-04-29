@@ -319,7 +319,7 @@ const translations = {
         receptionLocation: "Salón Grand",
         receptionAddress: "456 Avenida Oak, Ciudad, Estado",
         
-        timelineTitle: "progRama del Día",
+        timelineTitle: "progRama del dÍa",
         timeline5Title: "recepción",
         timeline5Text: "Acompáñanos desde el inicio de esta celebración tan especial.",
         timeline1Title: "ceremonia",
