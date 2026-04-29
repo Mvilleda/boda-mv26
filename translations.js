@@ -70,7 +70,7 @@ const translations = {
         timeline3Text: "Sit down with us for a good meal among friends.",
         timeline4Title: "we dance!",
         timeline4Text: "Bring your best moves — let's dance all night!",
-        timelineVenueNote: "All moments of our celebration will take place at Jardín de Cielo.",
+        timelineVenueNote: "All moments of our celebration will take place at<br>Jardín de Cielo.",
 
         locationTitle: "gettIng TheRe",
         locationIntro: "Our wedding will take place in <strong>Atlixco, Puebla</strong>, about 2 hours from <strong>Mexico City</strong>.\nHere's how to get there:",
@@ -330,7 +330,7 @@ const translations = {
         timeline3Text: "Cenemos juntos, en la mejor compañía.",
         timeline4Title: "fiesta",
         timeline4Text: "Trae tu mejor ritmo; ¡bailemos toda la noche!",
-        timelineVenueNote: "Todos los momentos de nuestra celebración tendrán lugar en Jardín de Cielo.",
+        timelineVenueNote: "Todos los momentos de nuestra celebración tendrán lugar en<br>Jardín de Cielo.",
 
         locationTitle: "cómo llegaR",
         locationIntro: "Nuestra boda será en <strong>Atlixco, Puebla</strong>, a unas 2 horas de <strong>Ciudad de México</strong>. Aquí te dejamos cómo llegar:",

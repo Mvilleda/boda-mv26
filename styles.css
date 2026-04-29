@@ -854,9 +854,11 @@ body {
 .timeline-time {
     width: 100px;
     text-align: center;
+    font-family: 'Crimson Pro', serif;
     font-weight: 600;
     color: #fdffff;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
     background-color: transparent;
     border: none;
     border-radius: 0;

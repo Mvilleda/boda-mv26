@@ -39,6 +39,7 @@ function updateLanguage() {
         'pueblaAtlixco',
         'pueblaCholula',
         'stayPlannerNote',
+        'timelineVenueNote',
         'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8'
     ]);
     
