@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 740" preserveAspectRatio="xMidYMid meet">
-  <rect width="870" height="740" fill="#6c7c9d"/>
-  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 870" preserveAspectRatio="xMidYMid meet">
+  <rect width="870" height="870" fill="#6c7c9d"/>
+  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,65)">
     <!-- Open doorway / welcome arch -->
     <path d="M255 590 V335 a180 180 0 0 1 360 0 V590" />
     <path d="M285 590 V340 a150 150 0 0 1 300 0 V590" stroke-width="4" opacity="0.85"/>
