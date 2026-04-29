@@ -346,7 +346,7 @@ const translations = {
 
         stayTitle: "dónde HospedarSe",
         stayIntro: "Ya tenemos 3 opciones de hospedaje. Por favor llamen o manden WhatsApp para aplicar los códigos de boda.",
-        stayHotelsTitle: "hOTelES",
+        stayHotelsTitle: "hOTeleS",
         stayHotelsText: "Sugerencias para hospedaje en Atlixco.",
         stayHotelsItem1: "Opción 1: Hotel BV Atlixco · Desde $1,400 MXN/noche.",
         stayHotelsItem2: "Opción 2: Cabañas La Finca #2 · Desde $2,000 MXN/noche.",
