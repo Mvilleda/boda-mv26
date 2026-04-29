@@ -59,7 +59,7 @@ const translations = {
         receptionAddress: "456 Oak Avenue, City, State",
         
         timelineTitle: "Schedule of evenTs",
-        timeline5Title: "we welcome!",
+        timeline5Title: "we gather!",
         timeline5Text: "Join us from the very start of this special celebration.",
         timeline1Title: "we do!",
         timeline1Text: "Celebrate our \"I do\" at Capilla del Lago.",
@@ -324,7 +324,7 @@ const translations = {
         timeline2Title: "Cóctel de bienvenida",
         timeline2Text: "Brindemos juntos y disfrutemos el momento.",
         timeline3Title: "Cena",
-        timeline3Text: "Sentémonos a la mesa a disfrutar de una buena cena entre los nuestros.",
+        timeline3Text: "Una cena sencilla y bien servida.",
         timeline4Title: "Fiesta",
         timeline4Text: "Trae tu mejor ritmo; ¡bailemos toda la noche!",
 
