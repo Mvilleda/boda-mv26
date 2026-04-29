@@ -860,6 +860,7 @@ body {
     color: #fdffff;
     font-size: 1.25rem;
     letter-spacing: 0.02em;
+    white-space: nowrap;
     background-color: transparent;
     border: none;
     border-radius: 0;
@@ -2271,18 +2272,20 @@ body {
 
     /* ── Timeline ───────────────────────────── */
     .timeline::before {
-        left: 60px;
+        left: 70px;
     }
 
     .timeline-time {
-        width: 60px;
-        font-size: 0.82rem;
-        padding: 10px 6px;
+        width: 72px;
+        font-size: 0.85rem;
+        padding: 10px 4px;
+        letter-spacing: 0;
     }
 
     .timeline-item {
         gap: 18px;
         margin-bottom: 30px;
+        grid-template-columns: 72px minmax(0, 1fr);
     }
 
     .timeline-content {
