@@ -64,9 +64,9 @@ const translations = {
         timeline1Title: "we do!",
         timeline1Text: "Celebrate our \"I do\" at Capilla del Lago.",
         timeline2Title: "we drInk!",
-        timeline2Text: "Let's toast together and enjoy this special moment.",
+        timeline2Text: "Let's toast together and enjoy the moment.",
         timeline3Title: "we eat!",
-        timeline3Text: "We'd love to share this special evening with you.",
+        timeline3Text: "Sit down with us for a good meal among friends.",
         timeline4Title: "we dance!",
         timeline4Text: "Bring your best moves — let's dance all night!",
 
@@ -322,9 +322,9 @@ const translations = {
         timeline1Title: "Ceremonia",
         timeline1Text: "Celebra nuestro \"sí, acepto\" en Capilla del Lago.",
         timeline2Title: "Cóctel de bienvenida",
-        timeline2Text: "Brindemos juntos y disfrutemos este momento especial.",
+        timeline2Text: "Brindemos juntos y disfrutemos el momento.",
         timeline3Title: "Cena",
-        timeline3Text: "Nos encantará compartir contigo esta velada tan especial.",
+        timeline3Text: "Sentémonos a la mesa a disfrutar de una buena cena entre los nuestros.",
         timeline4Title: "Fiesta",
         timeline4Text: "Trae tu mejor ritmo; ¡bailemos toda la noche!",
 
