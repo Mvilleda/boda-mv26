@@ -66,7 +66,7 @@ const translations = {
         timeline2Title: "we drInk!",
         timeline2Text: "Let's toast together and enjoy the moment.",
         timeline3Title: "we eat!",
-        timeline3Text: "Sit down with us for a good meal among friends.",
+        timeline3Text: "Dinner together, in the best company.",
         timeline4Title: "we dance!",
         timeline4Text: "Bring your best moves — let's dance all night!",
 
@@ -324,7 +324,7 @@ const translations = {
         timeline2Title: "Cóctel de bienvenida",
         timeline2Text: "Brindemos juntos y disfrutemos el momento.",
         timeline3Title: "Cena",
-        timeline3Text: "Una cena sencilla y bien servida.",
+        timeline3Text: "Cenemos juntos, en la mejor compañía.",
         timeline4Title: "Fiesta",
         timeline4Text: "Trae tu mejor ritmo; ¡bailemos toda la noche!",
 
