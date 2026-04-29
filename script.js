@@ -40,6 +40,7 @@ function updateLanguage() {
         'pueblaCholula',
         'stayPlannerNote',
         'timelineVenueNote',
+        'stayTitle',
         'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8'
     ]);
     

@@ -84,7 +84,7 @@ const translations = {
         locationTravel3Text: "From <strong>Puebla</strong> airport, you can Uber directly to <strong>Atlixco</strong>. Renting a car is also an option if you bring a valid license.",
         locationFooterNote: "If you need help planning your route, let us know. We are happy to help!",
 
-        stayTitle: "wHeRe To STaY",
+        stayTitle: "wHeRe To STaY?",
         stayIntro: "We already have 3 stay options. Please call or send WhatsApp to apply the wedding codes.",
         stayHotelsTitle: "hoTels",
         stayHotelsText: "Suggestions for lodging in Atlixco.",
@@ -344,7 +344,7 @@ const translations = {
         locationTravel3Text: "Desde el aeropuerto de <strong>Puebla</strong> puedes tomar Uber directo a <strong>Atlixco</strong>. También puedes rentar coche si llevas licencia vigente.",
         locationFooterNote: "Si necesitas ayuda para planear tu ruta, avísanos. ¡Con gusto te ayudamos!",
 
-        stayTitle: "dónde HospedarSe",
+        stayTitle: "<span class='q-flip'>?</span>dónde HospedarSe?",
         stayIntro: "Ya tenemos 3 opciones de hospedaje. Por favor llamen o manden WhatsApp para aplicar los códigos de boda.",
         stayHotelsTitle: "hOTeleS",
         stayHotelsText: "Sugerencias para hospedaje en Atlixco.",
