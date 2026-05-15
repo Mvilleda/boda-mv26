@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-14T23:48:09.044Z",
+  "generatedAt": "2026-05-15T00:36:54.362Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -596,7 +596,7 @@
     {
       "fullName": "Juan Torres Montes de Oca",
       "partyLabel": "Torres-Montes de Oca",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Angel Torres Montes de Oca",
