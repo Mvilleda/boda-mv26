@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-15T22:47:42.249Z",
+  "generatedAt": "2026-05-15T23:21:06.809Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -71,12 +71,12 @@
     {
       "fullName": "Mayra Rivero Lopez",
       "partyLabel": "Gupta-Rivero Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Prankit Gupta",
       "partyLabel": "Gupta-Rivero Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Marcela Torres Colín",
