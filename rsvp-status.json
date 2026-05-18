@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-18T18:37:39.468Z",
+  "generatedAt": "2026-05-18T19:33:47.417Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -156,12 +156,12 @@
     {
       "fullName": "Fergus Moore",
       "partyLabel": "Rachel & Fergus",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Rachel Atkins",
       "partyLabel": "Rachel & Fergus",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Leticia Torres Colín",
