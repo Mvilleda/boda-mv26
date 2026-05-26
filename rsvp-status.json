@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-26T22:53:59.488Z",
+  "generatedAt": "2026-05-26T23:26:17.133Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -236,7 +236,7 @@
     {
       "fullName": "Joshua Bustamante",
       "partyLabel": "Joshua Bustamante",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Daniel Vázquez torres",
