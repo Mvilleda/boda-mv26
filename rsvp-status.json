@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-26T21:49:12.152Z",
+  "generatedAt": "2026-05-26T22:02:53.050Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -336,7 +336,7 @@
     {
       "fullName": "Joselyn Villeda Hernandez",
       "partyLabel": "Joselyn, Alaka'i y Francisco",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Alaka'i Cuevas Villeda",
