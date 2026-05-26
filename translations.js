@@ -335,7 +335,7 @@ const translations = {
         locationTitle: "<span class='q-flip'>?</span>cómo llegaR?",
         locationIntro: "Nuestra boda será en <strong>Atlixco, Puebla</strong>, a unas 2 horas de <strong>Ciudad de México</strong>. Aquí te dejamos cómo llegar:",
         locationLeftTitle: "¿YA ESTÁS EN PUEBLA CAPITAL?",
-        locationLeftText: "Puedes tomar un autobús local desde la estación CAPU. Busca la línea ORO. Salen cada 30 minutos y el pase ronda los $45 MXN. Uber también es una gran opción si prefieres un traslado directo.",
+        locationLeftText: "Puedes tomar un autobús local desde la estación CAPU. Busca la línea ORO. Salen cada 30 minutos y el boleto ronda los $45 MXN. Uber también es una gran opción si prefieres un traslado directo.",
         locationTravel1Title: "SI LLEGAS EN AVIÓN",
         locationTravel1Text: "La mayoría volará a <strong>Ciudad de México</strong> (MEX) o <strong>Puebla</strong> (PBC). Si vienes desde Cancún, también hay vuelos directos a <strong>Puebla</strong>.",
         locationTravel2Title: "DESDE CIUDAD DE MÉXICO (MEX)",
