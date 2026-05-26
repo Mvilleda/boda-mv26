@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview estilos de boleto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdffff;
+      --blue: #4d638f;
+      --ink: #2f3b54;
+      --mid: #6c7c9d;
+      --line: rgba(77, 99, 143, 0.24);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Crimson Pro', serif;
+      background: #eef1f7;
+      color: var(--ink);
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-family: 'Cinzel', serif;
+      color: var(--blue);
+      font-size: 1.65rem;
+      text-align: center;
+    }
+    .intro {
+      margin: 0 0 20px;
+      text-align: center;
+      color: var(--mid);
+      font-size: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+    .sample {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(45, 62, 95, 0.12);
+    }
+    .label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      color: var(--blue);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #f9fbff;
+    }
+    .ticket {
+      position: relative;
+      min-height: 395px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr 104px;
+      gap: 10px;
+      isolation: isolate;
+    }
+    .content {
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .brand {
+      font-family: 'Cinzel', serif;
+      color: var(--mid);
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      margin-bottom: 6px;
+    }
+    .name {
+      font-size: 2rem;
+      line-height: 0.95;
+      color: var(--blue);
+      margin: 0 0 8px;
+    }
+    .meta {
+      margin: 3px 0;
+      font-size: 0.92rem;
+    }
+    .id {
+      margin-top: 10px;
+      color: var(--mid);
+      font-size: 0.8rem;
+    }
+    .note {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+    .qr {
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, #fff 10%, #f7f9fc 10% 20%, #fff 20% 30%, #f7f9fc 30% 40%, #fff 40% 50%, #f7f9fc 50% 60%, #fff 60% 70%, #f7f9fc 70% 80%, #fff 80% 90%, #f7f9fc 90%),
+        linear-gradient(#fff, #fff);
+      margin-left: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .style-a {
+      border: 1px solid rgba(77, 99, 143, 0.34);
+      background: #fbfcff;
+    }
+    .style-a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/TalaveraInvitacionblue.png') center/cover no-repeat;
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .style-b::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fdffff;
+      z-index: 0;
+    }
+    .style-b::after {
+      content: '';
+      position: absolute;
+      width: 235px;
+      height: 235px;
+      left: 32px;
+      top: 86px;
+      background: url('images/CirculoTalavera.png') center/contain no-repeat;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .style-c {
+      background: #ffffff;
+      border: 1px solid rgba(77, 99, 143, 0.24);
+    }
+    .style-c::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 58%;
+      height: 160px;
+      background: url('images/TalaveraFoto.png') top left/220% auto no-repeat;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .style-c::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 58%;
+      height: 160px;
+      background: url('images/TalaveraFoto.png') top right/220% auto no-repeat;
+      opacity: 0.3;
+      transform: scaleX(-1);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .style-c .bottom-line {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 12px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(77, 99, 143, 0.5), transparent);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Preview de estilos Talavera para boletos</h1>
+  <p class="intro">Comparativa visual de las opciones A, B y C antes de implementarlas en tickets.html</p>
+
+  <section class="grid">
+    <article class="sample">
+      <div class="label">Opcion A · Marco elegante completo</div>
+      <div class="ticket style-a">
+        <div class="content">
+          <div class="brand">Marcos & Valeria · 24·10·2026</div>
+          <h2 class="name">Alejandra Ruiz</h2>
+          <p class="meta"><strong>Lugar:</strong> Jardin de Cielo, Paraiso Palmira</p>
+          <p class="meta"><strong>Acceso:</strong> 1 boleto = 1 invitado</p>
+          <div class="id">ID del boleto: MV-ATX-204</div>
+          <p class="note">Presenta este codigo QR en el acceso. Boleto personal e intransferible.</p>
+        </div>
+        <div class="qr" aria-hidden="true"></div>
+      </div>
+    </article>
+
+    <article class="sample">
+      <div class="label">Opcion B · Sello Talavera limpio</div>
+      <div class="ticket style-b">
+        <div class="content">
+          <div class="brand">Marcos & Valeria · 24·10·2026</div>
+          <h2 class="name">Alejandra Ruiz</h2>
+          <p class="meta"><strong>Lugar:</strong> Jardin de Cielo, Paraiso Palmira</p>
+          <p class="meta"><strong>Acceso:</strong> 1 boleto = 1 invitado</p>
+          <div class="id">ID del boleto: MV-ATX-204</div>
+          <p class="note">Presenta este codigo QR en el acceso. Boleto personal e intransferible.</p>
+        </div>
+        <div class="qr" aria-hidden="true"></div>
+      </div>
+    </article>
+
+    <article class="sample">
+      <div class="label">Opcion C · Esquinas suaves minimal</div>
+      <div class="ticket style-c">
+        <div class="content">
+          <div class="brand">Marcos & Valeria · 24·10·2026</div>
+          <h2 class="name">Alejandra Ruiz</h2>
+          <p class="meta"><strong>Lugar:</strong> Jardin de Cielo, Paraiso Palmira</p>
+          <p class="meta"><strong>Acceso:</strong> 1 boleto = 1 invitado</p>
+          <div class="id">ID del boleto: MV-ATX-204</div>
+          <p class="note">Presenta este codigo QR en el acceso. Boleto personal e intransferible.</p>
+        </div>
+        <div class="qr" aria-hidden="true"></div>
+        <div class="bottom-line" aria-hidden="true"></div>
+      </div>
+    </article>
+  </section>
+</body>
+</html>

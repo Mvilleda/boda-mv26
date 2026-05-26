@@ -1,0 +1,23 @@
+{
+  "name": "boda-website",
+  "version": "1.0.0",
+  "description": "A beautiful bilingual (English/Spanish) wedding website with a cream and gold elegant theme, ready for GitHub Pages deployment.",
+  "main": "guests-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mvilleda/boda-mv26.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mvilleda/boda-mv26/issues"
+  },
+  "homepage": "https://github.com/Mvilleda/boda-mv26#readme",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

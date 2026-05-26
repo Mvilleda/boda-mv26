@@ -1,63 +1,63 @@
 const ticketTranslations = {
     en: {
-        pageTitle: 'digital tIckets | Marcos & Valeria',
-        headerTitle: 'digital tIckets',
-        headerSubtitle: 'Type your first name and surname to open your party tickets.',
-        lookupTitle: 'digital tIckets',
+        pageTitle: 'digital pAsses | Marcos & Valeria',
+        headerTitle: 'digital pAsses',
+        headerSubtitle: 'Type your first name and surname to open your party passes.',
+        lookupTitle: 'digital pAsses',
         lookupText: 'Type your first name and surname exactly as on the invite list.',
         firstNameLabel: 'First name',
         lastNameLabel: 'Last name',
-        findButton: 'Find my tickets',
-        lookupHelp: 'If you have trouble accessing your tickets, please contact us directly.',
+        findButton: 'Find my passes',
+        lookupHelp: 'If you have trouble accessing your passes, please contact us directly.',
         notFoundMessage: 'Name not found. Check spelling and accents, then try again.',
         multipleMessage: 'We found multiple matches. Pick your name below.',
-        needAnotherTitle: 'digital tIckets',
+        needAnotherTitle: 'digital pAsses',
         needAnotherText: 'Search by name to open another party.',
         findByName: 'Find by name',
-        notice: 'Each guest has an individual ticket. Download only who will attend.',
+        notice: 'Each guest has an individual pass. Download only who will attend.',
         venueLabel: 'Venue:',
         venueValue: 'Jardín de Cielo, Paraíso Palmira',
         accessLabel: 'Access:',
-        accessValue: '1 ticket = 1 guest',
-        ticketId: 'Ticket ID:',
-        ticketUseNote: 'Present this QR code at the entrance. This ticket is personal and non-transferable.',
-        downloadButton: 'Download ticket',
-        copyButton: 'Copy ticket link',
+        accessValue: '1 pass = 1 guest',
+        ticketId: 'Pass ID:',
+        ticketUseNote: 'Present this QR code at the entrance. This pass is personal and non-transferable.',
+        downloadButton: 'Download pass',
+        copyButton: 'Copy pass link',
         noData: 'No guest list loaded yet.',
-        idNotFound: 'This ticket ID was not found.',
+        idNotFound: 'This pass ID was not found.',
         partyNotFound: 'This party was not found.',
-        notEligible: 'You need to RSVP first before downloading your ticket.',
-        unknownError: 'Unable to load tickets.'
+        notEligible: 'You need to RSVP first before downloading your pass.',
+        unknownError: 'Unable to load passes.'
     },
     es: {
-        pageTitle: 'boletos digitales | Marcos & Valeria',
-        headerTitle: 'boletos digitales',
-        headerSubtitle: 'Escribe tu nombre y apellido para abrir los boletos de tu grupo.',
-        lookupTitle: 'boletos digitales',
+        pageTitle: 'pases digitales | Marcos & Valeria',
+        headerTitle: 'pases digitales',
+        headerSubtitle: 'Escribe tu nombre y apellido para abrir los pases de tu grupo.',
+        lookupTitle: 'pases digitales',
         lookupText: 'Escribe tu nombre y apellido exactamente como aparecen en la lista.',
         firstNameLabel: 'Nombre',
         lastNameLabel: 'Apellido',
-        findButton: 'Buscar mis boletos',
-        lookupHelp: 'Si tienes problemas para acceder a tus boletos, contáctanos directamente.',
+        findButton: 'Buscar mis pases',
+        lookupHelp: 'Si tienes problemas para acceder a tus pases, contáctanos directamente.',
         notFoundMessage: 'No encontramos ese nombre. Revisa la ortografía e inténtalo de nuevo.',
         multipleMessage: 'Encontramos varias coincidencias. Elige tu nombre abajo.',
-        needAnotherTitle: 'boletos digitales',
+        needAnotherTitle: 'pases digitales',
         needAnotherText: 'Busca por nombre para abrir otro grupo.',
         findByName: 'Buscar por nombre',
-        notice: 'Cada invitado tiene un boleto individual. Descarga solo quienes asistirán.',
+        notice: 'Cada invitado tiene un pase individual. Descarga solo quienes asistirán.',
         venueLabel: 'Lugar:',
         venueValue: 'Jardín de Cielo, Paraíso Palmira',
         accessLabel: 'Acceso:',
-        accessValue: '1 boleto = 1 invitado',
-        ticketId: 'ID del boleto:',
-        ticketUseNote: 'Presenta este codigo QR en el acceso. Este boleto es personal e intransferible.',
-        downloadButton: 'Descargar boleto',
-        copyButton: 'Copiar enlace del boleto',
+        accessValue: '1 pase = 1 invitado',
+        ticketId: 'ID del pase:',
+        ticketUseNote: 'Presenta este codigo QR en el acceso. Este pase es personal e intransferible.',
+        downloadButton: 'Descargar pase',
+        copyButton: 'Copiar enlace del pase',
         noData: 'Aún no se cargó la lista de invitados.',
-        idNotFound: 'No encontramos ese ID de boleto.',
+        idNotFound: 'No encontramos ese ID de pase.',
         partyNotFound: 'No encontramos ese grupo.',
-        notEligible: 'Primero debes confirmar tu asistencia (RSVP) para descargar tu boleto.',
-        unknownError: 'No fue posible cargar los boletos.'
+        notEligible: 'Primero debes confirmar tu asistencia (RSVP) para descargar tu pase.',
+        unknownError: 'No fue posible cargar los pases.'
     }
 };
 
@@ -200,33 +200,89 @@ async function fetchImageAsDataUrl(path) {
  * `file://` and offline, where `fetch()` is blocked), and only fall back
  * to `fetch()` if that's not possible.
  */
+async function fetchAsDataUrl(url) {
+    const res = await fetch(url, { mode: 'cors' });
+    if (!res.ok) throw new Error('font fetch failed: ' + res.status);
+    const blob = await res.blob();
+    return await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(blob);
+    });
+}
+
+async function inlineCssUrls(cssText, baseUrl) {
+    // Replace every url(...) reference in a CSS string with a data: URL so
+    // html-to-image's snapshot doesn't have to fetch anything.
+    const urlRegex = /url\(\s*(['"]?)([^'")]+)\1\s*\)/g;
+    const matches = [];
+    let m;
+    while ((m = urlRegex.exec(cssText)) !== null) matches.push(m[2]);
+    const unique = Array.from(new Set(matches));
+    const replacements = await Promise.all(unique.map(async raw => {
+        if (/^data:/i.test(raw)) return [raw, raw];
+        const abs = new URL(raw, baseUrl).toString();
+        try { return [raw, await fetchAsDataUrl(abs)]; }
+        catch (_) { return [raw, raw]; }
+    }));
+    let out = cssText;
+    for (const [from, to] of replacements) {
+        out = out.split(from).join(to);
+    }
+    return out;
+}
+
 let ticketFontEmbedCssPromise;
 function getTicketFontEmbedCSS() {
     if (ticketFontEmbedCssPromise) return ticketFontEmbedCssPromise;
     ticketFontEmbedCssPromise = (async () => {
-        // 1. Walk the live stylesheets and collect every @font-face rule
-        //    that mentions Hello Paris. This works without any network.
-        const collected = [];
+        const parts = [];
+
+        // 1. Walk live stylesheets and collect every @font-face rule we can
+        //    read directly (same-origin sheets like hello-paris-inline.css).
+        const remoteSheets = [];
         for (const sheet of Array.from(document.styleSheets)) {
             let rules;
-            try { rules = sheet.cssRules; } catch (e) { continue; }
+            try { rules = sheet.cssRules; }
+            catch (e) {
+                if (sheet.href) remoteSheets.push(sheet.href);
+                continue;
+            }
             if (!rules) continue;
             for (const rule of Array.from(rules)) {
                 if (rule.type === CSSRule.FONT_FACE_RULE) {
-                    const text = rule.cssText || '';
-                    if (/Hello\s*Paris/i.test(text)) collected.push(text);
+                    parts.push(rule.cssText || '');
                 }
             }
         }
-        if (collected.length) return collected.join('\n');
 
-        // 2. Fallback: try fetching the inline-base64 file directly.
-        try {
-            const response = await fetch('fonts/hello-paris-inline.css');
-            return await response.text();
-        } catch (error) {
-            return '';
+        // 2. Fallback for Hello Paris if it wasn't reachable via the DOM.
+        if (!parts.some(p => /Hello\s*Paris/i.test(p))) {
+            try {
+                const response = await fetch('fonts/hello-paris-inline.css');
+                parts.push(await response.text());
+            } catch (_) { /* ignore */ }
         }
+
+        // 3. Cross-origin sheets (Google Fonts) can't be read via CSSOM.
+        //    Fetch their CSS text and inline every woff2 url() as a data:
+        //    URL so Cinzel and Crimson Pro embed into the snapshot.
+        for (const href of remoteSheets) {
+            try {
+                const cssRes = await fetch(href, {
+                    mode: 'cors',
+                    // Google Fonts serves woff2 only when the UA looks
+                    // modern. Browser fetches send the real UA, so this
+                    // works as-is.
+                });
+                if (!cssRes.ok) continue;
+                const cssText = await cssRes.text();
+                parts.push(await inlineCssUrls(cssText, href));
+            } catch (_) { /* ignore */ }
+        }
+
+        return parts.filter(Boolean).join('\n');
     })();
     return ticketFontEmbedCssPromise;
 }
