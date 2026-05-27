@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-26T23:52:34.572Z",
+  "generatedAt": "2026-05-27T01:43:19.710Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -221,7 +221,7 @@
     {
       "fullName": "Marvin Leon",
       "partyLabel": "Marvin Leon",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Ximena Vasto Anzaldo",
