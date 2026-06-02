@@ -32,11 +32,6 @@ jobs:
             npm install
           fi
 
-      - name: Install Playwright browser
-        working-directory: automation/withjoy-sync
-        timeout-minutes: 10
-        run: npx playwright install chromium
-
       - name: Fetch WithJoy CSV
         working-directory: automation/withjoy-sync
         env:
@@ -48,6 +43,7 @@ jobs:
           WITHJOY_PASSWORD_SELECTOR: ${{ secrets.WITHJOY_PASSWORD_SELECTOR }}
           WITHJOY_SUBMIT_SELECTOR: ${{ secrets.WITHJOY_SUBMIT_SELECTOR }}
           WITHJOY_EXPORT_BUTTON_SELECTOR: ${{ secrets.WITHJOY_EXPORT_BUTTON_SELECTOR }}
+          WITHJOY_BROWSER_CHANNEL: chrome
         run: npm run fetch
 
       - name: Build RSVP status JSON

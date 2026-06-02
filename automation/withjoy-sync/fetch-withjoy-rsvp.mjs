@@ -155,7 +155,17 @@ async function screenshot(page, name) {
   }
 }
 
-const browser = await chromium.launch({ headless: true });
+const preferredChannel = process.env.WITHJOY_BROWSER_CHANNEL || 'chrome';
+let browser;
+try {
+  browser = await chromium.launch({ headless: true, channel: preferredChannel });
+  console.log(`[browser] launched chromium with channel: ${preferredChannel}`);
+} catch (error) {
+  console.warn(`[browser] failed to launch with channel '${preferredChannel}': ${error.message}`);
+  console.log('[browser] retrying with bundled chromium channel');
+  browser = await chromium.launch({ headless: true });
+}
+
 const context = await browser.newContext({ acceptDownloads: true });
 const page    = await context.newPage();
 
