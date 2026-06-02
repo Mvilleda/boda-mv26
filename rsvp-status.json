@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-05-28T12:09:48.107Z",
+  "generatedAt": "2026-06-02T12:17:37.140Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -96,22 +96,22 @@
     {
       "fullName": "Jose Palma",
       "partyLabel": "Palma-Cassidy Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Holly Cassidy",
       "partyLabel": "Palma-Cassidy Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Stephanie Bautista Torres",
       "partyLabel": "Torres-Suárez",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Enrique Sierra Suárez",
       "partyLabel": "Torres-Suárez",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Francisco Padilla",
@@ -126,7 +126,7 @@
     {
       "fullName": "Erika Griss Pascualli",
       "partyLabel": "",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Laurent Vaughan",
@@ -251,17 +251,17 @@
     {
       "fullName": "Renata Vázquez Cruz",
       "partyLabel": "Vázquez-Cruz",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Arath Vázquez Cruz",
       "partyLabel": "Vázquez-Cruz",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Edgar Vázquez Cruz",
       "partyLabel": "Vázquez-Cruz",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Rodrigo Miranda",
@@ -271,12 +271,12 @@
     {
       "fullName": "Hannah Bott",
       "partyLabel": "Hannah & Mike",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Mike Hill",
       "partyLabel": "Hannah & Mike",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Sandra Hernandez Rodriguez",
@@ -391,12 +391,12 @@
     {
       "fullName": "Maria del Carmen Rodriguez",
       "partyLabel": "Mamita & Papito",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Miguel Hernandez",
       "partyLabel": "Mamita & Papito",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Pedro Vicente",
