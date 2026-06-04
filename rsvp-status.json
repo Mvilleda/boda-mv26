@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-04T01:27:38.857Z",
+  "generatedAt": "2026-06-04T05:45:03.780Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -566,12 +566,12 @@
     {
       "fullName": "Eric Daniel González Torres",
       "partyLabel": "Eric & María",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "María Ángela Morales Portillo",
       "partyLabel": "Eric & María",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Andres Villeda Nava",
