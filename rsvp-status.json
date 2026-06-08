@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-08T22:12:00.761Z",
+  "generatedAt": "2026-06-08T22:37:19.172Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -727,6 +727,11 @@
       "fullName": "Jaime Alfaro",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Norma-Torres Colín",
       "status": "no"
+    },
+    {
+      "fullName": "Lorena Ramírez Esparza",
+      "partyLabel": "Torres-Sánchez",
+      "status": "unknown"
     }
   ]
 }
