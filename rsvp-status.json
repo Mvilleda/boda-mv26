@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-08T22:03:25.779Z",
+  "generatedAt": "2026-06-08T22:09:23.334Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -697,6 +697,26 @@
       "fullName": "Ixchel Villeda Hernandez",
       "partyLabel": "person-invitee-OncoTdWxP4jtUzBvXQ1",
       "status": "yes"
+    },
+    {
+      "fullName": "José Eduardo Flores Salazar",
+      "partyLabel": "Familia Torres-Bautista",
+      "status": "yes"
+    },
+    {
+      "fullName": "Danya Dorantes Caña",
+      "partyLabel": "Marvin Leon",
+      "status": "yes"
+    },
+    {
+      "fullName": "Noe Villeda Sanchez",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Noe-Villeda Sanchez",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Yesenia Villeda",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Noe-Villeda Sanchez",
+      "status": "unknown"
     }
   ]
 }
