@@ -59,6 +59,16 @@ function mapStatus(raw) {
   return 'unknown';
 }
 
+function splitName(fullName) {
+  const parts = normalizeFixed(fullName).split(/\s+/).filter(Boolean);
+  if (!parts.length) return { firstName: '', lastName: '' };
+  if (parts.length === 1) return { firstName: parts[0], lastName: '' };
+  return {
+    firstName: parts[0],
+    lastName: parts.slice(1).join(' ')
+  };
+}
+
 const guestsRaw = await fs.readFile(guestsPath, 'utf8');
 const guestLines = guestsRaw.split(/\r?\n/).filter(Boolean);
 const guestRows = guestLines.slice(1).map((line) => {
@@ -71,6 +81,8 @@ const csvRaw = await fs.readFile(csvPath, 'utf8');
 const csvRows = parse(csvRaw, { columns: true, skip_empty_lines: true, relax_column_count: true });
 
 const responseMap = new Map();
+const guestsByNameKey = new Set(guestRows.map((guest) => normKey(guest.fullName)).filter(Boolean));
+const newGuests = [];
 
 for (const row of csvRows) {
   const first = findValue(row, ['firstname', 'first name', 'guest first name', 'givenname']);
@@ -80,8 +92,34 @@ for (const row of csvRows) {
   const status = mapStatus(findValue(row, ['rsvp', 'status', 'response', 'attending']));
 
   if (!full) continue;
-  const key = `${normKey(full)}|${normKey(party)}`;
+  const normalizedFull = normalizeFixed(full);
+  const normalizedParty = normalizeFixed(party) || normalizedFull;
+  const key = `${normKey(normalizedFull)}|${normKey(normalizedParty)}`;
   responseMap.set(key, { fullName: full, partyLabel: party, status });
+
+  const nameKey = normKey(normalizedFull);
+  if (nameKey && !guestsByNameKey.has(nameKey)) {
+    const { firstName, lastName } = splitName(normalizedFull);
+    const guest = {
+      firstName: normalizeFixed(first || firstName),
+      lastName: normalizeFixed(last || lastName),
+      partyLabel: normalizedParty
+    };
+
+    guestRows.push({
+      fullName: `${guest.firstName} ${guest.lastName}`.trim(),
+      partyLabel: guest.partyLabel
+    });
+    newGuests.push(guest);
+    guestsByNameKey.add(nameKey);
+  }
+}
+
+if (newGuests.length) {
+  const newGuestLines = newGuests.map((guest) => `${guest.firstName}\t${guest.lastName}\t${guest.partyLabel}`);
+  const updatedGuests = `${guestLines.join('\n')}\n${newGuestLines.join('\n')}\n`;
+  await fs.writeFile(guestsPath, updatedGuests, 'utf8');
+  console.log(`Added ${newGuests.length} new guests to ${guestsPath}`);
 }
 
 const responses = guestRows.map((guest) => {
