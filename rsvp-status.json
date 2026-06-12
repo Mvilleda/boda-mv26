@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-12T18:16:37.700Z",
+  "generatedAt": "2026-06-12T19:17:36.755Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -206,7 +206,7 @@
     {
       "fullName": "Raquel Cruz Samperio",
       "partyLabel": "Cruz-O'halloran Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Samuel O'Halloran",
