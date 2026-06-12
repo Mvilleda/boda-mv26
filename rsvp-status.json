@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-12T17:17:49.754Z",
+  "generatedAt": "2026-06-12T18:16:37.700Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -211,7 +211,7 @@
     {
       "fullName": "Samuel O'Halloran",
       "partyLabel": "Cruz-O'halloran Family",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Mario Martinez",
@@ -731,6 +731,26 @@
     {
       "fullName": "Lorena Ramírez Esparza",
       "partyLabel": "Torres-Sánchez",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Martha Colín Soto",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Cecilio Orihuela",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Araceli Orihuela",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Eloy Bravo Rico",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
       "status": "unknown"
     }
   ]
