@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-16T21:35:45.290Z",
+  "generatedAt": "2026-06-16T22:28:10.781Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -531,12 +531,12 @@
     {
       "fullName": "Sonia Torres Colín",
       "partyLabel": "González-Torres",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Benito González González",
       "partyLabel": "González-Torres",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Laura Villeda sanchez",
