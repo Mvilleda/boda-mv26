@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-24T07:48:37.422Z",
+  "generatedAt": "2026-06-24T09:17:33.316Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -226,12 +226,12 @@
     {
       "fullName": "Ximena Vasto Anzaldo",
       "partyLabel": "Ximena & Christos",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Christos Kanatsoulis",
       "partyLabel": "Ximena & Christos",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Joshua Bustamante",
