@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-28T09:37:55.174Z",
+  "generatedAt": "2026-06-28T10:34:18.877Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -471,7 +471,7 @@
     {
       "fullName": "Laura Hernandez Rodriguez",
       "partyLabel": "Tia Cory",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Alan García Hernandez",
@@ -486,7 +486,7 @@
     {
       "fullName": "Ariel Garcia Hernandez",
       "partyLabel": "Tia Cory",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Nidia Reyes",
