@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-06-27T23:37:53.257Z",
+  "generatedAt": "2026-06-28T00:10:07.618Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -401,12 +401,12 @@
     {
       "fullName": "Pedro Vicente",
       "partyLabel": "Pedro & Andrea",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Andrea Anaya",
       "partyLabel": "Pedro & Andrea",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Araceli Hernandez Rodriguez",
