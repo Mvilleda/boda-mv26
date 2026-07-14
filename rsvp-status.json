@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-07-14T20:12:35.201Z",
+  "generatedAt": "2026-07-14T20:40:23.685Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -526,7 +526,7 @@
     {
       "fullName": "Karol Gaitan",
       "partyLabel": "Saúl & Karol",
-      "status": "yes"
+      "status": "unknown"
     },
     {
       "fullName": "Sonia Torres Colín",
@@ -751,6 +751,16 @@
     {
       "fullName": "Eloy Bravo Rico",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Karol Gaytán",
+      "partyLabel": "Saúl & Karol",
+      "status": "yes"
+    },
+    {
+      "fullName": "Jose Luis Villeda Sanchez",
+      "partyLabel": "person-invitee-OxXLXE3rjkVfm2xggNV",
       "status": "unknown"
     }
   ]
