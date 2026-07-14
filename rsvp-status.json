@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-07-14T21:35:34.044Z",
+  "generatedAt": "2026-07-14T22:08:35.169Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -476,12 +476,12 @@
     {
       "fullName": "Alan García Hernandez",
       "partyLabel": "Tia Cory",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Cory García Hernandez",
       "partyLabel": "Tia Cory",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Ariel Garcia Hernandez",
@@ -736,22 +736,22 @@
     {
       "fullName": "Martha Colín Soto",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Cecilio Orihuela",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Araceli Orihuela",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Eloy Bravo Rico",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Martha-Colín Soto",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Karol Gaytán",
