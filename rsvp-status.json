@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-07-24T20:34:41.751Z",
+  "generatedAt": "2026-07-24T21:10:08.540Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -601,7 +601,7 @@
     {
       "fullName": "Angel Torres Montes de Oca",
       "partyLabel": "Torres-Montes de Oca",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Ramiro Villeda Sánchez",
