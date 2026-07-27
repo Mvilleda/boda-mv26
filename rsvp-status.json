@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-07-26T23:36:51.780Z",
+  "generatedAt": "2026-07-27T00:08:38.326Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -771,12 +771,12 @@
     {
       "fullName": "Mary Sandoval",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Mary-Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Aquetzalli Sandoval",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Mary-Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Lucia Fernández Zenteno",
