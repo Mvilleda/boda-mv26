@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-08-02T17:27:03.833Z",
+  "generatedAt": "2026-08-02T18:33:06.516Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -341,12 +341,12 @@
     {
       "fullName": "Alaka'i Cuevas Villeda",
       "partyLabel": "Joselyn, Alaka'i y Francisco",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Francisco Cuevas",
       "partyLabel": "Joselyn, Alaka'i y Francisco",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Long Pan",
