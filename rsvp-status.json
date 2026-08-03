@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-08-03T21:33:57.982Z",
+  "generatedAt": "2026-08-03T22:42:31.512Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -766,7 +766,7 @@
     {
       "fullName": "Mara Sandoval",
       "partyLabel": "Mara Sandoval",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Mary Sandoval",
