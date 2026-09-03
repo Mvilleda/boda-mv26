@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-03T19:36:55.117Z",
+  "generatedAt": "2026-09-03T19:49:35.466Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -16,12 +16,12 @@
     {
       "fullName": "Fernando Ponce Garcia",
       "partyLabel": "Ponce-Valerino Family",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Selene Valerino Perea",
       "partyLabel": "Ponce-Valerino Family",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Marco Torres Colín",
@@ -131,7 +131,7 @@
     {
       "fullName": "Laurent Vaughan",
       "partyLabel": "Laurent Vaughan",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Giovana Bautista Torres",
