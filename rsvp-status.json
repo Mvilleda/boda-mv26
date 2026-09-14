@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-14T18:42:24.722Z",
+  "generatedAt": "2026-09-14T18:52:02.915Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -116,12 +116,12 @@
     {
       "fullName": "Francisco Padilla",
       "partyLabel": "Francisco y Noemi",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Noemi Torres",
       "partyLabel": "Francisco y Noemi",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Erika Griss Pascualli",
