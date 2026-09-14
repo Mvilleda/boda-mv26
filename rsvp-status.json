@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-14T17:50:32.710Z",
+  "generatedAt": "2026-09-14T18:19:38.448Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -216,7 +216,7 @@
     {
       "fullName": "Mario Martinez",
       "partyLabel": "Mario Martinez",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Marvin Leon",
