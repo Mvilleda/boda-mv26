@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-16T02:29:15.116Z",
+  "generatedAt": "2026-09-16T02:46:58.241Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -441,12 +441,12 @@
     {
       "fullName": "Agustín Sandoval Martínez",
       "partyLabel": "Familia Sandoval-Dávila",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Rosario Dávila",
       "partyLabel": "Familia Sandoval-Dávila",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Socorro Toxqui",
