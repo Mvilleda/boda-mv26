@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-21T17:50:24.277Z",
+  "generatedAt": "2026-09-21T18:19:52.592Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -146,12 +146,12 @@
     {
       "fullName": "Aaron Salazar",
       "partyLabel": "Aaron & Daniela",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Daniela Rosas",
       "partyLabel": "Aaron & Daniela",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Fergus Moore",
