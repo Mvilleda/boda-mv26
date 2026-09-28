@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-27T23:50:30.871Z",
+  "generatedAt": "2026-09-28T00:52:11.867Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -361,7 +361,7 @@
     {
       "fullName": "Rocío Sandoval Martínez",
       "partyLabel": "Rocío Sandoval Martínez",
-      "status": "no"
+      "status": "yes"
     },
     {
       "fullName": "Yushi Yang",
