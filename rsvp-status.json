@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-09-30T19:50:38.753Z",
+  "generatedAt": "2026-09-30T20:19:14.239Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -451,7 +451,7 @@
     {
       "fullName": "Socorro Toxqui",
       "partyLabel": "Soco & Juan",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Juan Gregorio Blasco",
@@ -781,12 +781,17 @@
     {
       "fullName": "Lucia Fernández Zenteno",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Lucia-Fernández Zenteno",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Jesse Wyatt Morgan",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Lucia-Fernández Zenteno",
-      "status": "unknown"
+      "status": "no"
+    },
+    {
+      "fullName": "Luis Alfonso Martínez Tenorio",
+      "partyLabel": "person-invitee-OfuxffRb7rlbCnKE1gt",
+      "status": "yes"
     }
   ]
 }
