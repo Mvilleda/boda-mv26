@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-06T17:14:52.563Z",
+  "generatedAt": "2026-10-06T17:29:02.786Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -196,7 +196,7 @@
     {
       "fullName": "Gerardo Corby",
       "partyLabel": "Gerardo Corby",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Leonardo Kunkel",
@@ -331,7 +331,7 @@
     {
       "fullName": "Basiram Narzari",
       "partyLabel": "Basi",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Joselyn Villeda Hernandez",
@@ -351,12 +351,12 @@
     {
       "fullName": "Long Pan",
       "partyLabel": "Long Pan & Zilu Liu",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Zilu Liu",
       "partyLabel": "Long Pan & Zilu Liu",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Rocío Sandoval Martínez",
@@ -411,12 +411,12 @@
     {
       "fullName": "Araceli Hernandez Rodriguez",
       "partyLabel": "Tia Chely",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Omar Velazquez Hernandez",
       "partyLabel": "Tia Chely",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Aida Velazquez Hernandez",
@@ -681,12 +681,12 @@
     {
       "fullName": "Sonia Gedman",
       "partyLabel": "person-invitee-Oj7J4_Jq_DDimhhToZX",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Benjamin Baker",
       "partyLabel": "person-invitee-Oj7J4_Jq_DDimhhToZX",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Rogelio Arroyo Rueda",
@@ -761,7 +761,7 @@
     {
       "fullName": "Jose Luis Villeda Sanchez",
       "partyLabel": "person-invitee-OxXLXE3rjkVfm2xggNV",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Mara Sandoval",
