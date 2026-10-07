@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-07T18:22:55.093Z",
+  "generatedAt": "2026-10-07T21:41:24.891Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -731,7 +731,7 @@
     {
       "fullName": "Lorena Ramírez Esparza",
       "partyLabel": "Torres-Sánchez",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Martha Colín Soto",
