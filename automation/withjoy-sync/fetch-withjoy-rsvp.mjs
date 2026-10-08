@@ -194,6 +194,8 @@ page.on('response', (response) => {
   }
 });
 
+let gracefulSkip = false;
+
 try {
   // Step 1: Load login page
   console.log(`[login] navigating to ${process.env.WITHJOY_LOGIN_URL}`);
@@ -300,6 +302,21 @@ try {
   await fs.mkdir(path.dirname(outputFile), { recursive: true });
   await download.saveAs(outputFile);
   console.log(`Saved WithJoy CSV to ${outputFile}`);
+} catch (error) {
+  const message = String(error?.message || error);
+  let currentUrl = '';
+  try { currentUrl = page.url(); } catch {}
+  // WithJoy's anti-brute-force lock is transient; skip this cycle instead of failing.
+  if (/too_many_attempts/i.test(message) || /too_many_attempts/i.test(currentUrl)) {
+    console.warn('[login] WithJoy temporary lockout (too_many_attempts); skipping this run without failing.');
+    gracefulSkip = true;
+  } else {
+    throw error;
+  }
 } finally {
   await browser.close();
+}
+
+if (gracefulSkip) {
+  process.exit(0);
 }
