@@ -1,0 +1,12 @@
+# WithJoy automation session (contains auth tokens — never commit)
+withjoy-auth-state.json
+automation/withjoy-sync/withjoy-auth-state.json
+
+# Dependencies
+node_modules/
+
+# Debug artifacts
+withjoy-*.png
+
+# macOS
+.DS_Store

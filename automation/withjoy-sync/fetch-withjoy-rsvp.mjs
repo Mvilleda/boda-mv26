@@ -35,6 +35,20 @@ const exportSelectorCandidates = [
 ];
 const outputDir = process.env.WITHJOY_OUTPUT_DIR || path.resolve(process.cwd(), '..', '..');
 const outputFile = path.resolve(outputDir, 'withjoy-rsvp.csv');
+const storageStatePath = process.env.WITHJOY_STORAGE_STATE || path.resolve(process.cwd(), 'withjoy-auth-state.json');
+
+async function hasStoredSession() {
+  try {
+    await fs.access(storageStatePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isLoginUrl(url) {
+  return url.includes('login') || url.includes('auth0');
+}
 
 function normalizeGuestsUrl(rawUrl) {
   try {
@@ -166,7 +180,14 @@ try {
   browser = await chromium.launch({ headless: true });
 }
 
-const context = await browser.newContext({ acceptDownloads: true });
+const reuseSession = await hasStoredSession();
+const context = await browser.newContext({
+  acceptDownloads: true,
+  ...(reuseSession ? { storageState: storageStatePath } : {})
+});
+if (reuseSession) {
+  console.log('[session] loaded stored auth state; will try to reuse it.');
+}
 const page    = await context.newPage();
 
 page.on('response', (response) => {
@@ -194,16 +215,18 @@ page.on('response', (response) => {
   }
 });
 
-let gracefulSkip = false;
-
-try {
-  // Step 1: Load login page
+async function performLogin(page) {
   console.log(`[login] navigating to ${process.env.WITHJOY_LOGIN_URL}`);
   await page.goto(process.env.WITHJOY_LOGIN_URL, { waitUntil: 'networkidle', timeout: 30000 });
   await screenshot(page, 'withjoy-01-login-loaded.png');
   console.log(`[login] URL after load: ${page.url()}`);
 
-  // Step 2: Fill email; Auth0 may use two-step (email -> Continue -> password)
+  // A carried-over session may land us past the login page already.
+  if (!isLoginUrl(page.url())) {
+    console.log('[login] already authenticated after navigation; skipping credential entry.');
+    return;
+  }
+
   console.log('[login] filling email...');
   await page.fill(emailSelector, process.env.WITHJOY_EMAIL);
 
@@ -218,7 +241,6 @@ try {
   await page.fill(passwordSelector, process.env.WITHJOY_PASSWORD);
   await screenshot(page, 'withjoy-02-credentials-filled.png');
 
-  // Step 3: Submit and wait for redirect away from login / auth0
   console.log('[login] submitting...');
   await page.click(submitSelector);
 
@@ -235,32 +257,65 @@ try {
   await page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
   console.log(`[login] success - URL: ${page.url()}`);
   await screenshot(page, 'withjoy-03-after-login.png');
+}
 
-  // Step 4: Navigate to guests page
-  const guestsUrl = normalizeGuestsUrl(afterLoginUrl);
-  if (guestsUrl && guestsUrl !== process.env.WITHJOY_LOGIN_URL) {
+async function tryOpenGuests(page, guestsUrl) {
+  if (guestsUrl) {
     console.log(`[guests] navigating to: ${guestsUrl}`);
     try {
       await page.goto(guestsUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
     } catch (error) {
       console.warn(`[guests] navigation timeout, continuing with current page state: ${error.message}`);
     }
-
     await page.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {});
+  }
 
-    if (page.url().includes('login') || page.url().includes('auth0')) {
-      await screenshot(page, 'withjoy-04-rsvp-redirect.png');
-      throw new Error(`Redirected to login when opening guests page - URL: ${page.url()}`);
+  let url = page.url();
+  if (isLoginUrl(url)) return false;
+
+  if (!url.includes('/edit/guests')) {
+    const forced = normalizeGuestsUrl(url);
+    if (forced !== url) {
+      console.log(`[guests] forcing canonical guests route: ${forced}`);
+      await page.goto(forced, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {});
+      await page.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {});
+      url = page.url();
     }
   }
 
-  console.log(`[guests] URL: ${page.url()}`);
-  if (!page.url().includes('/edit/guests')) {
-    const forcedGuestsUrl = normalizeGuestsUrl(page.url());
-    if (forcedGuestsUrl !== page.url()) {
-      console.log(`[guests] forcing canonical guests route: ${forcedGuestsUrl}`);
-      await page.goto(forcedGuestsUrl, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {});
-      await page.waitForLoadState('domcontentloaded', { timeout: 10000 }).catch(() => {});
+  if (isLoginUrl(url)) return false;
+  return url.includes('/edit/guests');
+}
+
+let gracefulSkip = false;
+
+try {
+  const guestsUrl = normalizeGuestsUrl(afterLoginUrl);
+
+  // Step 1: Try reusing a saved session to avoid a fresh login (reduces Auth0 lockouts).
+  let authenticated = false;
+  if (reuseSession) {
+    console.log('[session] attempting to reuse saved session...');
+    authenticated = await tryOpenGuests(page, guestsUrl);
+    console.log(authenticated
+      ? '[session] saved session is valid; skipping login.'
+      : '[session] saved session invalid/expired; performing full login.');
+  }
+
+  // Step 2: Full login only when the reused session did not work.
+  if (!authenticated) {
+    await performLogin(page);
+    authenticated = await tryOpenGuests(page, guestsUrl);
+    if (!authenticated) {
+      await screenshot(page, 'withjoy-04-rsvp-redirect.png');
+      throw new Error(`Redirected to login when opening guests page - URL: ${page.url()}`);
+    }
+    // Persist the fresh session so later runs can skip logging in.
+    try {
+      await context.storageState({ path: storageStatePath });
+      console.log('[session] saved fresh auth state for reuse.');
+    } catch (e) {
+      console.warn(`[session] could not save auth state: ${e.message}`);
     }
   }
 

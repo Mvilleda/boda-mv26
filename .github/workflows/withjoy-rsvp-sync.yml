@@ -30,6 +30,14 @@ jobs:
             npm install
           fi
 
+      - name: Restore WithJoy session
+        uses: actions/cache@v4
+        with:
+          path: automation/withjoy-sync/withjoy-auth-state.json
+          key: withjoy-session-${{ github.run_id }}
+          restore-keys: |
+            withjoy-session-
+
       - name: Fetch WithJoy CSV
         working-directory: automation/withjoy-sync
         env:
