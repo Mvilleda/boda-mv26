@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-13T11:55:27.036Z",
+  "generatedAt": "2026-10-13T12:28:17.006Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -381,12 +381,12 @@
     {
       "fullName": "esmeralda Villeda sanchez",
       "partyLabel": "Aurora Sanchez",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Ximena Villeda Sanchez",
       "partyLabel": "Aurora Sanchez",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Maria del Carmen Rodriguez",
@@ -421,12 +421,12 @@
     {
       "fullName": "Aida Velazquez Hernandez",
       "partyLabel": "Tia Chely",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Martin Velazquez Hernandez",
       "partyLabel": "Tia Chely",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Axel Loredo",
@@ -606,12 +606,12 @@
     {
       "fullName": "Ramiro Villeda Sánchez",
       "partyLabel": "Ramiro Villeda",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Leticia Cuevas",
       "partyLabel": "Ramiro Villeda",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Hugo Villeda Sanchez",
@@ -631,12 +631,12 @@
     {
       "fullName": "Alfredo Villeda Sanchez",
       "partyLabel": "Alfredo Villeda",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Marisol Martinez",
       "partyLabel": "Alfredo Villeda",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Brenda Torres Montes de Oca",
