@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-13T18:47:29.230Z",
+  "generatedAt": "2026-10-13T19:13:20.952Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -491,7 +491,7 @@
     {
       "fullName": "Nidia Reyes",
       "partyLabel": "Nidia Reyes",
-      "status": "unknown"
+      "status": "no"
     },
     {
       "fullName": "Jose Coronel",
