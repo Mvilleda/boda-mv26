@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-14T22:49:51.998Z",
+  "generatedAt": "2026-10-14T23:14:06.359Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -71,12 +71,12 @@
     {
       "fullName": "Mayra Rivero Lopez",
       "partyLabel": "Gupta-Rivero Family",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Prankit Gupta",
       "partyLabel": "Gupta-Rivero Family",
-      "status": "yes"
+      "status": "no"
     },
     {
       "fullName": "Marcela Torres Colín",
@@ -791,6 +791,31 @@
     {
       "fullName": "Luis Alfonso Martínez Tenorio",
       "partyLabel": "person-invitee-OfuxffRb7rlbCnKE1gt",
+      "status": "yes"
+    },
+    {
+      "fullName": "Aria Mauleon Lia",
+      "partyLabel": "Mauleon-Lia Family",
+      "status": "yes"
+    },
+    {
+      "fullName": "Marco Aurelio González Torres",
+      "partyLabel": "Torres-González",
+      "status": "yes"
+    },
+    {
+      "fullName": "Elaine Sierra Bautista",
+      "partyLabel": "Torres-Suárez",
+      "status": "yes"
+    },
+    {
+      "fullName": "Thea Hellenthal Valencia",
+      "partyLabel": "Familia Valencia-Hellenthal",
+      "status": "yes"
+    },
+    {
+      "fullName": "Emma Hellenthal Valencia",
+      "partyLabel": "Familia Valencia-Hellenthal",
       "status": "yes"
     }
   ]
