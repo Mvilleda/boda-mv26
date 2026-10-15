@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-14T23:50:06.257Z",
+  "generatedAt": "2026-10-15T00:41:15.800Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -816,6 +816,16 @@
     {
       "fullName": "Emma Hellenthal Valencia",
       "partyLabel": "Familia Valencia-Hellenthal",
+      "status": "yes"
+    },
+    {
+      "fullName": "Plus one Corby",
+      "partyLabel": "Gerardo Corby",
+      "status": "yes"
+    },
+    {
+      "fullName": "Plus One Coronel",
+      "partyLabel": "Alfredo Coronel",
       "status": "yes"
     }
   ]
