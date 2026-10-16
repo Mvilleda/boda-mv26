@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-15T23:37:26.931Z",
+  "generatedAt": "2026-10-16T00:41:21.284Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -836,6 +836,11 @@
     {
       "fullName": "Aide Torres",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Francisco -Coronado",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Fausto Vega Zarate",
+      "partyLabel": "Fausto Vega Zarate",
       "status": "unknown"
     }
   ]
