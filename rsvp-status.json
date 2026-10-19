@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-19T22:15:26.419Z",
+  "generatedAt": "2026-10-19T22:37:45.050Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -821,7 +821,7 @@
     {
       "fullName": "Plus one Corby",
       "partyLabel": "Gerardo Corby",
-      "status": "yes"
+      "status": "unknown"
     },
     {
       "fullName": "Plus One Coronel",
@@ -847,6 +847,16 @@
       "fullName": "Itzel Vega Zarate",
       "partyLabel": "person-invitee-P41810tgXqDcMAcSxK3",
       "status": "unknown"
+    },
+    {
+      "fullName": "Erick Calderon Iniestra",
+      "partyLabel": "Gerardo Corby",
+      "status": "yes"
+    },
+    {
+      "fullName": "Laura Darani Arroyo Rueda",
+      "partyLabel": "person-invitee-OncoTdWxP4jtUzBvXQ1",
+      "status": "yes"
     }
   ]
 }
