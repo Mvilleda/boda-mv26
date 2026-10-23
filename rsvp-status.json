@@ -1,6 +1,6 @@
 {
   "active": true,
-  "generatedAt": "2026-10-23T02:30:56.497Z",
+  "generatedAt": "2026-10-23T02:56:10.568Z",
   "source": "withjoy-csv-automation",
   "responses": [
     {
@@ -831,12 +831,12 @@
     {
       "fullName": "Francisco Coronado",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Francisco -Coronado",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Aide Torres",
       "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Francisco -Coronado",
-      "status": "unknown"
+      "status": "yes"
     },
     {
       "fullName": "Fausto Vega Zarate",
@@ -857,6 +857,16 @@
       "fullName": "Laura Darani Arroyo Rueda",
       "partyLabel": "person-invitee-OncoTdWxP4jtUzBvXQ1",
       "status": "yes"
+    },
+    {
+      "fullName": "Ricardo García Millán",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Ricardo-García Millán",
+      "status": "unknown"
+    },
+    {
+      "fullName": "Samantha Bravo Córdoba",
+      "partyLabel": "58d3d2ad-b267-49a4-a4f6-6e12fa502acc-Ricardo-García Millán",
+      "status": "unknown"
     }
   ]
 }
