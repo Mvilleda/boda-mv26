@@ -1,8 +1,7 @@
 name: WithJoy RSVP Sync
 
+# Wedding is over — automatic schedule disabled. Run manually if ever needed.
 on:
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 permissions:
